@@ -1,7 +1,6 @@
 import { Logo } from '@/components/Logo';
 import { cn } from '@/utils';
-import Link from 'next/link';
-import { useState } from 'react';
+import { LayoutMenu } from '../Menu';
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -28,19 +27,7 @@ export const Header = (props: HeaderProps) => {
         </div>
 
         <div>
-          <div
-            className={cn(
-              '*:ml-6',
-              '*:whitespace-nowrap',
-              'text-sm',
-              'flex flex-nowrap items-center justify-center '
-            )}
-          >
-            <Link href='/'>首页</Link>
-            <Link href='/posts'>文章</Link>
-            <Link href='/photo'>相册</Link>
-            <Link href='/about'>关于</Link>
-          </div>
+          <LayoutMenu />
         </div>
       </div>
     </header>

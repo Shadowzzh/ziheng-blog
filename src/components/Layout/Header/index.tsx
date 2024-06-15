@@ -14,7 +14,7 @@ export const Header = (props: HeaderProps) => {
     <header className={cn('h-16', 'bg-neutral-900')}>
       <div
         className={cn(
-          '2xl:max-w-8xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
+          '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
           'px-8',
           'h-full',
           'flex items-center justify-between',

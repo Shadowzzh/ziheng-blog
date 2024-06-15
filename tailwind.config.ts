@@ -23,6 +23,7 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   screens: {
+    mini: '375px',
     sm: '640px',
     md: '768px',
     lg: '1024px',

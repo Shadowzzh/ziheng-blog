@@ -85,7 +85,10 @@ export default function Home() {
       >
         <div>
           <div className={cn('text-2xl font-bold')}>张子恒</div>
-          <div className={cn('mt-2 mb-4')}>00 年的小伙子，家乡是安徽，目前在杭州工作。</div>
+          <div className={cn('mt-2 mb-4', ' text-neutral-600')}>
+            👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影达人 | 🌍 旅行徒步爱好者 <br />
+            把代码写得像艺术，把自己练得像雕塑，把世界拍得像明信片，把生活过得像冒险！
+          </div>
 
           <div className={cn('space-x-2', 'flex')}>
             {socialMediaItems.map((item, index) => {

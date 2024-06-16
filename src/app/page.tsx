@@ -141,7 +141,7 @@ export default function Home() {
       </div>
 
       {/* 最新文章 */}
-      <div className={cn('p-4', 'shadow-sm rounded-lg', 'bg-white', 'space-y-3', 'cursor-pointer')}>
+      <div className={cn('p-4', 'shadow-sm rounded-lg', 'bg-white', 'space-y-3', 'cursor-pointer', 'mb-4')}>
         {lastPosts.map((post, index) => {
           return (
             <div key={index} className={cn('p-3', 'hover:bg-neutral-50', 'rounded-md')}>

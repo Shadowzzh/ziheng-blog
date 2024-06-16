@@ -142,13 +142,24 @@ export default function Home() {
       </div>
 
       {/* 最新文章 */}
-      <div className={cn('p-4', 'shadow-sm rounded-lg', 'bg-white', 'space-y-3', 'cursor-pointer', 'mb-4')}>
+      <div
+        className={cn(
+          'p-4',
+          'shadow-sm rounded-lg',
+          'bg-white',
+          'space-y-3',
+          'cursor-pointer',
+          'mb-4'
+        )}
+      >
         {lastPosts.map((post, index) => {
           return (
-            <div key={index} className={cn('p-3', 'hover:bg-neutral-50', 'rounded-md')}>
-              <div className={cn('text-xl font-bold')}>{post.title}</div>
-              <div className={cn('text-sm mt-1 text-neutral-600')}>{post.description}</div>
-            </div>
+            <Link key={index} href={`${post.slug}`}>
+              <div key={index} className={cn('p-3', 'hover:bg-neutral-50', 'rounded-md')}>
+                <div className={cn('text-xl font-bold')}>{post.title}</div>
+                <div className={cn('text-sm mt-1 text-neutral-600')}>{post.description}</div>
+              </div>
+            </Link>
           );
         })}
       </div>

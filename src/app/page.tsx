@@ -70,6 +70,7 @@ export default function Home() {
         '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
         'm-auto',
         'px-8',
+        'mt-5',
         '*:mt-4'
       )}
     >

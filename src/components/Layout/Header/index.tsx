@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 /** Layout Header **/
-export const Header = (props: HeaderProps) => {
+export const LayoutHeader = (props: HeaderProps) => {
   return (
     <header className={cn('h-16', 'bg-neutral-900')}>
       <div

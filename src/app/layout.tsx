@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/Layout/Header';
+import { LayoutHeader } from '@/components/Layout/Header';
 import { cn } from '@/utils';
 import { LayoutFooter } from '@/components/Layout/Footer'
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={cn(inter.className, 'bg-neutral-100')}>
-        <Header />
+        <LayoutHeader />
         <main>{children}</main>
         <LayoutFooter />
       </body>

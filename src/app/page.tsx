@@ -75,55 +75,55 @@ export default function Home() {
       )}
     >
       {/* 基本信息 */}
-      <div
-        className={cn(
-          'p-4 font-title sm:flex-row sm:p-8',
-          'flex justify-between items-center',
-          'shadow-sm rounded-lg',
-          'bg-white'
-        )}
-      >
-        <div>
-          <div className={cn('text-2xl font-bold')}>张子恒</div>
-          <div className={cn('mt-2 mb-4', ' text-neutral-600')}>
-            👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影达人 | 🌍 旅行徒步爱好者 <br />
-            把代码写得像艺术，把自己练得像雕塑，把世界拍得像明信片，把生活过得像冒险！
+      <div className={cn('p-4 font-title sm:flex-row sm:p-8', 'shadow-sm rounded-lg', 'bg-white')}>
+        <div className={cn('flex sm:flex-row flex-col-reverse justify-between  items-center')}>
+          <div className={cn()}>
+            <div className={cn('text-xl sm:text-2xl font-bold text-center sm:text-left')}>张子恒</div>
+            <div className={cn('mt-2 mb-4', ' text-neutral-500', 'mr-4', 'sm:text-base text-sm ')}>
+              👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影达人 | 🌍 旅行徒步爱好者 <br />
+              把代码写得像艺术，把自己练得像雕塑，把世界拍得像明信片，把生活过得像冒险！by ChatGpt
+              🤖
+            </div>
           </div>
 
-          <div className={cn('space-x-2', 'flex')}>
-            {socialMediaItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  title={item.name}
-                  className={cn(
-                    'cursor-pointer',
-                    'rounded-md',
-                    'bg-neutral-50',
-                    'px-3 py-2',
-                    'flex justify-center items-center'
-                  )}
-                  key={index}
-                  href={item.url}
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  <Icon className='size-5' />
-                </Link>
-              );
-            })}
+          <div className={cn('flex-shrink-0')}>
+            <Image
+              className={cn(
+                'rounded-full lg:size-24 mini:size-20 size-14',
+                'object-cover',
+                'sm:mb-0 mb-3'
+              )}
+              quality={75}
+              src={Avatar}
+              alt='avatar'
+              width={200}
+              height={200}
+            />
           </div>
         </div>
 
-        <div className={cn('flex-shrink-0')}>
-          <Image
-            className={cn('rounded-full lg:size-24 mini:size-20 size-14', 'object-cover')}
-            quality={75}
-            src={Avatar}
-            alt='avatar'
-            width={200}
-            height={200}
-          />
+        <div className={cn('space-x-2', 'flex')}>
+          {socialMediaItems.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                title={item.name}
+                className={cn(
+                  'cursor-pointer',
+                  'rounded-md',
+                  'bg-neutral-50',
+                  'px-3 py-2',
+                  'flex justify-center items-center'
+                )}
+                key={index}
+                href={item.url}
+                target='_blank'
+                rel='noreferrer'
+              >
+                <Icon className='size-5' />
+              </Link>
+            );
+          })}
         </div>
       </div>
 

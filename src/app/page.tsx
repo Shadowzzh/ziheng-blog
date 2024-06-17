@@ -130,7 +130,7 @@ export default function Home() {
       </div>
 
       {/* 导航卡片 */}
-      <div className={cn('grid gap-4 xl:grid-cols-4 md:grid-cols-3 mini:grid-cols-2  grid-cols-1')}>
+      <div className={cn('grid gap-4 xl:grid-cols-4  sm:grid-cols-3  grid-cols-1')}>
         {sectionItems.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -138,8 +138,19 @@ export default function Home() {
               key={index}
               className={cn('p-4', 'shadow-sm rounded-lg', 'flex flex-col', 'bg-white')}
             >
-              <Icon className={cn('size-8', 'p-1 rounded-sm', item.bg, item.color)} />
-              <div className={cn('text-lg font-bold mt-3 mb-1')}>{item.title}</div>
+              <div
+                className={cn(
+                  'flex sm:flex-col flex-row sm:items-start items-center ',
+                  'sm:mb-0 mb-3'
+                )}
+              >
+                <Icon
+                  className={cn('size-8', 'p-1 rounded-sm', 'sm:nr-0 mr-3', item.bg, item.color)}
+                />
+                <div className={cn('text-lg font-bold sm:mt-3 mt-0 sm:mb-1 mb-0')}>
+                  {item.title}
+                </div>
+              </div>
               <div className={cn('text-sm')}>{item.description}</div>
             </div>
           );

@@ -78,7 +78,9 @@ export default function Home() {
       <div className={cn('p-4 font-title sm:flex-row sm:p-8', 'shadow-sm rounded-lg', 'bg-white')}>
         <div className={cn('flex sm:flex-row flex-col-reverse justify-between  items-center')}>
           <div className={cn()}>
-            <div className={cn('text-xl sm:text-2xl font-bold text-center sm:text-left')}>张子恒</div>
+            <div className={cn('text-xl sm:text-2xl font-bold text-center sm:text-left')}>
+              张子恒
+            </div>
             <div className={cn('mt-2 mb-4', ' text-neutral-500', 'mr-4', 'sm:text-base text-sm ')}>
               👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影达人 | 🌍 旅行徒步爱好者 <br />
               把代码写得像艺术，把自己练得像雕塑，把世界拍得像明信片，把生活过得像冒险！by ChatGpt

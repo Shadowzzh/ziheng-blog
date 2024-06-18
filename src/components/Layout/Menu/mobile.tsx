@@ -39,7 +39,15 @@ export const MobileMenus = (props: MobileMenusProps) => {
 
       {/* mobile - 展开 */}
       {visible && (
-        <div className={cn('w-screen h-screen', 'fixed top-0 left-0 z-50', 'backdrop-blur-sm')}>
+        <div
+          className={cn(
+            'w-screen h-screen',
+            'fixed top-0 left-0 z-40',
+            'backdrop-blur-sm',
+            // 解决滚动问题
+            'touch-none'
+          )}
+        >
           <div
             className={cn(
               'fixed top-4 right-4 z-50',

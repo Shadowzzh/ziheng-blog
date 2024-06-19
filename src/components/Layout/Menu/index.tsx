@@ -1,7 +1,7 @@
 import { navigationItems } from '@/config/nav';
 import { cn } from '@/utils';
-import Link from 'next/link';
 import { MobileMenus } from './mobile';
+import { LinkWrap } from '@/components';
 
 interface LayoutMenuProps {
   children?: React.ReactNode;
@@ -25,9 +25,9 @@ export const LayoutMenu = (props: LayoutMenuProps) => {
         )}
       >
         {navigationItems.map((item, index) => (
-          <Link key={index} href={item.href}>
+          <LinkWrap key={index} href={item.href}>
             {item.text}
-          </Link>
+          </LinkWrap>
         ))}
       </div>
 

@@ -33,7 +33,7 @@ export const MobileMenus = (props: MobileMenusProps) => {
   return (
     <>
       {/* menu - mobile */}
-      <div className={cn('md:hidden', 'flex items-center justify-center')}>
+      <div className={cn('md:hidden', 'flex items-center justify-center', props.className)}>
         <FiMenu className='size-6 cursor-pointer' onClick={showMenu} />
       </div>
 

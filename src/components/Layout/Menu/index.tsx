@@ -20,7 +20,8 @@ export const LayoutMenu = (props: LayoutMenuProps) => {
           '*:ml-6',
           '*:whitespace-nowrap',
           'text-sm',
-          'md:flex flex-nowrap items-center justify-center '
+          'md:flex flex-nowrap items-center justify-center ',
+          props.className
         )}
       >
         {navigationItems.map((item, index) => (

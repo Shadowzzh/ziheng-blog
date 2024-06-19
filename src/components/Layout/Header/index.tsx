@@ -11,7 +11,9 @@ interface HeaderProps {
 /** Layout Header **/
 export const LayoutHeader = (props: HeaderProps) => {
   return (
-    <header className={cn('h-16 w-screen', 'bg-neutral-800', ' sticky z-50 top-0')}>
+    <header
+      className={cn('h-16 w-screen', 'bg-neutral-800', ' sticky z-50 top-0', props.className)}
+    >
       <div
         className={cn(
           '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',

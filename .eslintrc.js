@@ -1,10 +1,12 @@
-/** @type {import("eslint").Linter.Config} */
-const config = {
+module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'next/core-web-vitals'
+    'plugin:@next/next/recommended'
   ],
   plugins: ['@typescript-eslint'],
   rules: {
@@ -15,17 +17,17 @@ const config = {
       }
     ]
   },
+  settings: {
+    react: {
+      version: '18'
+    }
+  },
   ignorePatterns: [
     '**/.eslintrc.js',
-    '**/*.config.js',
-    '**/*.config.cjs',
     '.next',
     'dist',
     'pnpm-lock.yaml',
-    'bun.lockb',
     'tailwind.config.ts',
     'node_modules'
   ]
 };
-
-module.exports = config;

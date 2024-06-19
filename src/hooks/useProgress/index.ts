@@ -109,8 +109,8 @@ export const useProgress = (props?: UseProgressProps): UseProgressReturn => {
   };
 
   const done = () => {
-    const completingArr = ['initial', 'in-progress'];
-    setState((state) => (completingArr.includes(state) ? 'completing' : state));
+    const completionStates = ['initial', 'in-progress'];
+    setState((state) => (completionStates.includes(state) ? 'completing' : state));
   };
 
   return { state, value: springInstance, start, done, reset };

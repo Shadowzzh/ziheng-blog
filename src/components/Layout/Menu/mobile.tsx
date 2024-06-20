@@ -33,13 +33,21 @@ export const MobileMenus = (props: MobileMenusProps) => {
   return (
     <>
       {/* menu - mobile */}
-      <div className={cn('md:hidden', 'flex items-center justify-center')}>
-        <FiMenu className='size-6 cursor-pointer' onClick={showMenu} />
+      <div className={cn('md:hidden', 'flex items-center justify-center', props.className)}>
+        <FiMenu className='sm:size-6 size-5 cursor-pointer' onClick={showMenu} />
       </div>
 
       {/* mobile - 展开 */}
       {visible && (
-        <div className={cn('w-screen h-screen', 'fixed top-0 left-0 z-50', 'backdrop-blur-sm')}>
+        <div
+          className={cn(
+            'w-screen h-screen',
+            'fixed top-0 left-0 z-40',
+            'backdrop-blur-sm',
+            // 解决滚动问题
+            'touch-none'
+          )}
+        >
           <div
             className={cn(
               'fixed top-4 right-4 z-50',

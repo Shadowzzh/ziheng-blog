@@ -1,7 +1,7 @@
 import { navigationItems } from '@/config/nav';
 import { cn } from '@/utils';
-import Link from 'next/link';
 import { MobileMenus } from './mobile';
+import { LinkWrap } from '@/components';
 
 interface LayoutMenuProps {
   children?: React.ReactNode;
@@ -20,13 +20,14 @@ export const LayoutMenu = (props: LayoutMenuProps) => {
           '*:ml-6',
           '*:whitespace-nowrap',
           'text-sm',
-          'md:flex flex-nowrap items-center justify-center '
+          'md:flex flex-nowrap items-center justify-center ',
+          props.className
         )}
       >
         {navigationItems.map((item, index) => (
-          <Link key={index} href={item.href}>
+          <LinkWrap key={index} href={item.href}>
             {item.text}
-          </Link>
+          </LinkWrap>
         ))}
       </div>
 

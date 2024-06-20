@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { allPosts, Post } from 'contentlayer/generated';
-import Link from 'next/link';
 import { cn } from '@/utils';
+import { LinkWrap } from '@/components';
 
 const allPostsSorted = allPosts.sort((a, b) => {
   if (!a.date || !b.date) return 1;
   return new Date(b.date).getTime() - new Date(a.date).getTime();
 });
 
-export default function Posts() {
+export default async function Posts() {
   return (
     <div
       className={cn(
@@ -20,7 +20,7 @@ export default function Posts() {
     >
       {allPostsSorted.map((post: Post) => {
         return (
-          <Link
+          <LinkWrap
             href={post.slug}
             key={post._raw.flattenedPath}
             className={cn(
@@ -34,7 +34,11 @@ export default function Posts() {
             <div className={cn('sm:mr-5 m-0', 'flex-shrink-0')}>
               {post.image && (
                 <Image
-                  className={cn('w-full sm:w-44 md:w-52 lg:w-60  h-36', 'rounded-md', 'object-cover')}
+                  className={cn(
+                    'w-full sm:w-44 md:w-52 lg:w-60  h-36',
+                    'rounded-md',
+                    'object-cover'
+                  )}
                   src={post.image}
                   alt={'cover'}
                   width={200}
@@ -62,7 +66,7 @@ export default function Posts() {
                 <span>阅读时长: {Math.floor(post.readingMinutes)} 分钟</span>
               </div>
             </div>
-          </Link>
+          </LinkWrap>
         );
       })}
     </div>

@@ -4,10 +4,10 @@ import Avatar from '@/assets/images/avatar.png';
 import { FaGithub } from 'react-icons/fa';
 import { FaSquareXTwitter } from 'react-icons/fa6';
 import Link from 'next/link';
-import { PiArticleNyTimesLight } from 'react-icons/pi';
-import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
-import { LiaUserFriendsSolid } from 'react-icons/lia';
-import { FaPhotoFilm } from 'react-icons/fa6';
+// import { PiArticleNyTimesLight } from 'react-icons/pi';
+// import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+// import { LiaUserFriendsSolid } from 'react-icons/lia';
+// import { FaPhotoFilm } from 'react-icons/fa6';
 import { allPosts } from 'contentlayer/generated';
 
 const socialMediaItems = [
@@ -23,36 +23,36 @@ const socialMediaItems = [
   }
 ];
 
-const sectionItems = [
-  {
-    title: '文章',
-    description: '文章列表',
-    icon: PiArticleNyTimesLight,
-    bg: 'bg-purple-100',
-    color: 'text-purple-500'
-  },
-  {
-    title: '项目',
-    description: '开发的作品列表',
-    icon: AiOutlineFundProjectionScreen,
-    bg: 'bg-blue-100',
-    color: 'text-blue-500'
-  },
-  {
-    title: '相册',
-    description: '我拍摄的照片',
-    icon: FaPhotoFilm,
-    bg: 'bg-yellow-100',
-    color: 'text-yellow-500'
-  },
-  {
-    title: '关于我',
-    description: '正在开发中...',
-    icon: LiaUserFriendsSolid,
-    bg: 'bg-green-100',
-    color: 'text-green-500'
-  }
-];
+// const sectionItems = [
+//   {
+//     title: '文章',
+//     description: '文章列表',
+//     icon: PiArticleNyTimesLight,
+//     bg: 'bg-purple-100',
+//     color: 'text-purple-500'
+//   },
+//   {
+//     title: '项目',
+//     description: '开发的作品列表',
+//     icon: AiOutlineFundProjectionScreen,
+//     bg: 'bg-blue-100',
+//     color: 'text-blue-500'
+//   },
+//   {
+//     title: '相册',
+//     description: '我拍摄的照片',
+//     icon: FaPhotoFilm,
+//     bg: 'bg-yellow-100',
+//     color: 'text-yellow-500'
+//   },
+//   {
+//     title: '关于我',
+//     description: '正在开发中...',
+//     icon: LiaUserFriendsSolid,
+//     bg: 'bg-green-100',
+//     color: 'text-green-500'
+//   }
+// ];
 
 const lastPosts = allPosts
   .sort((a, b) => {
@@ -69,8 +69,8 @@ export default function Home() {
       className={cn(
         '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
         'm-auto',
-        'px-8',
-        'mt-5',
+        'sm:px-8 px-4',
+        'sm:mt-5 mt-4',
         '*:mt-4'
       )}
     >
@@ -130,7 +130,7 @@ export default function Home() {
       </div>
 
       {/* 导航卡片 */}
-      <div className={cn('grid gap-4 xl:grid-cols-4  sm:grid-cols-3  grid-cols-1')}>
+      {/* <div className={cn('grid gap-4 xl:grid-cols-4  sm:grid-cols-3  grid-cols-1')}>
         {sectionItems.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -155,7 +155,7 @@ export default function Home() {
             </div>
           );
         })}
-      </div>
+      </div> */}
 
       {/* 最新文章 */}
       <div

@@ -34,7 +34,7 @@ export const MobileMenus = (props: MobileMenusProps) => {
     <>
       {/* menu - mobile */}
       <div className={cn('md:hidden', 'flex items-center justify-center', props.className)}>
-        <FiMenu className='size-6 cursor-pointer' onClick={showMenu} />
+        <FiMenu className='sm:size-6 size-5 cursor-pointer' onClick={showMenu} />
       </div>
 
       {/* mobile - 展开 */}

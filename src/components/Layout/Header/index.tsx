@@ -12,7 +12,7 @@ interface HeaderProps {
 export const LayoutHeader = (props: HeaderProps) => {
   return (
     <header
-      className={cn('h-16 w-screen', 'bg-neutral-800', ' sticky z-50 top-0', props.className)}
+      className={cn('sm:h-16 h-12 w-screen', 'bg-neutral-800', ' sticky z-50 top-0', props.className)}
     >
       <div
         className={cn(

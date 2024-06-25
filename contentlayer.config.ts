@@ -13,7 +13,8 @@ const source = makeSource({
     rehypePlugins: [
       rehypeSlug,
       [
-        rehypePrettyCode as any,
+        // @ts-expect-error https://github.com/rehype-pretty/rehype-pretty-code/issues/145
+        rehypePrettyCode,
         {
           // 代码主题类型 https://unpkg.com/browse/shiki@0.14.2/themes/
           theme: 'one-dark-pro',

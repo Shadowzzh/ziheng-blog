@@ -10,6 +10,7 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint'],
   rules: {
+    'react/prop-types': [0],
     'react-hooks/exhaustive-deps': [
       'warn',
       {

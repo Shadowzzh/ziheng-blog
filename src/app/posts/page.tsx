@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { allPosts, Post } from 'contentlayer/generated';
 import { cn } from '@/utils';
 import { LinkWrap } from '@/components';
+import { RouterBreadcrumbs } from '@/components/Layout/Breadcrumb';
 
 const allPostsSorted = allPosts.sort((a, b) => {
   if (!a.date || !b.date) return 1;
@@ -18,6 +19,8 @@ export default async function Posts() {
         'mt-5 mb-5 space-y-3'
       )}
     >
+      <RouterBreadcrumbs />
+
       {allPostsSorted.map((post: Post) => {
         return (
           <LinkWrap

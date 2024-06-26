@@ -6,6 +6,8 @@ import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import Link from 'next/link';
 import { navigationItems } from '@/config/nav';
+import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
+import { createPortal } from 'react-dom';
 
 interface MobileMenusProps {
   children?: React.ReactNode;
@@ -38,41 +40,51 @@ export const MobileMenus = (props: MobileMenusProps) => {
       </div>
 
       {/* mobile - 展开 */}
-      {visible && (
-        <div
-          className={cn(
-            'w-screen h-screen',
-            'fixed top-0 left-0 z-40',
-            'backdrop-blur-sm',
-            // 解决滚动问题
-            'touch-none'
-          )}
-        >
-          <div
-            className={cn(
-              'fixed top-4 right-4 z-50',
-              ' text-neutral-600 text-base',
-              'fixed max-w-xs w-full',
-              'bg-white rounded-md shadow-lg p-6 overflow-hidden'
-            )}
-          >
-            <IoMdClose
-              className={cn('size-5', 'absolute top-6 right-6 text-neutral-900', 'cursor-pointer')}
-              onClick={hideMenu}
+      {visible &&
+        createPortal(
+          <>
+            <div
+              className={cn(
+                'fixed z-50',
+                'backdrop-blur',
+                'w-screen h-screen',
+                'inset-0',
+                'dark:bg-background/70 bg-black/20',
+                // 解决滚动问题
+                'touch-none'
+              )}
             />
+            <div
+              className={cn(
+                'fixed top-4 right-4 z-50',
+                'text-card-foreground text-base',
+                'max-w-xs w-full',
+                'rounded-md shadow-lg p-6 overflow-hidden',
+                'dark:bg-secondary bg-white'
+              )}
+            >
+              <IoMdClose
+                className={cn('size-5', 'absolute top-6 right-6 text-primary', 'cursor-pointer')}
+                onClick={hideMenu}
+              />
 
-            <ul className={cn('space-y-6')}>
-              {navigationItems.map((item, index) => (
-                <li key={index}>
-                  <Link href={item.href} onClick={hideMenu}>
-                    {item.text}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+              <ul className={cn('space-y-6')}>
+                {navigationItems.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.href} onClick={hideMenu}>
+                      {item.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className={cn('mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10')}>
+                <ModeToggle />
+              </div>
+            </div>
+          </>,
+          document.body
+        )}
     </>
   );
 };

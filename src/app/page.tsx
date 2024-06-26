@@ -1,27 +1,6 @@
 import { cn } from '@/utils';
-import Image from 'next/image';
-import Avatar from '@/assets/images/avatar.png';
-import { FaGithub } from 'react-icons/fa';
-import { FaSquareXTwitter } from 'react-icons/fa6';
-import Link from 'next/link';
-// import { PiArticleNyTimesLight } from 'react-icons/pi';
-// import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
-// import { LiaUserFriendsSolid } from 'react-icons/lia';
-// import { FaPhotoFilm } from 'react-icons/fa6';
-import { allPosts } from 'contentlayer/generated';
-
-const socialMediaItems = [
-  {
-    icon: FaGithub,
-    name: 'Github',
-    url: 'https://github.com/Shadowzzh'
-  },
-  {
-    icon: FaSquareXTwitter,
-    name: 'Twitter',
-    url: 'https://x.com/zziheng_'
-  }
-];
+import { UserBaseInfo } from '@/components/Page/UserBaseInfo';
+import { LastPosts } from '@/components/Page/LastPosts';
 
 // const sectionItems = [
 //   {
@@ -54,15 +33,6 @@ const socialMediaItems = [
 //   }
 // ];
 
-const lastPosts = allPosts
-  .sort((a, b) => {
-    const dateA = new Date(a.date ?? '2000').getTime();
-    const dateB = new Date(b.date ?? '2000').getTime();
-
-    return dateA - dateB;
-  })
-  .slice(0, 3);
-
 export default function Home() {
   return (
     <div
@@ -75,59 +45,7 @@ export default function Home() {
       )}
     >
       {/* 基本信息 */}
-      <div className={cn('p-4 font-title sm:flex-row sm:p-8', 'shadow-sm rounded-lg', 'bg-white')}>
-        <div className={cn('flex sm:flex-row flex-col-reverse justify-between  items-center')}>
-          <div className={cn()}>
-            <div className={cn('text-xl sm:text-2xl font-bold text-center sm:text-left')}>
-              张子恒
-            </div>
-            <div className={cn('mt-2 mb-4', ' text-neutral-500', 'mr-4', 'sm:text-base text-sm ')}>
-              👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影达人 | 🌍 旅行徒步爱好者 <br />
-              把代码写得像艺术，把自己练得像雕塑，把世界拍得像明信片，把生活过得像冒险！by ChatGpt
-              🤖
-            </div>
-          </div>
-
-          <div className={cn('flex-shrink-0')}>
-            <Image
-              className={cn(
-                'rounded-full lg:size-24 mini:size-20 size-14',
-                'object-cover',
-                'sm:mb-0 mb-3'
-              )}
-              quality={75}
-              src={Avatar}
-              alt='avatar'
-              width={200}
-              height={200}
-            />
-          </div>
-        </div>
-
-        <div className={cn('space-x-2', 'flex')}>
-          {socialMediaItems.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                title={item.name}
-                className={cn(
-                  'cursor-pointer',
-                  'rounded-md',
-                  'bg-neutral-50',
-                  'px-3 py-2',
-                  'flex justify-center items-center'
-                )}
-                key={index}
-                href={item.url}
-                target='_blank'
-                rel='noreferrer'
-              >
-                <Icon className='size-5' />
-              </Link>
-            );
-          })}
-        </div>
-      </div>
+      <UserBaseInfo />
 
       {/* 导航卡片 */}
       {/* <div className={cn('grid gap-4 xl:grid-cols-4  sm:grid-cols-3  grid-cols-1')}>
@@ -158,27 +76,7 @@ export default function Home() {
       </div> */}
 
       {/* 最新文章 */}
-      <div
-        className={cn(
-          'p-4',
-          'shadow-sm rounded-lg',
-          'bg-white',
-          'space-y-3',
-          'cursor-pointer',
-          'mb-4'
-        )}
-      >
-        {lastPosts.map((post, index) => {
-          return (
-            <Link key={index} href={`${post.slug}`}>
-              <div key={index} className={cn('p-3', 'hover:bg-neutral-50', 'rounded-md')}>
-                <div className={cn('text-xl font-bold')}>{post.title}</div>
-                <div className={cn('text-sm mt-1 text-neutral-600')}>{post.description}</div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+      <LastPosts />
     </div>
   );
 }

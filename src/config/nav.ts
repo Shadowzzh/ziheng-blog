@@ -1,4 +1,9 @@
-export const navigationItems = [
+interface RouterOption {
+  href: string;
+  text: string;
+}
+
+export const navigationItems: RouterOption[] = [
   { href: '/', text: '首页' },
   { href: '/posts', text: '文章' }
   // { href: '/photo', text: '相册' },

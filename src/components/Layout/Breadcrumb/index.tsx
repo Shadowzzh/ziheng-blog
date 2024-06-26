@@ -11,6 +11,7 @@ import { LinkWrap } from '@/components/LinkWrap';
 import { usePathname } from 'next/navigation';
 import { generateNestedPathList, splitPathname } from './utils';
 import { RouterBreadcrumbProps } from './type';
+import { Fragment } from 'react';
 
 /**
  * 路由面包屑组件
@@ -39,12 +40,12 @@ export const RouterBreadcrumbs = (props: RouterBreadcrumbProps) => {
           const Content = isLast ? text : <LinkWrap href={item.href}>{text}</LinkWrap>;
 
           return (
-            <>
+            <Fragment key={item.href}>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbPage>{Content}</BreadcrumbPage>
               </BreadcrumbItem>
-            </>
+            </Fragment>
           );
         })}
       </BreadcrumbList>

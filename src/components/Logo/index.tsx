@@ -9,7 +9,7 @@ export const Logo = () => {
       <LogoSvg
         className={cn(
           'mr-2 sm:size-9 size-6 rounded-full',
-          'dark:text-neutral-800 text-neutral-100'
+          'text-neutral-800 dark:text-neutral-100'
         )}
       />
 

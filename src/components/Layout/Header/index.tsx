@@ -1,6 +1,7 @@
 import { Logo } from '@/components/Logo';
 import { cn } from '@/utils';
 import { LayoutMenu } from '../Menu';
+import { MobileMenus } from '../Menu/mobile';
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -12,7 +13,14 @@ interface HeaderProps {
 export const LayoutHeader = (props: HeaderProps) => {
   return (
     <header
-      className={cn('sm:h-16 h-12 w-screen', 'bg-neutral-800', ' sticky z-50 top-0', props.className)}
+      className={cn(
+        'sm:h-16 h-12 w-screen',
+        'border-b border-border/40',
+        'backdrop-blur-sm',
+        'bg-background/70 dark:bg-background/50',
+        'sticky z-40 top-0',
+        props.className
+      )}
     >
       <div
         className={cn(
@@ -20,17 +28,15 @@ export const LayoutHeader = (props: HeaderProps) => {
           'px-8',
           'h-full',
           'flex items-center justify-between',
-          'm-auto',
-          ' text-white'
+          'm-auto'
         )}
       >
         <div>
           <Logo />
         </div>
 
-        <div>
-          <LayoutMenu />
-        </div>
+        <LayoutMenu />
+        <MobileMenus />
       </div>
     </header>
   );

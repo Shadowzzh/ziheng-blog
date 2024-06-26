@@ -16,7 +16,7 @@ export default async function Posts() {
         '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
         'px-8',
         'm-auto',
-        'mt-5 mb-5 space-y-3'
+        'mt-5 mb-5 space-y-6'
       )}
     >
       <RouterBreadcrumbs />
@@ -28,7 +28,7 @@ export default async function Posts() {
             key={post._raw.flattenedPath}
             className={cn(
               'flex sm:flex-row flex-col',
-              'bg-neutral-50',
+              'bg-card border text-card-foreground',
               'shadow-sm rounded-md',
               'overflow-hidden',
               'p-4'
@@ -55,7 +55,7 @@ export default async function Posts() {
                 <h1 className={cn('sm:text-xl font-bold leading-loose my-2')}>{post.title}</h1>
                 <p
                   className={cn(
-                    ' sm:text-base text-sm text-neutral-500',
+                    'sm:text-base text-sm text-muted-foreground',
                     'mb-2',
                     'text-ellipsis line-clamp-2'
                   )}
@@ -64,7 +64,7 @@ export default async function Posts() {
                 </p>
               </div>
 
-              <div className={cn('sm:text-sm text-xs text-neutral-500', 'space-x-4')}>
+              <div className={cn('sm:text-sm text-xs text-muted-foreground', 'space-x-4')}>
                 <span>文字数量: {post.readingWords}</span>
                 <span>阅读时长: {Math.floor(post.readingMinutes)} 分钟</span>
               </div>

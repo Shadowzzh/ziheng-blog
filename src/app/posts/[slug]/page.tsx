@@ -25,7 +25,7 @@ export default function BlogDetail(props: BlogDetailProps) {
         'm-auto mt-6 mb-6'
       )}
     >
-      <RouterBreadcrumbs generateBreadcrumbText={console.log} />
+      <RouterBreadcrumbs  />
 
       <Mdx
         code={post.body.code}

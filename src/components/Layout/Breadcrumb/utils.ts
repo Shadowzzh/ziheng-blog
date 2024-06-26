@@ -1,4 +1,5 @@
 import { NestedRouterOption } from './type';
+import { routerMapping } from '@/config/routerMapping';
 
 /**
  *  分割路径名称
@@ -23,4 +24,13 @@ export const generateNestedPathList = (pathnameSegments: string[]) => {
   });
 
   return nested;
+};
+
+/**
+ *  根据路由名称获取标题
+ * @param pathname 路由路径
+ * @returns 标题化后的字符串
+ */
+export const titleize = (pathname: string) => {
+  return routerMapping.get(pathname)?.text ?? pathname;
 };

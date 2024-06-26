@@ -1,7 +1,4 @@
-interface RouterOption {
-  href: string;
-  text: string;
-}
+import { RouterOption } from './routerMapping';
 
 export const navigationItems: RouterOption[] = [
   { href: '/', text: '首页' },

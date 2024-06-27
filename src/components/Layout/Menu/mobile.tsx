@@ -36,31 +36,36 @@ export const MobileMenus = (props: MobileMenusProps) => {
     <>
       {/* menu - mobile */}
       <div className={cn('md:hidden', 'flex items-center justify-center', props.className)}>
-        <FiMenu className='sm:size-6 size-5 cursor-pointer' onClick={showMenu} />
+        <FiMenu
+          className={cn('sm:size-6 size-5 cursor-pointer', 'text-foreground')}
+          onClick={showMenu}
+        />
       </div>
 
       {/* mobile - 展开 */}
       {visible &&
         createPortal(
           <>
+            {/* 覆盖 mark */}
             <div
               className={cn(
                 'fixed z-50',
                 'backdrop-blur',
                 'w-screen h-screen',
                 'inset-0',
-                'dark:bg-background/70 bg-black/20',
+                'dark:bg-black/50 bg-black/20',
                 // 解决滚动问题
                 'touch-none'
               )}
+              onClick={hideMenu}
             />
             <div
               className={cn(
                 'fixed top-4 right-4 z-50',
                 'text-card-foreground text-base',
-                'max-w-xs w-full',
+                'max-w-60 w-full',
                 'rounded-md shadow-lg p-6 overflow-hidden',
-                'dark:bg-secondary bg-white'
+                'bg-popover'
               )}
             >
               <IoMdClose

@@ -34,7 +34,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ProgressBar className='fixed top-0 h-[0.1rem] bg-neutral-500 z-[100]'>
+          <ProgressBar className='fixed top-0 h-1 bg-border z-[100]'>
             <LayoutHeader />
 
             <main className={cn(' min-h-screen')}>{children}</main>

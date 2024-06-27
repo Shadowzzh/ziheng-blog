@@ -34,8 +34,8 @@ export default async function Posts() {
               'p-4'
             )}
           >
-            <div className={cn('sm:mr-5 m-0', 'flex-shrink-0')}>
-              {post.image && (
+            {post.image && (
+              <div className={cn('sm:mr-5 m-0', 'flex-shrink-0')}>
                 <Image
                   className={cn(
                     'w-full sm:w-44 md:w-52 lg:w-60  h-36',
@@ -47,24 +47,26 @@ export default async function Posts() {
                   width={200}
                   height={200}
                 />
-              )}
-            </div>
+              </div>
+            )}
 
             <div className={cn('flex flex-col justify-between ')}>
               <div>
-                <h1 className={cn('sm:text-xl font-bold leading-loose my-2')}>{post.title}</h1>
-                <p
-                  className={cn(
-                    'sm:text-base text-sm text-muted-foreground',
-                    'mb-2',
-                    'text-ellipsis line-clamp-2'
-                  )}
-                >
-                  {post.description}
-                </p>
+                <h1 className={cn('sm:text-xl font-bold leading-loose')}>{post.title}</h1>
+                {post.description && (
+                  <p
+                    className={cn(
+                      'sm:text-base text-sm text-muted-foreground',
+                      'my-2',
+                      'text-ellipsis line-clamp-2'
+                    )}
+                  >
+                    {post.description}
+                  </p>
+                )}
               </div>
 
-              <div className={cn('sm:text-sm text-xs text-muted-foreground', 'space-x-4')}>
+              <div className={cn('sm:text-sm text-xs text-muted-foreground', 'space-x-4', 'mt-3')}>
                 <span>文字数量: {post.readingWords}</span>
                 <span>阅读时长: {Math.floor(post.readingMinutes)} 分钟</span>
               </div>

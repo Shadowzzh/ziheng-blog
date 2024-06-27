@@ -5,13 +5,11 @@ import LogoSvg from '@/assets/images/logo.svg';
 
 export const Logo = () => {
   return (
-    <Link className='flex cursor-pointer items-center justify-center' href={'/'}>
-      <LogoSvg
-        className={cn(
-          'mr-2 sm:size-9 size-6 rounded-full',
-          'text-neutral-800 dark:text-neutral-100'
-        )}
-      />
+    <Link
+      className={cn('flex cursor-pointer items-center justify-center', 'text-primary')}
+      href={'/'}
+    >
+      <LogoSvg className={cn('mr-2 sm:size-9 size-6 rounded-full')} />
 
       <div className={cn('h-full', 'flex items-center font-bold', 'sm:text-base text-sm')}>
         Zzh&apos;s Space

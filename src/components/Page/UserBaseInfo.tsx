@@ -27,7 +27,7 @@ export const UserBaseInfo = () => {
       className={cn(
         'p-4 font-title sm:flex-row sm:p-8',
         'shadow-sm rounded-lg bg-card',
-        'border',
+        'border border-border/70',
         'text-card-foreground'
       )}
     >
@@ -37,8 +37,25 @@ export const UserBaseInfo = () => {
           <div
             className={cn('mt-4 mb-6', 'text-muted-foreground', 'mr-4', 'sm:text-base text-sm ')}
           >
-            👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影达人 | 🌍 旅行徒步爱好者 <br />
-            把代码写得像艺术，把自己练得像雕塑，把世界拍得像明信片，把生活过得像冒险！by ChatGpt 🤖
+            👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影 | 🌍 旅行徒步爱好者 <br />
+          </div>
+
+          <div className={cn('space-x-2', 'flex')}>
+            {socialMediaItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <Link
+                  title={item.name}
+                  className={cn(buttonVariants({ variant: 'outline', size: 'icon' }))}
+                  key={index}
+                  href={item.url}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <Icon className='size-5' />
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -56,24 +73,6 @@ export const UserBaseInfo = () => {
             height={200}
           />
         </div>
-      </div>
-
-      <div className={cn('space-x-2', 'flex')}>
-        {socialMediaItems.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <Link
-              title={item.name}
-              className={cn(buttonVariants({ variant: 'outline', size: 'icon' }))}
-              key={index}
-              href={item.url}
-              target='_blank'
-              rel='noreferrer'
-            >
-              <Icon className='size-5' />
-            </Link>
-          );
-        })}
       </div>
     </div>
   );

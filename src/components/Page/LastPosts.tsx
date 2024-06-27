@@ -1,6 +1,6 @@
 import { cn } from '@/utils';
 import { allPosts } from 'contentlayer/generated';
-import Link from 'next/link';
+import { LinkWrap } from '../LinkWrap';
 
 interface LastPostsProps {
   className?: string;
@@ -21,7 +21,8 @@ export const LastPosts = (props: LastPostsProps) => {
     <div
       className={cn(
         'p-4',
-        'shadow-sm rounded-lg bg-card border',
+        'shadow-sm rounded-lg bg-card',
+        'border border-border/70',
         'space-y-3',
         'cursor-pointer',
         'mb-4',
@@ -30,17 +31,19 @@ export const LastPosts = (props: LastPostsProps) => {
     >
       {lastPosts.map((post, index) => {
         return (
-          <Link key={index} href={`${post.slug}`}>
+          <LinkWrap key={index} href={`${post.slug}`}>
             <div
               key={index}
-              className={cn('p-3', 'rounded-md', 'hover:bg-accent', 'text-card-foreground')}
+              className={cn('p-3', 'rounded-md', 'hover:bg-muted', 'text-card-foreground')}
             >
               <div className={cn('sm:text-xl text-base font-bold')}>{post.title}</div>
-              <div className={cn('sm:text-sm text-xs mt-1 text-muted-foreground')}>
-                {post.description}
-              </div>
+              {post.description && (
+                <div className={cn('sm:text-sm text-xs mt-1 text-muted-foreground')}>
+                  {post.description}
+                </div>
+              )}
             </div>
-          </Link>
+          </LinkWrap>
         );
       })}
     </div>

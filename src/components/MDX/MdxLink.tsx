@@ -10,5 +10,5 @@ export const MdxLink = (props: MdxLinkProps) => {
   const { href } = props;
   if (!href) return null;
 
-  return <LinkWrap className=' cursor-pointer' {...props} />;
+  return <LinkWrap className='cursor-pointer' {...props} />;
 };

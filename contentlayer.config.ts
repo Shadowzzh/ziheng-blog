@@ -19,7 +19,7 @@ const source = makeSource({
         {
           // 代码主题类型 https://unpkg.com/browse/shiki@0.14.2/themes/
           theme: 'one-dark-pro',
-          // To apply a custom background instead of inheriting the background from the theme
+          // 要应用自定义背景而不是从主题继承背景
           keepBackground: false
         }
       ],

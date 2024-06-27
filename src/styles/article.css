@@ -12,21 +12,7 @@ h6 {
   position: relative;
 }
 
-/* .prose pre {
-  @apply border border-neutral-800 !bg-neutral-900 px-0;
-} */
-
-/* .prose code {
-  @apply text-neutral-800 dark:text-neutral-200 px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg bg-neutral-100 dark:bg-neutral-900;
-} */
-
-/* .prose pre code {
-  @apply text-neutral-800 dark:text-neutral-200 p-0;
-  border: initial;
-} */
-
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
@@ -36,17 +22,12 @@ h6 {
 
   margin-left: -1em;
   padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
+  width: 100%;
   cursor: pointer;
 }
 
-.anchor:hover {
+.prose .anchor:hover {
   @apply visible;
-}
-
-.prose a {
-  @apply transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
 
 .prose .anchor:after {
@@ -58,9 +39,76 @@ h6 {
   @apply visible;
 }
 
-.prose h2,
-h3,
-h4 {
-  @apply font-semibold;
-  scroll-margin-top: 100px;
+/* 代码背景色 */
+.prose pre {
+  @apply bg-gray-800;
+  @apply rounded-lg;
+  @apply border-gray-700/50 border;
+}
+
+.prose code [data-line] {
+  @apply sm:text-sm text-[0.65rem];
+  @apply sm:leading-[1.5rem] leading-[1.1rem];
+}
+
+/* 代码片段头部 */
+.prose figcaption {
+  @apply text-gray-300;
+}
+
+/* 代码片段标题 */
+[data-rehype-pretty-code-title] {
+  @apply px-4 py-3 font-mono sm:text-sm text-[0.65rem];
+  @apply font-medium border rounded-t-lg;
+  @apply border-gray-700/50 bg-gray-800;
+}
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none border-t-0;
+}
+
+/* 代码片段行号 */
+.prose code {
+  counter-reset: line;
+}
+[data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  text-align: left;
+  @apply text-right text-slate-600 pr-3;
+}
+
+/* 代码片段中的 tag */
+[data-highlighted-chars] {
+  @apply rounded;
+}
+
+[data-chars-id] {
+  @apply p-[0.1rem] border-b-[0.1rem];
+  @apply sm:p-1  sm:border-b-2;
+}
+
+[data-chars-id='v'] {
+  @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
+}
+
+[data-chars-id='s'] {
+  @apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
+}
+
+[data-chars-id='i'] {
+  @apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
+}
+
+[data-chars-id] span {
+  @apply !text-inherit;
+}
+
+/* 代码片段行高亮 */
+[data-line] {
+  @apply sm:px-3 px-1 border-l-2 border-l-transparent;
+}
+
+[data-highlighted-line] {
+  @apply bg-slate-500/40 border-l-blue-400;
 }

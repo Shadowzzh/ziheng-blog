@@ -1,6 +1,32 @@
 import { cn } from '@/utils';
 import { UserBaseInfo } from '@/components/Page/UserBaseInfo';
 import { LastPosts } from '@/components/Page/LastPosts';
+import { Metadata } from 'next';
+import { WEB_SITE_NAME, WEB_SITE_URL } from '@/config/name';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://199406.xyz'),
+  title: {
+    default: WEB_SITE_NAME,
+    template: `%s | ${WEB_SITE_NAME}`
+  },
+  description: '张子恒的博客',
+  openGraph: {
+    title: '张子恒的博客',
+    url: WEB_SITE_URL,
+    description: '前端开发者',
+    siteName: WEB_SITE_NAME,
+    images: [
+      {
+        url: `${WEB_SITE_URL}/logo.png`, // Must be an absolute URL
+        width: 300,
+        height: 300
+      }
+    ],
+    locale: 'zh-CN',
+    type: 'website'
+  }
+};
 
 // const sectionItems = [
 //   {

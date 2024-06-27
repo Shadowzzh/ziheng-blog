@@ -4,12 +4,13 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
 
 const source = makeSource({
   contentDirPath: './src/content',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkBreaks],
     rehypePlugins: [
       rehypeSlug,
       [

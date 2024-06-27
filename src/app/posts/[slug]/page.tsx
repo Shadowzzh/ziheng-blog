@@ -1,5 +1,3 @@
-'use client';
-
 import { Mdx } from '@/components/MDX';
 import { notFound } from 'next/navigation';
 import { postsMapping } from '@/utils/content';
@@ -8,6 +6,30 @@ import { RouterBreadcrumbs } from '@/components/Layout/Breadcrumb';
 
 interface BlogDetailProps {
   params: { slug: string };
+}
+
+interface GenerateMetadataProps {
+  params: { slug: string };
+}
+
+export async function generateMetadata(props: GenerateMetadataProps) {
+  const { slug } = props.params;
+
+  const post = postsMapping.get(`/posts/${slug}`);
+  if (!post) return {};
+
+  const { title, description, date } = post;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime: date
+    }
+  };
 }
 
 /** 博文详情 */
@@ -25,7 +47,7 @@ export default function BlogDetail(props: BlogDetailProps) {
         'm-auto mt-6 mb-6'
       )}
     >
-      <RouterBreadcrumbs  />
+      <RouterBreadcrumbs />
 
       <Mdx
         code={post.body.code}

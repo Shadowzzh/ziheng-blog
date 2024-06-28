@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { WEB_SITE_NAME, WEB_SITE_URL } from '@/config/name';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://199406.xyz'),
+  metadataBase: new URL(WEB_SITE_URL),
   title: {
     default: WEB_SITE_NAME,
     template: `%s | ${WEB_SITE_NAME}`

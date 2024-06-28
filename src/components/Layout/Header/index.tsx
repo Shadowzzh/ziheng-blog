@@ -25,7 +25,7 @@ export const LayoutHeader = (props: HeaderProps) => {
       <div
         className={cn(
           '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-          'px-8',
+          'sm:px-8 px-4',
           'h-full',
           'flex items-center justify-between',
           'm-auto'

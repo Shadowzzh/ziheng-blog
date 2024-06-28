@@ -43,7 +43,7 @@ export default function BlogDetail(props: BlogDetailProps) {
     <div
       className={cn(
         '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-        'px-8',
+        'sm:px-8 px-4',
         'm-auto mt-6 mb-6'
       )}
     >

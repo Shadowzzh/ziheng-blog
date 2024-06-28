@@ -14,7 +14,7 @@ export default async function Posts() {
     <div
       className={cn(
         '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-        'px-8',
+        'sm:px-8 px-4',
         'm-auto',
         'mt-5 mb-5 space-y-6'
       )}
@@ -67,8 +67,8 @@ export default async function Posts() {
               </div>
 
               <div className={cn('sm:text-sm text-xs text-muted-foreground', 'space-x-4', 'mt-3')}>
-                <span>文字数量: {post.readingWords}</span>
-                <span>阅读时长: {Math.floor(post.readingMinutes)} 分钟</span>
+                <span>文字数量：{post.readingWords}</span>
+                <span>阅读时长：{Math.floor(post.readingMinutes)} 分钟</span>
               </div>
             </div>
           </LinkWrap>

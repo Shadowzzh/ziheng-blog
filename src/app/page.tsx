@@ -65,7 +65,7 @@ export default function Home() {
       className={cn(
         '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
         'm-auto',
-        'sm:px-8 px-4',
+        'sm:px-0 px-4',
         'sm:mt-5 mt-4',
         '*:mt-4'
       )}

@@ -1,5 +1,4 @@
-import { NestedRouterOption } from './type';
-import { routerMapping } from '@/config/routerMapping';
+import { NestedRouterOption, routerMapping } from '@/config/routerMapping';
 
 /**
  *  分割路径名称

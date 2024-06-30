@@ -6,6 +6,7 @@ import { cn } from '@/utils';
 // import { LayoutFooter } from '@/components/Layout/Footer';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { LayoutBreadcrumb } from '@/components/Layout/Breadcrumb';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,9 +36,20 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]'>
-            <LayoutHeader />
+            <div
+              id='layout-header'
+              className={cn(
+                'w-screen',
+                'backdrop-blur-sm',
+                'bg-background/50',
+                'sticky z-10 top-0'
+              )}
+            >
+              <LayoutHeader />
+              <LayoutBreadcrumb />
+            </div>
 
-            <main className={cn(' min-h-screen')}>{children}</main>
+            <main className={cn('min-h-screen')}>{children}</main>
             {/* <LayoutFooter /> */}
           </ProgressBar>
         </ThemeProvider>

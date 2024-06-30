@@ -1,13 +1,15 @@
 import { allPosts } from 'contentlayer/generated';
 import { navigationItems } from './nav';
 
-export interface RouterOption {
+/** 嵌套路由选项 */
+export interface NestedRouterOption {
   href: string;
   text: string;
+  hidden?: boolean;
 }
 
 /** 博客页面的路由 */
-const postsRoutes: RouterOption[] = allPosts.map((post) => {
+const postsRoutes: NestedRouterOption[] = allPosts.map((post) => {
   return {
     href: `${post.slug}`,
     text: post.title

@@ -14,21 +14,20 @@ export const LayoutHeader = (props: HeaderProps) => {
   return (
     <header
       className={cn(
-        'sm:h-16 h-12 w-screen',
-        'border-b border-border/40',
-        'backdrop-blur-sm',
-        'bg-background/70 dark:bg-background/50',
-        'sticky z-40 top-0',
+        'sm:border-b border-border/40',
+        'sm:h-16 h-12',
+        'sm:px-8 px-4',
         props.className
       )}
     >
       <div
         className={cn(
           '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-          'sm:px-8 px-4',
+          'sm:border-b border-border/40',
           'h-full',
           'flex items-center justify-between',
-          'm-auto'
+          'm-auto',
+          'sm:border-0 border-b border-border/40'
         )}
       >
         <div>

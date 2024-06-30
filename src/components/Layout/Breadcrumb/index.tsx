@@ -1,66 +1,36 @@
 'use client';
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@/components/ui/breadcrumb';
-import { LinkWrap } from '@/components/LinkWrap';
-import { usePathname } from 'next/navigation';
-import { generateNestedPathList, splitPathname, titleize } from './utils';
-import { RouterBreadcrumbProps } from './type';
-import { Fragment } from 'react';
+import { RouterBreadcrumbs } from '@/components/Breadcrumb';
+import { generateNestedPathList, splitPathname } from '@/components/Breadcrumb/utils';
 import { cn } from '@/utils';
+import { usePathname } from 'next/navigation';
 
-/**
- * 路由面包屑组件
- */
-export const RouterBreadcrumbs = (props: RouterBreadcrumbProps) => {
-  const { generateBreadcrumbText = titleize } = props;
-
-  const pathname = usePathname();
-  const pathnameSegments = splitPathname(pathname);
-  const nestedPathList = generateNestedPathList(pathnameSegments);
+export const LayoutBreadcrumb = () => {
+  const pathname = usePathname(); // 获取当前路径
+  const pathnameSegments = splitPathname(pathname); // 分割路径
+  const nestedPathList = generateNestedPathList(pathnameSegments); // 生成路径列表
 
   /* 固定首页 */
-  nestedPathList.unshift({ href: '/', text: '首页' });
+  nestedPathList.unshift({ href: '/', text: '首页', hidden: true });
 
+  const lastItem = nestedPathList[nestedPathList.length - 1];
+
+  if (lastItem?.hidden) {
+    return null;
+  }
   return (
-    <Breadcrumb>
-      <BreadcrumbList className={cn(' flex-nowrap')}>
-        {nestedPathList.map((item, index) => {
-          const isLast = index === nestedPathList.length - 1;
-
-          // 生成面包屑文本 (根据路由或自定义)
-          const text = generateBreadcrumbText?.(item.href) ?? item.text;
-
-          return (
-            <Fragment key={item.href}>
-              {/* 分隔符 */}
-              {index !== 0 && <BreadcrumbSeparator />}
-
-              <BreadcrumbItem className={cn('min-w-0')}>
-                {isLast ? (
-                  // 最后一项不可点击
-                  <BreadcrumbPage className={cn('block truncate text-primary')}>
-                    {text}
-                  </BreadcrumbPage>
-                ) : (
-                  // 其他项可点击跳转
-                  <BreadcrumbLink className={cn(' whitespace-nowrap')} asChild>
-                    <LinkWrap className={cn('')} href={item.href}>
-                      {text}
-                    </LinkWrap>
-                  </BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-            </Fragment>
-          );
-        })}
-      </BreadcrumbList>
-    </Breadcrumb>
+    <div
+      className={cn('px-4 w-screen h-12 flex items-center', 'border-0 border-b border-border/40')}
+    >
+      <div
+        className={cn(
+          'm-auto',
+          '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
+          'flex items-center justify-between flex-1'
+        )}
+      >
+        <RouterBreadcrumbs items={nestedPathList} />
+      </div>
+    </div>
   );
 };

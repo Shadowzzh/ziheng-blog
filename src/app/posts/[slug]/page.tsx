@@ -48,7 +48,7 @@ export default function BlogDetail(props: BlogDetailProps) {
     >
       <Mdx
         code={post.body.code}
-        className='prose-stone prose-sm sm:prose max-w-none dark:prose-invert'
+        className='prose-stone prose-sm sm:prose !max-w-none dark:prose-invert'
       />
     </div>
   );

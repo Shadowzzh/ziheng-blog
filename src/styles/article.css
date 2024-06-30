@@ -44,6 +44,7 @@ h6 {
   @apply bg-gray-800;
   @apply rounded-lg;
   @apply border-gray-700/50 border;
+  @apply px-0;
 }
 
 .prose code [data-line] {

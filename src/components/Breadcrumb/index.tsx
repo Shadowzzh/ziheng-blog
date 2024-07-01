@@ -37,9 +37,7 @@ export const RouterBreadcrumbs = (props: RouterBreadcrumbProps) => {
               <BreadcrumbItem className={cn('min-w-0')}>
                 {isLast ? (
                   // 最后一项不可点击
-                  <BreadcrumbPage className={cn('block truncate text-primary')}>
-                    {text}
-                  </BreadcrumbPage>
+                  <BreadcrumbPage className={cn('block truncate')}>{text}</BreadcrumbPage>
                 ) : (
                   // 其他项可点击跳转
                   <BreadcrumbLink className={cn(' whitespace-nowrap')} asChild>

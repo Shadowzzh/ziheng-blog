@@ -41,7 +41,7 @@ export default function RootLayout({
               className={cn(
                 'w-screen',
                 'backdrop-blur-sm',
-                'bg-background/50',
+                'bg-background/80',
                 'sticky z-10 top-0'
               )}
             >

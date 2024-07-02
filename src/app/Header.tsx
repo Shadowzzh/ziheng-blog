@@ -1,7 +1,7 @@
 import { Logo } from '@/components/Logo';
 import { cn } from '@/utils';
-import { LayoutMenu } from '../Menu';
-import { MobileMenus } from '../Menu/mobile';
+import { LayoutMenu } from '@/app/Menus';
+import { MobileMenus } from '@/app/MenusMobile';
 
 interface HeaderProps {
   children?: React.ReactNode;

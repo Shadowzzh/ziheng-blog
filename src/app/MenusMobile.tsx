@@ -1,13 +1,13 @@
 'use client';
-
-import { cn } from '@/utils';
+import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import Link from 'next/link';
+
+import { cn } from '@/utils';
 import { navigationItems } from '@/config/nav';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
-import { createPortal } from 'react-dom';
 
 interface MobileMenusProps {
   children?: React.ReactNode;
@@ -19,7 +19,7 @@ interface MobileMenusProps {
  * MobileMenus
  *
  * 注：之前使用纯 CSS :target 伪类实现，因为可以在服务端渲染。
- *    但是点击内 li 的 Link无法关闭，所以改用 React 实现。
+ *    但是点击内 li 的 Link 无法关闭，所以改用 React 实现。
  **/
 export const MobileMenus = (props: MobileMenusProps) => {
   const [visible, setVisible] = useState(false);

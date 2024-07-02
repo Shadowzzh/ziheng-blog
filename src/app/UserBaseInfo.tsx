@@ -1,11 +1,12 @@
-import { cn } from '@/utils';
+import { FaSquareXTwitter } from 'react-icons/fa6';
 import Image from 'next/image';
+import { FaGithub } from 'react-icons/fa';
+import Link from 'next/link';
+
+import { cn } from '@/utils';
 import Avatar from '@/assets/images/avatar.png';
 
-import { FaGithub } from 'react-icons/fa';
-import { FaSquareXTwitter } from 'react-icons/fa6';
-import Link from 'next/link';
-import { buttonVariants } from '../ui/button';
+import { buttonVariants } from '@/components/ui/button';
 
 const socialMediaItems = [
   {

@@ -1,6 +1,6 @@
 import { cn } from '@/utils';
 import { allPosts } from 'contentlayer/generated';
-import { LinkWrap } from '../LinkWrap';
+import { LinkWrap } from '@/components/LinkWrap';
 
 interface LastPostsProps {
   className?: string;

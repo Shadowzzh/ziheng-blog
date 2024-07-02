@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import { LayoutHeader } from '@/components/Layout/Header';
+import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
-// import { LayoutFooter } from '@/components/Layout/Footer';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { LayoutBreadcrumb } from '@/components/Layout/Breadcrumb';
+import { LayoutBreadcrumb } from '@/app/Breadcrumb';
+
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -13,6 +13,7 @@ interface HeaderProps {
 export const LayoutHeader = (props: HeaderProps) => {
   return (
     <header
+      id='layout-header'
       className={cn(
         'sm:border-b border-border/40',
         'sm:h-16 h-12',

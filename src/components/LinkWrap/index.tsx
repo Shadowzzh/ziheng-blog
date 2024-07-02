@@ -15,20 +15,18 @@ export function LinkWrap(props: ComponentProps<typeof Link>) {
   const progress = useProgressBar();
   const router = useRouter();
 
-  return (
-    <Link
-      href={href}
-      onClick={(e) => {
-        e.preventDefault();
-        progress.start();
+  const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    progress.start();
 
-        startTransition(() => {
-          router.push(href.toString());
-          progress.done();
-        });
-      }}
-      {...rest}
-    >
+    startTransition(() => {
+      router.push(href.toString());
+      progress.done();
+    });
+  };
+
+  return (
+    <Link href={href} onClick={onClickLink} {...rest}>
       {children}
     </Link>
   );

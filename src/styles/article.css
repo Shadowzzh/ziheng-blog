@@ -32,7 +32,8 @@ h6 {
 
 .prose .anchor:after {
   @apply text-muted-foreground;
-  content: '#';
+  @apply sm:opacity-50 opacity-0;
+  @apply content-['#'];
 }
 
 .prose *:hover > .anchor {

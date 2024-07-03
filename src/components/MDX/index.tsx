@@ -2,7 +2,7 @@ import { cn } from '@/utils';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MdxLink } from '@/components/MDX/MdxLink';
 import { ComponentProps } from 'react';
-import { MdxPre } from '@/components/MDX/MdxPre';
+import { MdxFigure } from '@/components/MDX/MdxFigure';
 
 type MDXComponentProps = ComponentProps<ReturnType<typeof useMDXComponent>>;
 interface MdxProps {
@@ -12,7 +12,7 @@ interface MdxProps {
 
 const mdxComponents = {
   a: MdxLink,
-  pre: MdxPre
+  figure: MdxFigure
 } as MDXComponentProps['components'];
 
 /** MDX component */

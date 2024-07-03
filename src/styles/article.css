@@ -43,7 +43,7 @@ h6 {
 /* 代码背景色 */
 .prose pre {
   @apply bg-gray-800;
-  @apply rounded-lg;
+  @apply sm:rounded-lg rounded-sm;
   @apply border-gray-700/50 border;
   @apply px-0;
 }
@@ -55,13 +55,15 @@ h6 {
 
 /* 代码片段头部 */
 .prose figcaption {
-  @apply text-gray-300;
+  @apply text-slate-400  sm:text-sm text-[0.7rem];
+  @apply sm:h-12 h-8 py-0;
+  @apply flex items-center;
 }
 
 /* 代码片段标题 */
 [data-rehype-pretty-code-title] {
   @apply px-4 py-3 font-mono sm:text-sm text-[0.65rem];
-  @apply font-medium border rounded-t-lg;
+  @apply font-medium border sm:rounded-t-lg rounded-t-sm;
   @apply border-gray-700/50 bg-gray-800;
 }
 [data-rehype-pretty-code-title] + pre {

@@ -30,6 +30,7 @@ module.exports = {
     'pnpm-lock.yaml',
     'tailwind.config.ts',
     'node_modules',
-    'postcss.config.mjs'
+    'postcss.config.mjs',
+    'next.config.mjs'
   ]
 };

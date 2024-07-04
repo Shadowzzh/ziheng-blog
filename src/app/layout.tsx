@@ -4,11 +4,20 @@ import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { LayoutBreadcrumb } from '@/app/Breadcrumb';
 
 import './globals.css';
+import React from 'react';
+import dynamic from 'next/dynamic';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const WithLayoutBreadcrumbLoading = dynamic(
+  async () => (await import('@/app/Breadcrumb')).LayoutBreadcrumb,
+  {
+    loading: () => <div className={cn('h-12')}></div>,
+    ssr: false
+  }
+);
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -46,7 +55,7 @@ export default function RootLayout({
               )}
             >
               <LayoutHeader />
-              <LayoutBreadcrumb />
+              <WithLayoutBreadcrumbLoading />
             </div>
 
             <main className={cn('min-h-screen')}>{children}</main>

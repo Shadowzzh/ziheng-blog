@@ -1,7 +1,8 @@
 'use client';
+import React from 'react';
+import { usePathname } from 'next/navigation';
 
 import { cn } from '@/utils';
-import { usePathname } from 'next/navigation';
 
 import {
   Breadcrumb,
@@ -11,7 +12,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
-import React from 'react';
 import { LinkWrap } from '@/components';
 
 import { NestedRouterOption, routerMapping } from '@/config/routerMapping';
@@ -50,7 +50,7 @@ export const titleize = (pathname: string) => {
   return routerMapping.get(pathname)?.text ?? pathname;
 };
 
-export const LayoutBreadcrumb = (props: { className?: string }) => {
+export const LayoutBreadcrumb = async (props: { className?: string }) => {
   const { className } = props;
 
   const pathname = usePathname(); // 获取当前路径
@@ -65,6 +65,7 @@ export const LayoutBreadcrumb = (props: { className?: string }) => {
   if (lastItem?.hidden) {
     return null;
   }
+
   return (
     <div
       className={cn('px-4 w-screen h-12 flex items-center', 'border-0 border-b border-border/40')}

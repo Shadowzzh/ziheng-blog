@@ -40,6 +40,7 @@ export const MdxFigure = (props: MdxFigureProps) => {
       <Button
         id='text-button'
         ref={buttonDom}
+        aria-label='code to clipboard'
         className={cn(
           'absolute sm:right-3 sm:top-[0.6rem] right-1 top-1',
           'group',
@@ -56,11 +57,7 @@ export const MdxFigure = (props: MdxFigureProps) => {
         variant={'ghost'}
         onClick={copyToClipboard}
       >
-        {copied ? (
-          <TbCopyCheck className='size-4' />
-        ) : (
-          <TbCopy className='size-4' />
-        )}
+        {copied ? <TbCopyCheck className='size-4' /> : <TbCopy className='size-4' />}
       </Button>
 
       <figure {...args} ref={preDom}>

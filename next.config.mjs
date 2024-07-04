@@ -34,23 +34,24 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   output: 'standalone',
-  webpack: (config) => {
-    if (!config.isServer) {
-      // 修改打包后的 JS 文件名称
-      // config.output.filename = 'static/js/[name].[contenthash].js';
-      // 修改打包后的 chunk 文件名称
-      // config.output.chunkFilename = 'static/js/[name].[contenthash].chunk.js';
-      // 修改打包后的 CSS 文件名称
-      // const miniCssExtractPlugin = config.plugins.find(
-      //   (plugin) => plugin.constructor.name === 'MiniCssExtractPlugin'
-      // );
-      // if (miniCssExtractPlugin) {
-      //   miniCssExtractPlugin.options.filename = 'static/css/[name].[contenthash].css';
-      //   miniCssExtractPlugin.options.chunkFilename = 'static/css/[name].[contenthash].chunk.css';
-      // }
-    }
-
+  experimental: {
+    optimizePackageImports: ['framer-motion']
+  },
+  webpack: (config, options) => {
     handleSvg(config);
+
+    // if (!options.dev && config.output.filename.startsWith('static')) {
+    //   const timestamp = new Date().getTime(); // Get the current timestamp
+    //   // [name].[contenthash].bundle
+    //   config.output.filename = config.output.filename.replace(
+    //     '[name]',
+    //     `[name].[contenthash].bundle-${timestamp}`
+    //   );
+    //   config.output.chunkFilename = config.output.chunkFilename.replace(
+    //     '[name]',
+    //     `[name]-${timestamp}`
+    //   );
+    // }
 
     return config;
   }

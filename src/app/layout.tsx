@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
 import { ProgressBar } from '@/components/ProgressBar';
@@ -8,8 +7,6 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 import React from 'react';
 import dynamic from 'next/dynamic';
-
-const inter = Inter({ subsets: ['latin'] });
 
 const WithLayoutBreadcrumbLoading = dynamic(
   async () => (await import('@/app/Breadcrumb')).LayoutBreadcrumb,
@@ -31,13 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body
-        className={cn(
-          inter.className,
-          'ext-slate-500 dark:text-slate-400',
-          'antialiased t bg-background'
-        )}
-      >
+      <body className={cn('ext-slate-500 dark:text-slate-400', 'antialiased t bg-background')}>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

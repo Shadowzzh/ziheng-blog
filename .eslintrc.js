@@ -29,6 +29,7 @@ module.exports = {
     'dist',
     'pnpm-lock.yaml',
     'tailwind.config.ts',
-    'node_modules'
+    'node_modules',
+    'postcss.config.mjs'
   ]
 };

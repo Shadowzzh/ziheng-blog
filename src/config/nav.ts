@@ -1,6 +1,6 @@
-import { RouterOption } from './routerMapping';
+import { NestedRouterOption } from './routerMapping';
 
-export const navigationItems: RouterOption[] = [
+export const navigationItems: NestedRouterOption[] = [
   { href: '/', text: '首页' },
   { href: '/posts', text: '文章' }
   // { href: '/photo', text: '相册' },

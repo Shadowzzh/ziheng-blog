@@ -1,4 +1,4 @@
-import { ComputedFields } from 'contentlayer/source-files';
+import type { ComputedFields } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 
 export const defaultComputedFields: ComputedFields = {

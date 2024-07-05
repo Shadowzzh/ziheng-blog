@@ -1,4 +1,4 @@
-import { NestedRouterOption } from './routerMapping';
+import type { NestedRouterOption } from './routerMapping';
 
 export const navigationItems: NestedRouterOption[] = [
   { href: '/', text: '首页' },

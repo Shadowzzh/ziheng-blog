@@ -5,7 +5,7 @@ import { ProgressBar } from '@/components/ProgressBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 import './globals.css';
-import React from 'react';
+import type React from 'react';
 import { LayoutBreadcrumb } from './Breadcrumb';
 
 export const metadata: Metadata = {

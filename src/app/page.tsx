@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { cn } from '@/utils';
 import { UserBaseInfo } from '@/app/UserBaseInfo';
 import { LastPosts } from '@/app/LastPosts';

@@ -2,7 +2,8 @@
 
 import { useProgress } from '@/hooks/useProgress';
 import { AnimatePresence, m, useMotionTemplate } from 'framer-motion';
-import { ReactNode, createContext, useContext } from 'react';
+import type { ReactNode } from 'react';
+import { createContext, useContext } from 'react';
 
 const ProgressBarContext = createContext<ReturnType<typeof useProgress> | null>(null);
 

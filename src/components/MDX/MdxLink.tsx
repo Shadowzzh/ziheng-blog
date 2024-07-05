@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { cn } from '@/utils';
 
 interface MdxLinkProps extends ComponentProps<typeof Link> {}

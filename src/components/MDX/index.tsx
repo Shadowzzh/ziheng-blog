@@ -1,7 +1,7 @@
 import { cn } from '@/utils';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { MdxLink } from '@/components/MDX/MdxLink';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { MdxFigure } from '@/components/MDX/MdxFigure';
 
 type MDXComponentProps = ComponentProps<ReturnType<typeof useMDXComponent>>;

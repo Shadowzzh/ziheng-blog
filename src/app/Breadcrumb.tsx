@@ -14,7 +14,8 @@ import {
 } from '@/components/ui/breadcrumb';
 import { LinkWrap } from '@/components';
 
-import { NestedRouterOption, routerMapping } from '@/config/routerMapping';
+import type { NestedRouterOption } from '@/config/routerMapping';
+import { routerMapping } from '@/config/routerMapping';
 
 /**
  *  分割路径名称

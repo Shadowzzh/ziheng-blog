@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { allPosts, Post } from 'contentlayer/generated';
+import type { Post } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer/generated';
 import { cn } from '@/utils';
 import { LinkWrap } from '@/components';
 

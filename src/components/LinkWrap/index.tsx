@@ -4,7 +4,8 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/navigation';
 import { useProgressBar } from '../ProgressBar';
-import { ComponentProps, startTransition } from 'react';
+import type { ComponentProps} from 'react';
+import { startTransition } from 'react';
 
 /**
  * Link 基础上增加了一些功能

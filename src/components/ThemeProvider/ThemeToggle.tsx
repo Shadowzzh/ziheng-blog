@@ -16,7 +16,12 @@ export function ModeToggle(props: ModeToggleProps) {
 
   return (
     <div className={cn(props.className)}>
-      <Button size={'icon'} variant={'ghost'} onClick={() => setTheme(isDark ? 'light' : 'dark')}>
+      <Button
+        aria-label='toggle theme'
+        size={'icon'}
+        variant={'ghost'}
+        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      >
         <div className={cn()}>
           {isDark ? <GiEvilMoon className={'size-6'} /> : <GiStripedSun className={'size-6'} />}
         </div>

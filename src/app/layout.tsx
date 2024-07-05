@@ -6,15 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 
 import './globals.css';
 import React from 'react';
-import dynamic from 'next/dynamic';
-
-const WithLayoutBreadcrumbLoading = dynamic(
-  async () => (await import('@/app/Breadcrumb')).LayoutBreadcrumb,
-  {
-    loading: () => <div className={cn('h-12')}></div>,
-    ssr: false
-  }
-);
+import { LayoutBreadcrumb } from './Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -46,7 +38,7 @@ export default function RootLayout({
               )}
             >
               <LayoutHeader />
-              <WithLayoutBreadcrumbLoading />
+              <LayoutBreadcrumb />
             </div>
 
             <main className={cn('min-h-screen')}>{children}</main>

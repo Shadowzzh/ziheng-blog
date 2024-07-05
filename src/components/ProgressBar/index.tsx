@@ -1,7 +1,7 @@
 'use client';
 
 import { useProgress } from '@/hooks/useProgress';
-import { AnimatePresence, m, useMotionTemplate } from 'framer-motion';
+import { AnimatePresence, motion, useMotionTemplate } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { createContext, useContext } from 'react';
 
@@ -27,7 +27,7 @@ export function ProgressBar(props: { className?: string; children: ReactNode }) 
     <ProgressBarContext.Provider value={progress}>
       <AnimatePresence onExitComplete={progress.reset}>
         {progress.state !== 'complete' && (
-          <m.div style={{ width }} exit={{ opacity: 0 }} className={className} />
+          <motion.div style={{ width }} exit={{ opacity: 0 }} className={className} />
         )}
       </AnimatePresence>
 

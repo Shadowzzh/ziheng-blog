@@ -53,18 +53,19 @@ export const titleize = (pathname: string) => {
 export const LayoutBreadcrumb = async (props: { className?: string }) => {
   const { className } = props;
 
+  // TODOQA <- 这里为什么在服务器端就可以获取到路径呢？
   const pathname = usePathname(); // 获取当前路径
   const pathnameSegments = splitPathname(pathname); // 分割路径
   const nestedPathList = generateNestedPathList(pathnameSegments); // 生成路径列表
+  // ->
 
   /* 固定首页 */
   nestedPathList.unshift({ href: '/', text: '首页', hidden: true });
 
   const lastItem = nestedPathList[nestedPathList.length - 1];
 
-  if (lastItem?.hidden) {
-    return null;
-  }
+  // 如果当前路由是最后一项并且隐藏，则不显示面包屑
+  if (lastItem?.hidden) return null;
 
   return (
     <div

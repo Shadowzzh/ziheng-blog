@@ -11,28 +11,5 @@ export const MdxLink = (props: MdxLinkProps) => {
   const { href } = props;
   if (!href) return null;
 
-  const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (typeof href !== 'string') {
-      return;
-    }
-
-    const layoutHeader = document.querySelector('#layout-header');
-    const layoutHeaderRect = layoutHeader?.getBoundingClientRect();
-
-    if (!layoutHeaderRect) {
-      return;
-    }
-
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      const targetPosition = targetElement.offsetTop - layoutHeaderRect.height;
-
-      e.preventDefault();
-      scrollTo({ top: targetPosition });
-    }
-  };
-
-  return <Link className={cn('cursor-pointer')} onClick={onClickLink} {...props} />;
+  return <Link className={cn('cursor-pointer')} {...props} />;
 };

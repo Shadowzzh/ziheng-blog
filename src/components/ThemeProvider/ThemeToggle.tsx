@@ -12,14 +12,13 @@ interface ModeToggleProps {
 export function ModeToggle(props: ModeToggleProps) {
   const { setTheme, theme } = useTheme();
 
-  const isDark = theme === 'dark';
+  const isDark = theme !== 'light'; // !== 'light' 保证了默认是 dark
 
   return (
     <div className={cn(props.className)}>
       <Button size={'icon'} variant={'ghost'} onClick={() => setTheme(isDark ? 'light' : 'dark')}>
         <div className={cn()}>
-          <GiEvilMoon className={cn({ hidden: isDark }, 'size-6')} />
-          <GiStripedSun className={cn({ hidden: !isDark }, 'size-6')} />
+          {isDark ? <GiEvilMoon className={'size-6'} /> : <GiStripedSun className={'size-6'} />}
         </div>
       </Button>
     </div>

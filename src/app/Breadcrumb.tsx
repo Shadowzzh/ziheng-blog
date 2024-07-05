@@ -50,7 +50,7 @@ export const titleize = (pathname: string) => {
   return routerMapping.get(pathname)?.text ?? pathname;
 };
 
-export const LayoutBreadcrumb = async (props: { className?: string }) => {
+export const LayoutBreadcrumb = (props: { className?: string }) => {
   const { className } = props;
 
   // TODOQA <- 这里为什么在服务器端就可以获取到路径呢？

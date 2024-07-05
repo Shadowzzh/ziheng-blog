@@ -13,9 +13,7 @@ import {
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb';
 import { LinkWrap } from '@/components';
-
 import type { NestedRouterOption } from '@/config/routerMapping';
-import { routerMapping } from '@/config/routerMapping';
 
 /**
  *  分割路径名称
@@ -42,17 +40,20 @@ const generateNestedPathList = (pathnameSegments: string[]) => {
   return nested;
 };
 
-/**
- *  根据路由名称获取标题
- * @param pathname 路由路径
- * @returns 标题化后的字符串
- */
-export const titleize = (pathname: string) => {
-  return routerMapping.get(pathname)?.text ?? pathname;
-};
+export const LayoutBreadcrumb = (props: {
+  className?: string;
+  routerMapping: Map<string, NestedRouterOption>;
+}) => {
+  const { className, routerMapping } = props;
 
-export const LayoutBreadcrumb = (props: { className?: string }) => {
-  const { className } = props;
+  /**
+   *  根据路由名称获取标题
+   * @param pathname 路由路径
+   * @returns 标题化后的字符串
+   */
+  const titleize = (pathname: string) => {
+    return routerMapping.get(pathname)?.text ?? pathname;
+  };
 
   // TODOQA <- 这里为什么在服务器端就可以获取到路径呢？
   const pathname = usePathname(); // 获取当前路径

@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 import type React from 'react';
 import { LayoutBreadcrumb } from './Breadcrumb';
+import { routerMapping } from '@/config/routerMapping';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -33,7 +34,7 @@ export default function RootLayout({
               )}
             >
               <LayoutHeader />
-              <LayoutBreadcrumb />
+              <LayoutBreadcrumb routerMapping={routerMapping} />
             </div>
 
             <main className={cn('min-h-screen')}>{children}</main>

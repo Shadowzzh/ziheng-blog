@@ -54,9 +54,9 @@ export default function BlogDetail(props: BlogDetailProps) {
       )}
     >
       <div className={cn('2xl:pr-64 xl:pr-44')}>
-        <div className={cn('fixed top-36 right-[max(0px,calc(50%-36rem))]', '2xl:w-44 w-36')}>
+        <div className={cn('fixed top-36 right-[max(0px,calc(50%-36rem))]', '2xl:w-52 w-36')}>
           <TOCWithLoading
-            title={<h2 className={cn('text-xl text-primary m-3')}>目录</h2>}
+            title={<h2 className={cn('text-xl text-primary ml-1 mb-2')}>目录</h2>}
             className={cn()}
             contentClassName={cn('2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto', 'pl-2 pr-3')}
           />

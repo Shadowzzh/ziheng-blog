@@ -26,3 +26,20 @@ export const elementIsEmpty = (element?: HTMLElement) => {
     element.innerText.trim() === '' || element.innerText === undefined || element.offsetHeight === 0
   );
 };
+
+/** 获取元素的 offsetTop */
+export const getOffsetTopElement = (
+  element: HTMLElement,
+  container: HTMLElement = document.body
+) => {
+  let actualTop = element.offsetTop;
+  let current = element.offsetParent as HTMLElement | null;
+
+  while (current !== null && typeof current.offsetTop === 'number') {
+    if (container && current === container) break;
+
+    actualTop += current.offsetTop;
+    current = current.offsetParent as HTMLElement | null;
+  }
+  return actualTop;
+};

@@ -15,15 +15,19 @@ function getWeight(tag: HTMLElement | undefined) {
   return TITLE_TAG_WEIGHT[tagName];
 }
 
+/** 获取文章中所有的标题 */
+export const getAllArticleTitle = (container: HTMLElement) => {
+  const titleTags = Object.keys(TITLE_TAG_WEIGHT);
+  return $(titleTags.join(','), container) as HTMLElement[];
+};
+
 /**
  * 根据文章内容生成标题 Tree
  * 把所有的标题根据权重生成一标题树，树的根节点是权重最大的标题
  */
 export function generatorTocTree(container: HTMLElement) {
-  /** 所有标题元素 tag */
-  const titleTags = Object.keys(TITLE_TAG_WEIGHT);
   /** 文章中所有的标题元素 */
-  const titleElements = $(titleTags.join(','), container) as HTMLElement[];
+  const titleElements = getAllArticleTitle(container);
 
   // 如果文章中没有标题，则返回 undefined
   if (titleElements.length === 0) return undefined;

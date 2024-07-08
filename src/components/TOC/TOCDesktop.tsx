@@ -10,6 +10,7 @@ import { useMedia } from 'react-use';
 import { SCREEN_CONFIG } from '@/config/screen';
 import { generatorTocTree } from '@/lib/GeneratorTOC';
 import { cn } from '@/utils';
+import { useActiveTitle } from './hooks/useActiveTitle';
 
 interface TOCDesktopProps {
   nativeAttrs?: HTMLProps<HTMLElement>;
@@ -22,10 +23,13 @@ interface TOCDesktopProps {
 const TreeItem = (props: {
   tree: Tree<TreeData>;
   className?: string;
+  activeId?: string;
   onClickTitle: (title: Tree<TreeData>) => void;
 }) => {
-  const { tree, onClickTitle } = props;
+  const { tree, onClickTitle, activeId } = props;
   const { data, children } = tree;
+
+  const isActive = activeId === data?.element?.getAttribute('id');
 
   return (
     <div>
@@ -40,14 +44,15 @@ const TreeItem = (props: {
         >
           {tree.children.length > 0 && (
             <MdKeyboardArrowDown
-              className={cn('size-4 mt-[0.1rem] flex-shrink-0', 'opacity-30 hover:opacity-100')}
+              className={cn('size-4 mt-[0.2rem] flex-shrink-0', 'opacity-30 hover:opacity-100')}
             />
           )}
           <div
             className={cn(
-              'font-medium xl:text-sm text-base leading-6 text-muted-foreground hover:text-primary',
-              'opacity-80 hover:opacity-100',
-              'text-ellipsis  line-clamp-2'
+              'font-medium text-sm leading-6 text-muted-foreground hover:text-primary',
+              'opacity-50 hover:opacity-80',
+              'text-ellipsis line-clamp-2',
+              isActive ? 'text-primary opacity-100' : ''
             )}
             title={data.element.textContent}
             onClick={() => onClickTitle(tree)}
@@ -57,9 +62,14 @@ const TreeItem = (props: {
         </div>
       )}
 
-      <div className='ml-1 group'>
+      <div className='ml-4 group'>
         {children.map((child) => (
-          <TreeItem key={child.uniqueId} tree={child} onClickTitle={onClickTitle} />
+          <TreeItem
+            key={child.uniqueId}
+            tree={child}
+            onClickTitle={onClickTitle}
+            activeId={activeId}
+          />
         ))}
       </div>
     </div>
@@ -70,10 +80,21 @@ const TreeItem = (props: {
 export const TOCDesktop = (props: TOCDesktopProps) => {
   const [tocTree, setTocTree] = React.useState<Tree<TreeData> | undefined>();
 
+  const [articleContent, setArticleContent] = React.useState<HTMLElement | undefined>();
+  const [headerHeight, setHeaderHeight] = React.useState<number>(0);
+
+  const activeId = useActiveTitle({ content: articleContent, mergeTop: headerHeight });
+
   // 初始化目录
   useEffect(() => {
     const articleContent = document.getElementById('article-content');
+    const header = document.getElementById('layout-header');
+    if (header) {
+      setHeaderHeight(header?.getBoundingClientRect().height ?? 0);
+    }
+
     if (articleContent) {
+      setArticleContent(articleContent);
       const TocTree = generatorTocTree(articleContent);
       if (TocTree) {
         setTocTree(TocTree);
@@ -89,6 +110,7 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
     if (!id) return;
 
     // 滚动到指定位置
+    window.location.hash = '';
     window.location.hash = id;
   };
 
@@ -102,7 +124,14 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
       {tocTree && (
         <ul className={cn(props.contentClassName)}>
           {tocTree.children.map((item) => {
-            return <TreeItem tree={item} key={item.uniqueId} onClickTitle={onClickTitle} />;
+            return (
+              <TreeItem
+                tree={item}
+                key={item.uniqueId}
+                onClickTitle={onClickTitle}
+                activeId={activeId}
+              />
+            );
           })}
         </ul>
       )}

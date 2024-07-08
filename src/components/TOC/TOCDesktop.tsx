@@ -34,14 +34,7 @@ const TreeItem = (props: {
   return (
     <div>
       {data?.element?.textContent && (
-        <div
-          className={cn(
-            'py-1 text-muted-foreground',
-            'flex items-start',
-            'cursor-pointer',
-            'overflow-hidden'
-          )}
-        >
+        <div className={cn('py-1 text-muted-foreground', 'flex items-start', 'overflow-hidden')}>
           {tree.children.length > 0 && (
             <MdKeyboardArrowDown
               className={cn('size-4 mt-[0.2rem] flex-shrink-0', 'opacity-30 hover:opacity-100')}
@@ -49,6 +42,7 @@ const TreeItem = (props: {
           )}
           <div
             className={cn(
+              'cursor-pointer',
               'font-medium text-sm leading-6 text-muted-foreground hover:text-primary',
               'opacity-50 hover:opacity-80',
               'text-ellipsis line-clamp-2',

@@ -10,20 +10,13 @@ h4,
 h5,
 h6 {
   position: relative;
+  @apply scroll-m-28;
+  /* @apply inline-block; */
 }
 
 .prose > :first-child {
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
-}
-
-.prose h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply scroll-m-28;
 }
 
 .prose .anchor {

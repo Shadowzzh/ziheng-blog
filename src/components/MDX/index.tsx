@@ -21,7 +21,7 @@ export const Mdx = (props: MdxProps) => {
   const Component = useMDXComponent(code);
 
   return (
-    <article className={cn('mdx prose', props.className)}>
+    <article id='article-content' className={cn('mdx prose', props.className)}>
       <Component components={mdxComponents} />
     </article>
   );

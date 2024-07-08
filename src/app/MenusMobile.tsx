@@ -1,9 +1,9 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
-import { FiMenu } from 'react-icons/fi';
 import { IoMdClose } from 'react-icons/io';
 import Link from 'next/link';
+import { RiMore2Fill } from 'react-icons/ri';
 
 import { cn } from '@/utils';
 import { navigationItems } from '@/config/nav';
@@ -36,7 +36,7 @@ export const MobileMenus = (props: MobileMenusProps) => {
     <>
       {/* menu - mobile */}
       <div className={cn('md:hidden', 'flex items-center justify-center', props.className)}>
-        <FiMenu
+        <RiMore2Fill
           className={cn('sm:size-6 size-5 cursor-pointer', 'text-foreground')}
           onClick={showMenu}
         />

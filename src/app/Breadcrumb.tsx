@@ -42,9 +42,10 @@ const generateNestedPathList = (pathnameSegments: string[]) => {
 
 export const LayoutBreadcrumb = (props: {
   className?: string;
+  icon?: React.ReactNode;
   routerMapping: Map<string, NestedRouterOption>;
 }) => {
-  const { className, routerMapping } = props;
+  const { className, routerMapping, icon } = props;
 
   /**
    *  根据路由名称获取标题
@@ -71,17 +72,23 @@ export const LayoutBreadcrumb = (props: {
 
   return (
     <div
-      className={cn('px-4 w-screen h-12 flex items-center', 'border-0 border-b border-border/40')}
+      className={cn(
+        'px-4 w-screen h-12 flex items-center',
+        'border-0 border-b border-border/40',
+        'overflow-hidden'
+      )}
     >
       <div
         className={cn(
           'm-auto',
           '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-          'flex items-center justify-between flex-1'
+          'flex items-center justify-start flex-1',
+          'overflow-hidden'
         )}
       >
-        <Breadcrumb className={cn(className)}>
-          <BreadcrumbList className={cn(' flex-nowrap')}>
+        {icon}
+        <Breadcrumb className={cn(className, 'overflow-hidden')}>
+          <BreadcrumbList className={cn('flex-nowrap overflow-hidden')}>
             {nestedPathList.map((item, index) => {
               const isLast = index === nestedPathList.length - 1;
 
@@ -93,19 +100,21 @@ export const LayoutBreadcrumb = (props: {
                   {/* 分隔符 */}
                   {index !== 0 && <BreadcrumbSeparator />}
 
-                  <BreadcrumbItem className={cn('min-w-0')}>
-                    {isLast ? (
-                      // 最后一项不可点击
-                      <BreadcrumbPage className={cn('block truncate')}>{text}</BreadcrumbPage>
-                    ) : (
-                      // 其他项可点击跳转
-                      <BreadcrumbLink className={cn(' whitespace-nowrap')} asChild>
+                  {isLast ? (
+                    // 最后一项不可点击
+                    <BreadcrumbItem className={cn(' truncate')}>
+                      <BreadcrumbPage className={cn(' truncate')}>{text}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  ) : (
+                    <BreadcrumbItem className={cn('flex-shrink-0')}>
+                      {/* 其他项可点击跳转 */}
+                      <BreadcrumbLink className={cn('whitespace-nowrap')} asChild>
                         <LinkWrap className={cn('')} href={item.href}>
                           {text}
                         </LinkWrap>
                       </BreadcrumbLink>
-                    )}
-                  </BreadcrumbItem>
+                    </BreadcrumbItem>
+                  )}
                 </React.Fragment>
               );
             })}

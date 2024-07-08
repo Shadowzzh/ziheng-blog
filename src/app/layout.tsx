@@ -1,13 +1,20 @@
 import type { Metadata } from 'next';
+import type React from 'react';
+
+import dynamic from 'next/dynamic';
+
 import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
 import { ProgressBar } from '@/components/ProgressBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 import './globals.css';
-import type React from 'react';
 import { LayoutBreadcrumb } from './Breadcrumb';
 import { routerMapping } from '@/config/routerMapping';
+
+const TOCWithLoading = dynamic(async () => await (await import('@/components/TOC')).MobileOnlyTOC, {
+  ssr: false
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -34,7 +41,10 @@ export default function RootLayout({
               )}
             >
               <LayoutHeader />
-              <LayoutBreadcrumb routerMapping={routerMapping} />
+              <LayoutBreadcrumb
+                routerMapping={routerMapping}
+                icon={<TOCWithLoading className={cn()} />}
+              />
             </div>
 
             <main className={cn('min-h-screen')}>{children}</main>

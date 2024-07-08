@@ -135,7 +135,7 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
 
 /** DesktopOnlyTOC 只在桌面端显示目录 */
 export const DesktopOnlyTOC = (props: TOCDesktopProps) => {
-  const isDesktop = useMedia(`(min-width: ${SCREEN_CONFIG.XL}px)`);
+  const isDesktop = useMedia(`(min-width: ${SCREEN_CONFIG.LG}px)`);
 
   if (!isDesktop) {
     return null;

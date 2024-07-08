@@ -35,7 +35,7 @@ export const useActiveTitle = (props: { content?: HTMLElement; mergeTop?: number
 
     const activeId = titleRectList.reduce(
       (acc, [id, top]) => {
-        if (y + mergeTop + 1 > top) {
+        if (y + mergeTop >= top) {
           acc = id;
         }
         return acc;

@@ -1,19 +1,6 @@
 import type { Config } from 'tailwindcss';
 import tailwindTypography from '@tailwindcss/typography';
-// import svgToDataUri from 'mini-svg-data-uri';
-// import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-
-// function addVariablesForColors({ addBase, theme }: any) {
-//   const allColors = flattenColorPalette(theme('colors'));
-//   let newVars = Object.fromEntries(
-//     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-//   );
-
-//   addBase({
-//     ':root': newVars
-//   });
-// }
 
 const config: Config = {
   darkMode: ['class'],
@@ -187,13 +174,6 @@ const config: Config = {
       }
     }
   },
-  plugins: [
-    tailwindTypography,
-    require('tailwindcss-animate')
-    // addVariablesForColors,
-    // function ({ matchUtilities, theme }: any) {
-    //   matchUtilities({ values: flattenColorPalette(theme('backgroundColor')), type: 'color' });
-    // }
-  ]
+  plugins: [tailwindTypography, require('tailwindcss-animate')]
 };
 export default config;

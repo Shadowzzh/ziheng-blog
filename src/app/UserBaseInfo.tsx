@@ -67,11 +67,13 @@ export const UserBaseInfo = () => {
               'object-cover',
               'sm:mb-0 mb-3'
             )}
-            quality={75}
+            quality={50}
             src={Avatar}
             alt='avatar'
-            width={200}
-            height={200}
+            width={100}
+            height={100}
+            sizes='100px'
+            priority
           />
         </div>
       </div>

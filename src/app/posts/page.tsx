@@ -50,13 +50,24 @@ export default async function Posts() {
 
             <div className={cn('flex flex-col justify-between ')}>
               <div>
-                <h1 className={cn('sm:text-xl font-bold leading-loose')}>{post.title}</h1>
+                {/* 标题 */}
+                <h1
+                  className={cn(
+                    'text-primary sm:text-xl text-base font-bold leading-loose',
+                    'sm:mt-0 mt-2'
+                  )}
+                >
+                  {post.title}
+                </h1>
+
+                {/* 描述 */}
                 {post.description && (
                   <p
                     className={cn(
-                      'sm:text-base text-sm text-muted-foreground',
-                      'my-2',
-                      'text-ellipsis line-clamp-2'
+                      'sm:text-base text-sm text-secondary-foreground',
+                      'sm:mt-2 mt-1',
+                      'text-ellipsis line-clamp-2 ',
+                      'opacity-50'
                     )}
                   >
                     {post.description}
@@ -64,7 +75,14 @@ export default async function Posts() {
                 )}
               </div>
 
-              <div className={cn('sm:text-sm text-xs text-muted-foreground', 'space-x-4', 'mt-3')}>
+              <div
+                className={cn(
+                  'sm:text-sm text-xs text-muted-foreground',
+                  'space-x-4',
+                  'mt-3',
+                  'opacity-50'
+                )}
+              >
                 <span>文字数量：{post.readingWords}</span>
                 <span>阅读时长：{Math.floor(post.readingMinutes)} 分钟</span>
               </div>

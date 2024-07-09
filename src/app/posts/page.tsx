@@ -33,17 +33,21 @@ export default async function Posts() {
             )}
           >
             {post.image && (
-              <div className={cn('sm:mr-5 m-0', 'flex-shrink-0')}>
+              <div
+                className={cn(
+                  'w-full sm:w-44 md:w-52 lg:w-60  h-36',
+                  'sm:mr-5 m-0',
+                  'flex-shrink-0',
+                  'relative'
+                )}
+              >
                 <Image
-                  className={cn(
-                    'w-full sm:w-44 md:w-52 lg:w-60  h-36',
-                    'rounded-md',
-                    'object-cover'
-                  )}
+                  className={cn('rounded-md', 'object-cover')}
                   src={post.image}
-                  alt={'cover'}
-                  width={200}
-                  height={200}
+                  alt={`cover-${post.title}`}
+                  fill={true}
+                  sizes='50vw'
+                  quality={50}
                   priority={index === 0}
                 />
               </div>

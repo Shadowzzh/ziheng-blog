@@ -11,6 +11,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 import { LayoutBreadcrumb } from './Breadcrumb';
 import { routerMapping } from '@/config/routerMapping';
+import { inter } from '@/config/font'
 
 const TOCWithLoading = dynamic(async () => await (await import('@/components/TOC')).MobileOnlyTOC, {
   ssr: false
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning={true}>
+    <html lang='en' className={inter.className} suppressHydrationWarning={true}>
       <body className={cn('ext-slate-500 dark:text-slate-400', 'antialiased t bg-background')}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]'>

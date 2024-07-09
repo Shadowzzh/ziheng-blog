@@ -19,7 +19,7 @@ export default async function Posts() {
         'mt-5 mb-5 space-y-6'
       )}
     >
-      {allPostsSorted.map((post: Post) => {
+      {allPostsSorted.map((post: Post, index) => {
         return (
           <LinkWrap
             href={post.slug}
@@ -44,6 +44,7 @@ export default async function Posts() {
                   alt={'cover'}
                   width={200}
                   height={200}
+                  priority={index === 0}
                 />
               </div>
             )}

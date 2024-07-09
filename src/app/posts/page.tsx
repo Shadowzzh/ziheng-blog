@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import type { Post } from 'contentlayer/generated';
 import { allPosts } from 'contentlayer/generated';
 import { cn } from '@/utils';
 import { LinkWrap } from '@/components';
+import { dynamicBlurDataUrl } from '@/lib/image/dynamicBlurDataUrl';
 
 const allPostsSorted = allPosts.sort((a, b) => {
   if (!a.date || !b.date) return 1;
@@ -10,6 +10,15 @@ const allPostsSorted = allPosts.sort((a, b) => {
 });
 
 export default async function Posts() {
+  const postList = await Promise.all(
+    allPostsSorted.map(async (post) => {
+      return {
+        ...post,
+        blurDataURL: await dynamicBlurDataUrl(post.image)
+      };
+    })
+  );
+
   return (
     <div
       className={cn(
@@ -19,7 +28,7 @@ export default async function Posts() {
         'mt-5 mb-5 space-y-6'
       )}
     >
-      {allPostsSorted.map((post: Post, index) => {
+      {postList.map((post, index) => {
         return (
           <LinkWrap
             href={post.slug}
@@ -47,6 +56,8 @@ export default async function Posts() {
                   alt={`cover-${post.title}`}
                   fill={true}
                   sizes='50vw'
+                  placeholder='blur'
+                  blurDataURL={post.blurDataURL}
                   quality={50}
                   priority={index === 0}
                 />

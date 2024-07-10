@@ -1,11 +1,12 @@
 'use client';
 
-import Link from 'next/link';
+import type { ComponentProps } from 'react';
 
-import { useRouter } from 'next/navigation';
-import { useProgressBar } from '../ProgressBar';
-import type { ComponentProps} from 'react';
 import { startTransition } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+import { useProgressBarStore } from '@/app/ProgressBar';
 
 /**
  * Link 基础上增加了一些功能
@@ -13,16 +14,18 @@ import { startTransition } from 'react';
 export function LinkWrap(props: ComponentProps<typeof Link>) {
   const { children, href, ...rest } = props;
 
-  const progress = useProgressBar();
+  const start = useProgressBarStore((state) => state.start);
+  const done = useProgressBarStore((state) => state.done);
+
   const router = useRouter();
 
   const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    progress.start();
+    start();
 
     startTransition(() => {
       router.push(href.toString());
-      progress.done();
+      done();
     });
   };
 

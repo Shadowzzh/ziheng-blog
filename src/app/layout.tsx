@@ -5,13 +5,15 @@ import dynamic from 'next/dynamic';
 
 import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
-import { ProgressBar } from '@/components/ProgressBar';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { inter } from '@/config/font';
+import { routerMapping } from '@/config/routerMapping';
+
+import { LayoutBreadcrumb } from './Breadcrumb';
+import { ProgressBar } from './ProgressBar';
+import { LayoutFooter } from './Footer';
 
 import './globals.css';
-import { LayoutBreadcrumb } from './Breadcrumb';
-import { routerMapping } from '@/config/routerMapping';
-import { inter } from '@/config/font'
 
 const TOCWithLoading = dynamic(async () => await (await import('@/components/TOC')).MobileOnlyTOC, {
   ssr: false
@@ -31,26 +33,21 @@ export default function RootLayout({
     <html lang='en' className={inter.className} suppressHydrationWarning={true}>
       <body className={cn('ext-slate-500 dark:text-slate-400', 'antialiased t bg-background')}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
-          <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]'>
-            <div
-              id='layout-header'
-              className={cn(
-                'w-screen',
-                'backdrop-blur-sm',
-                'bg-background/80',
-                'sticky z-10 top-0'
-              )}
-            >
-              <LayoutHeader />
-              <LayoutBreadcrumb
-                routerMapping={routerMapping}
-                icon={<TOCWithLoading className={cn()} />}
-              />
-            </div>
+          <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]' />
 
-            <main className={cn('min-h-screen')}>{children}</main>
-            {/* <LayoutFooter /> */}
-          </ProgressBar>
+          <div
+            id='layout-header'
+            className={cn('w-screen', 'backdrop-blur-sm', 'bg-background/80', 'sticky z-10 top-0')}
+          >
+            <LayoutHeader />
+            <LayoutBreadcrumb
+              routerMapping={routerMapping}
+              icon={<TOCWithLoading className={cn()} />}
+            />
+          </div>
+
+          <main className={cn('min-h-screen')}>{children}</main>
+          <LayoutFooter />
         </ThemeProvider>
       </body>
     </html>

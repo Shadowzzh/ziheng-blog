@@ -55,9 +55,8 @@ export default function BlogDetail(props: BlogDetailProps) {
         )}
       >
         <div className={cn('2xl:pr-64 xl:pr-44 lg:pr-40')}>
-
           <div className={cn('sm:my-10 my-7')}>
-            <h1 className={cn('text-3xl font-bold text-primary')}>{post.title}</h1>
+            <h1 className={cn('text-3xl font-bold text-primary break-words')}>{post.title}</h1>
             <p className={cn('text-base text-muted-foreground mt-3')}>
               {post.date} · {Math.round(post.readingMinutes)} 分钟 · {post.readingWords} 字
             </p>

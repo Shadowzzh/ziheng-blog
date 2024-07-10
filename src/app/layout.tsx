@@ -11,7 +11,6 @@ import { routerMapping } from '@/config/routerMapping';
 
 import { LayoutBreadcrumb } from './Breadcrumb';
 import { ProgressBar } from './ProgressBar';
-import { LayoutFooter } from './Footer';
 
 import './globals.css';
 
@@ -47,7 +46,6 @@ export default function RootLayout({
           </div>
 
           <main className={cn('min-h-screen')}>{children}</main>
-          <LayoutFooter />
         </ThemeProvider>
       </body>
     </html>

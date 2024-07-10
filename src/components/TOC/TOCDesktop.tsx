@@ -77,7 +77,7 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
   const [articleContent, setArticleContent] = React.useState<HTMLElement | undefined>();
   const [headerHeight, setHeaderHeight] = React.useState<number>(0);
 
-  const activeId = useActiveTitle({ content: articleContent, mergeTop: headerHeight });
+  const activeId = useActiveTitle({ content: articleContent, mergeTop: headerHeight + 5 });
 
   // 初始化目录
   useEffect(() => {

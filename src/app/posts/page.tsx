@@ -1,8 +1,25 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { allPosts } from 'contentlayer/generated';
 import { cn } from '@/utils';
 import { LinkWrap } from '@/components';
 import { dynamicBlurDataUrl } from '@/lib/image/dynamicBlurDataUrl';
+
+const metadataDecs = '所有文章';
+const metadataTitle = '文章列表';
+export const metadata: Metadata = {
+  title: metadataTitle,
+  description: metadataDecs,
+  openGraph: {
+    title: metadataTitle,
+    description: metadataDecs
+  },
+  twitter: {
+    title: metadataTitle,
+    description: metadataDecs,
+    card: 'summary_large_image'
+  }
+};
 
 const allPostsSorted = allPosts.sort((a, b) => {
   if (!a.date || !b.date) return 1;

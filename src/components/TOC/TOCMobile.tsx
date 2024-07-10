@@ -149,7 +149,7 @@ export const TitleContent = (props: TOCMobileProps) => {
 const TOCMobile = (props: TOCMobileProps) => {
   return (
     <Sheet>
-      <SheetTrigger className={cn('flex justify-center items-start')}>
+      <SheetTrigger className={cn('flex justify-center items-start')} aria-label='打开目录'>
         <CgMenuLeft className={cn('size-5 text-muted-foreground mr-2')} />
       </SheetTrigger>
 

@@ -100,7 +100,7 @@ export default async function Posts() {
                       'sm:text-base text-sm text-secondary-foreground',
                       'sm:mt-2 mt-1',
                       'text-ellipsis line-clamp-2 ',
-                      'opacity-50'
+                      'opacity-80'
                     )}
                   >
                     {post.description}
@@ -113,7 +113,7 @@ export default async function Posts() {
                   'sm:text-sm text-xs text-muted-foreground',
                   'space-x-4',
                   'mt-3',
-                  'opacity-50'
+                  'opacity-70'
                 )}
               >
                 <span>文字数量：{post.readingWords}</span>

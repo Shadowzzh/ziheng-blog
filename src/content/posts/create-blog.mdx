@@ -1,18 +1,16 @@
 ---
-title: '使用Nextjs+Tailwind+Contentlayer搭建博客'
-publishedAt: '2023-11-15'
-summary: '🎉 🎉 快速创建个人博客，支持mdx编写、服务端渲染、Github评论、主题切换等功能'
+title: '使用 Nextjs+Tailwind+Contentlayer 搭建博客'
+date: 2024-06-11
+description: '🎉 🎉 快速创建个人博客，支持 mdx 编写、服务端渲染、Github 评论、主题切换等功能'
 ---
 
 [Nextjs]: https://nextjs.org/
-
 [Tailwind]: https://tailwindcss.com/
-
 [Contentlayer]: https://contentlayer.dev/
 
-[Nextjs][Nextjs] 是一个基于React的服务端渲染框架.
-[Tailwind][Tailwind] 无需书写 CSS，即可快速构建美观的网站的组件库.
-[Contentlayer][Contentlayer] 将内容转换成JSON并导入应用程序.
+[Nextjs][Nextjs] 是一个是一个基于 React 的服务端渲染框架。
+[Tailwind][Tailwind]无需书写 CSS，即可快速构建美观的网站的组件库。.
+[Contentlayer][Contentlayer]将内容转换成 JSON 并导入应用程序。.
 
 ## 前期准备
 
@@ -61,7 +59,7 @@ export default function BlogSlug({ params }: BlogSlugProps) {
 }
 ```
 
-## 新建MDX文件
+## 新建 MDX 文件
 
 ```mdx title="content/template.mdx"
 ---
@@ -73,9 +71,9 @@ summary: 'This is your first blog post.'
 first blog
 ```
 
-## 解析MDX
+## 解析 MDX
 
-使用[Contentlayer][Contentlayer]来解析mdx文件，新建`contentlayer.config.ts`文件
+使用[Contentlayer][Contentlayer]来解析 mdx 文件，新建`contentlayer.config.ts`文件
 
 安装以下依赖
 
@@ -83,10 +81,10 @@ first blog
 pnpm add contentlayer next-contentlayer @tailwindcss/typography reading-time remark-gfm rehype-slug rehype-autolink-headings rehype-pretty-code
 ```
 
-- [@tailwindcss/typography](https://github.com/tailwindcss/typography): tailwind风格的HTML排版
+- [@tailwindcss/typography](https://github.com/tailwindcss/typography): tailwind 风格的 HTML 排版
 - [reading-time](https://github.com/ngryman/reading-time): 解析文档内容字符数量，并计算预计阅读时间
-- [remark-gfm](https://github.com/remarkjs/remark-gfm): mdx转成html插件
-- [rehype-slug](https://github.com/rehypejs/rehype-slug): h1-h6标签添加id
+- [remark-gfm](https://github.com/remarkjs/remark-gfm): mdx 转成 html 插件
+- [rehype-slug](https://github.com/rehypejs/rehype-slug): h1-h6 标签添加 id
 - [rehype-autolink-headings](https://github.com/rehypejs/rehype-autolink-headings): 添加锚点
 - [rehype-pretty-code](https://rehype-pretty-code.netlify.app/): 美化代码
 
@@ -251,4 +249,4 @@ export default function BlogSlug({ params }: BlogSlugProps) {
 
 页面展示如下
 
-目前为止，整个博客结构体系搭建完成，可以愉快的编写MDX文件来写博客了
+目前为止，整个博客结构体系搭建完成，可以愉快的编写 MDX 文件来写博客了

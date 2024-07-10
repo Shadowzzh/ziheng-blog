@@ -45,33 +45,43 @@ export default function BlogDetail(props: BlogDetailProps) {
   if (!post) return notFound();
 
   return (
-    <article
-      className={cn(
-        '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-        'sm:px-0 px-4',
-        'm-auto mt-6 mb-6',
-        'relative'
-      )}
-    >
-      <div className={cn('2xl:pr-64 xl:pr-44 lg:pr-40')}>
-        <div
-          className={cn(
-            'fixed top-36 xl:right-[max(0px,calc(50%-36rem))] lg:right-[max(0px,calc(50%-28rem))]',
-            '2xl:w-52 w-36'
-          )}
-        >
-          <TOCWithLoading
-            title={<h2 className={cn('text-xl text-primary ml-1 mb-2')}>目录</h2>}
-            className={cn()}
-            contentClassName={cn('2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto', 'pl-2 pr-3')}
+    <>
+      <article
+        className={cn(
+          '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
+          'sm:px-0 px-4',
+          'm-auto mt-6 mb-6',
+          'relative'
+        )}
+      >
+        <div className={cn('2xl:pr-64 xl:pr-44 lg:pr-40')}>
+
+          <div className={cn('sm:my-10 my-7')}>
+            <h1 className={cn('text-3xl font-bold text-primary')}>{post.title}</h1>
+            <p className={cn('text-base text-muted-foreground mt-3')}>
+              {post.date} · {Math.round(post.readingMinutes)} 分钟 · {post.readingWords} 字
+            </p>
+          </div>
+
+          <Mdx
+            code={post.body.code}
+            className='prose-stone prose-sm sm:prose !max-w-none dark:prose-invert'
           />
         </div>
+      </article>
 
-        <Mdx
-          code={post.body.code}
-          className='prose-stone prose-sm sm:prose !max-w-none dark:prose-invert'
+      <div
+        className={cn(
+          'fixed top-36 xl:right-[max(0px,calc(50%-36rem))] lg:right-[max(0px,calc(50%-28rem))]',
+          '2xl:w-52 w-36'
+        )}
+      >
+        <TOCWithLoading
+          title={<h2 className={cn('text-xl text-primary ml-1 mb-2')}>目录</h2>}
+          className={cn()}
+          contentClassName={cn('2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto', 'pl-2 pr-3')}
         />
       </div>
-    </article>
+    </>
   );
 }

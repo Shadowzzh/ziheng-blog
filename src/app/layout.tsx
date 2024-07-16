@@ -12,6 +12,7 @@ import { ProgressBar } from './ProgressBar';
 
 import './globals.css';
 import { MobileOnlyTOC } from '@/components/TOC';
+import { WebVitals } from '@/components/WebVitals';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,6 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={inter.className} suppressHydrationWarning={true}>
+      <WebVitals />
+
       <body className={cn('ext-slate-500 dark:text-slate-400', 'antialiased t bg-background')}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]' />

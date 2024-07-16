@@ -2,12 +2,7 @@ import { Mdx } from '@/components/MDX';
 import { notFound } from 'next/navigation';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
-import dynamic from 'next/dynamic';
-
-const TOCWithLoading = dynamic(
-  async () => await (await import('@/components/TOC')).DesktopOnlyTOC,
-  { ssr: false }
-);
+import { TOCDesktop } from '@/components/TOC';
 
 interface BlogDetailProps {
   params: { slug: string };
@@ -75,7 +70,7 @@ export default function BlogDetail(props: BlogDetailProps) {
           '2xl:w-52 w-36'
         )}
       >
-        <TOCWithLoading
+        <TOCDesktop
           title={<h2 className={cn('text-xl text-primary ml-1 mb-2')}>目录</h2>}
           className={cn()}
           contentClassName={cn('2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto', 'pl-2 pr-3')}

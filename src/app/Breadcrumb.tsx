@@ -14,31 +14,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { LinkWrap } from '@/components';
 import type { NestedRouterOption } from '@/config/routerMapping';
-
-/**
- *  分割路径名称
- * @param pathname 路径名称
- * @returns 分割后的路径名称
- */
-const splitPathname = (pathname: string) => {
-  const pathnameSegments = pathname.split(/\//).filter((v) => v);
-  return pathnameSegments;
-};
-
-/**
- * 生成嵌套的路径列表
- * @param pathnameSegments 已分割的路径名称
- * @returns 嵌套的路径列表
- */
-const generateNestedPathList = (pathnameSegments: string[]) => {
-  const nested: NestedRouterOption[] = pathnameSegments.map((segment, index) => {
-    const href = `/${pathnameSegments.slice(0, index + 1).join('/')}`;
-
-    return { href, text: segment };
-  });
-
-  return nested;
-};
+import { generateNestedPathList, splitPathname } from '@/utils/pathParsing';
 
 export const LayoutBreadcrumb = (props: {
   className?: string;
@@ -59,7 +35,7 @@ export const LayoutBreadcrumb = (props: {
   // TODOQA <- 这里为什么在服务器端就可以获取到路径呢？
   const pathname = usePathname(); // 获取当前路径
   const pathnameSegments = splitPathname(pathname); // 分割路径
-  const nestedPathList = generateNestedPathList(pathnameSegments); // 生成路径列表
+  const nestedPathList: NestedRouterOption[] = generateNestedPathList(pathnameSegments); // 生成路径列表
   // ->
 
   /* 固定首页 */

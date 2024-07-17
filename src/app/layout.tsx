@@ -11,8 +11,8 @@ import { LayoutBreadcrumb } from './Breadcrumb';
 import { ProgressBar } from './ProgressBar';
 
 import './globals.css';
-import { MobileOnlyTOC } from '@/components/TOC';
 import { WebVitals } from '@/components/WebVitals';
+import { LayoutHeaderExtra } from './HeaderExtra';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -34,13 +34,11 @@ export default function RootLayout({
 
           <div
             id='layout-header'
-            className={cn('w-screen', 'backdrop-blur-sm', 'bg-background/80', 'sticky z-10 top-0')}
+            className={cn('w-screen', 'backdrop-blur-md', 'bg-background/80', 'sticky z-10 top-0')}
           >
-            <LayoutHeader />
-            <LayoutBreadcrumb
-              routerMapping={routerMapping}
-              icon={<MobileOnlyTOC className={cn()} />}
-            />
+            <LayoutHeader className={cn('sm:h-16 h-12')} />
+            <LayoutBreadcrumb className={cn('w-screen h-12 ')} routerMapping={routerMapping} />
+            <LayoutHeaderExtra className={cn()} />
           </div>
 
           <main className={cn('min-h-screen')}>{children}</main>

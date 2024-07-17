@@ -2,7 +2,7 @@ import { Mdx } from '@/components/MDX';
 import { notFound } from 'next/navigation';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
-import { TOCDesktop } from '@/components/TOC';
+// import { TOCDesktop } from '@/components/TOC'
 
 interface BlogDetailProps {
   params: { slug: string };
@@ -64,7 +64,7 @@ export default function BlogDetail(props: BlogDetailProps) {
         </div>
       </article>
 
-      <div
+      {/* <div
         className={cn(
           'fixed top-36 xl:right-[max(0px,calc(50%-36rem))] lg:right-[max(0px,calc(50%-28rem))]',
           '2xl:w-52 w-36'
@@ -75,7 +75,7 @@ export default function BlogDetail(props: BlogDetailProps) {
           className={cn()}
           contentClassName={cn('2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto', 'pl-2 pr-3')}
         />
-      </div>
+      </div> */}
     </>
   );
 }

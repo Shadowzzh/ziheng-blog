@@ -5,10 +5,8 @@ import type { TreeData } from '@/lib/GeneratorTOC/type';
 
 import React, { useEffect, type HTMLProps } from 'react';
 import { useMedia } from 'react-use';
-import { CgMenuLeft } from 'react-icons/cg';
 import { SCREEN_CONFIG } from '@/config/screen';
 import { cn } from '@/utils';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { generatorTocTree } from '@/lib/GeneratorTOC';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { useActiveTitle } from './hooks/useActiveTitle';
@@ -81,7 +79,7 @@ const TreeItem = (props: {
   );
 };
 
-export const TitleContent = (props: TOCMobileProps) => {
+const TOCMobile = (props: TOCMobileProps) => {
   const [tocTree, setTocTree] = React.useState<Tree<TreeData> | undefined>();
 
   const [articleContent, setArticleContent] = React.useState<HTMLElement | undefined>();
@@ -120,9 +118,11 @@ export const TitleContent = (props: TOCMobileProps) => {
   };
 
   return (
-    <div className={props.className}>
+    <div
+      className={cn('max-h-64 mr-[-1rem] ', 'overflow-y-auto overflow-x-hidden', props.className)}
+    >
       <aside
-        className={cn('overflow-y-auto h-[80vh]', 'mr-[-1.5rem] pr-[1.5rem]', props.className)}
+        className={cn('mr-[-1.5rem] pr-[1.5rem]', props.className)}
         {...props.nativeAttrs}
         onTouchMove={(e) => e.preventDefault()}
       >
@@ -143,24 +143,6 @@ export const TitleContent = (props: TOCMobileProps) => {
         )}
       </aside>
     </div>
-  );
-};
-
-const TOCMobile = (props: TOCMobileProps) => {
-  return (
-    <Sheet>
-      <SheetTrigger className={cn('flex justify-center items-start')} aria-label='打开目录'>
-        <CgMenuLeft className={cn('size-5 text-muted-foreground mr-2')} />
-      </SheetTrigger>
-
-      <SheetContent side={'left'} className={cn('w-[70vw]')}>
-        <SheetHeader className='mb-2'>
-          <SheetTitle>目录</SheetTitle>
-        </SheetHeader>
-
-        <TitleContent {...props} />
-      </SheetContent>
-    </Sheet>
   );
 };
 

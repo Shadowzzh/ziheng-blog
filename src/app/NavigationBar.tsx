@@ -9,8 +9,8 @@ interface LayoutMenuProps {
   className?: string;
 }
 
-/** LayoutMenu **/
-export const LayoutMenu = (props: LayoutMenuProps) => {
+/** NavigationBar */
+export const NavigationBar = (props: LayoutMenuProps) => {
   return (
     <div
       className={cn(

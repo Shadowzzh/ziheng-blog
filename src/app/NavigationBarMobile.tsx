@@ -9,7 +9,7 @@ import { cn } from '@/utils';
 import { navigationItems } from '@/config/nav';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
 
-interface MobileMenusProps {
+interface NavigationBarMobileProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -21,7 +21,7 @@ interface MobileMenusProps {
  * 注：之前使用纯 CSS :target 伪类实现，因为可以在服务端渲染。
  *    但是点击内 li 的 Link 无法关闭，所以改用 React 实现。
  **/
-export const MobileMenus = (props: MobileMenusProps) => {
+export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
   const [visible, setVisible] = useState(false);
 
   const showMenu = () => {

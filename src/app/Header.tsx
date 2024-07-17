@@ -1,7 +1,7 @@
 import { Logo } from '@/components/Logo';
 import { cn } from '@/utils';
-import { LayoutMenu } from '@/app/Menus';
-import { MobileMenus } from '@/app/MenusMobile';
+import { NavigationBar } from '@/app/NavigationBar';
+import { NavigationBarMobile } from '@/app/NavigationBarMobile';
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -9,7 +9,7 @@ interface HeaderProps {
   className?: string;
 }
 
-/** Layout Header **/
+/** Layout Header */
 export const LayoutHeader = (props: HeaderProps) => {
   return (
     <header
@@ -35,8 +35,8 @@ export const LayoutHeader = (props: HeaderProps) => {
           <Logo />
         </div>
 
-        <LayoutMenu />
-        <MobileMenus />
+        <NavigationBar />
+        <NavigationBarMobile />
       </div>
     </header>
   );

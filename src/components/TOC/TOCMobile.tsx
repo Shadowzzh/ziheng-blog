@@ -37,19 +37,19 @@ const TreeItem = (props: {
           className={cn(
             'flex items-start',
             'overflow-hidden',
-            'text-xs text-muted-foreground',
+            'text-xs md:text-sm text-muted-foreground',
             'select-none',
             'rounded-sm',
             'px-1',
             isActive && 'dark:bg-accent/50 bg-primary/10'
           )}
         >
-          <span className={cn('m-1 mr-2')}>
+          <span className={cn('m-1 mr-2 mt-1 md:mt-[0.35rem]')}>
             {depth}
             {index ? `.${index}` : ''}
           </span>
           <div
-            className={cn('text-ellipsis line-clamp-2', 'flex-1', 'py-1')}
+            className={cn('text-ellipsis line-clamp-2', 'flex-1', 'py-1 md:py-[0.35rem]')}
             title={data.element.textContent}
             onClick={() => onClickTitle(tree)}
           >

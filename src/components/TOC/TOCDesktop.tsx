@@ -5,14 +5,11 @@ import type { Tree } from '@/models';
 import type { TreeData } from '@/lib/GeneratorTOC/type';
 
 import React, { useEffect } from 'react';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { useMedia } from 'react-use';
-import { SCREEN_CONFIG } from '@/config/screen';
 import { generatorTocTree } from '@/lib/GeneratorTOC';
 import { cn } from '@/utils';
 import { useActiveTitle } from './hooks/useActiveTitle';
 
-interface TOCDesktopProps {
+export interface TOCDesktopProps {
   nativeAttrs?: HTMLProps<HTMLElement>;
   children?: React.ReactNode;
   className?: string;
@@ -24,30 +21,37 @@ const TreeItem = (props: {
   tree: Tree<TreeData>;
   className?: string;
   activeId?: string;
+  index: number;
   onClickTitle: (title: Tree<TreeData>) => void;
 }) => {
-  const { tree, onClickTitle, activeId } = props;
-  const { data, children } = tree;
+  const { tree, onClickTitle, activeId, index } = props;
+  const { data, children, depth } = tree;
 
   const isActive = activeId === data?.element?.getAttribute('id');
 
   return (
     <div>
       {data?.element?.textContent && (
-        <div className={cn('py-1 text-muted-foreground', 'flex items-start', 'overflow-hidden')}>
-          {tree.children.length > 0 && (
-            <MdKeyboardArrowDown
-              className={cn('size-4 mt-[0.2rem] flex-shrink-0', 'opacity-30 hover:opacity-100')}
-            />
+        <div
+          className={cn(
+            'flex items-start',
+            'text-muted-foreground text-sm',
+            'overflow-hidden',
+            'cursor-pointer',
+            'opacity-90 hover:opacity-100',
+            'rounded-sm',
+            'px-1',
+            isActive && 'dark:bg-accent/50 bg-primary/10'
           )}
+          title={data.element.textContent}
+          onClick={() => onClickTitle(tree)}
+        >
+          <span className={cn('m-1 mr-2')}>
+            {depth}
+            {index ? `.${index}` : ''}
+          </span>
           <div
-            className={cn(
-              'cursor-pointer',
-              'font-medium text-sm leading-6 text-muted-foreground hover:text-primary',
-              'opacity-50 hover:opacity-80',
-              'text-ellipsis line-clamp-2',
-              isActive ? 'text-primary opacity-100' : ''
-            )}
+            className={cn('text-ellipsis line-clamp-2', 'flex-1', 'py-1')}
             title={data.element.textContent}
             onClick={() => onClickTitle(tree)}
           >
@@ -56,9 +60,10 @@ const TreeItem = (props: {
         </div>
       )}
 
-      <div className='ml-4 group'>
-        {children.map((child) => (
+      <div className='ml-3 group'>
+        {children.map((child, i) => (
           <TreeItem
+            index={index + i}
             key={child.uniqueId}
             tree={child}
             onClickTitle={onClickTitle}
@@ -117,10 +122,11 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
       {props.title}
       {tocTree && (
         <ul className={cn(props.contentClassName)}>
-          {tocTree.children.map((item) => {
+          {tocTree.children.map((item, index) => {
             return (
               <TreeItem
                 tree={item}
+                index={index}
                 key={item.uniqueId}
                 onClickTitle={onClickTitle}
                 activeId={activeId}
@@ -131,15 +137,4 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
       )}
     </aside>
   );
-};
-
-/** DesktopOnlyTOC 只在桌面端显示目录 */
-export const DesktopOnlyTOC = (props: TOCDesktopProps) => {
-  const isDesktop = useMedia(`(min-width: ${SCREEN_CONFIG.LG}px)`);
-
-  if (!isDesktop) {
-    return null;
-  }
-
-  return <TOCDesktop {...props} />;
 };

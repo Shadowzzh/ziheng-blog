@@ -1,12 +1,29 @@
 import { notFound } from 'next/navigation';
+import dynamic from 'next/dynamic';
+
 import { Mdx } from '@/components/MDX';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
-import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton'
 
 const LoaderMobileToc = dynamic(
   () => import('@/components/Loader/TocMobile').then((mod) => mod.LoaderMobileToc),
   { ssr: false }
+);
+
+const DesktopOnlyTOC = dynamic(
+  () => import('@/app/posts/[slug]/DesktopOnlyTOC').then((mod) => mod.DesktopOnlyTOC),
+  {
+    ssr: false,
+    loading: () => (
+      <div className='h-24 space-y-2 px-3'>
+        <Skeleton className='h-4 w-full' />
+        <Skeleton className='h-4 w-full' />
+        <Skeleton className='h-4 w-full' />
+        <Skeleton className='h-4 w-full' />
+      </div>
+    )
+  }
 );
 
 interface BlogDetailProps {
@@ -55,7 +72,7 @@ export default function BlogDetail(props: BlogDetailProps) {
           'relative'
         )}
       >
-        <div className={cn('2xl:pr-64 xl:pr-44 lg:pr-40')}>
+        <div className={cn('2xl:pr-64  lg:pr-72')}>
           <div className={cn('sm:my-10 my-7')}>
             <h1 className={cn('text-3xl font-bold text-primary break-words')}>{post.title}</h1>
             <p className={cn('text-base text-muted-foreground mt-3')}>
@@ -70,18 +87,22 @@ export default function BlogDetail(props: BlogDetailProps) {
         </div>
       </article>
 
-      {/* <div
+      <div
         className={cn(
-          'fixed top-36 xl:right-[max(0px,calc(50%-36rem))] lg:right-[max(0px,calc(50%-28rem))]',
-          '2xl:w-52 w-36'
+          'hidden lg:block',
+          'fixed top-36',
+          ' xl:right-[max(0px,calc(50%-36rem))] lg:right-[max(0px,calc(50%-28rem))]',
+          '2xl:w-64 w-52'
         )}
       >
-        <TOCDesktop
-          title={<h2 className={cn('text-xl text-primary ml-1 mb-2')}>目录</h2>}
+        <DesktopOnlyTOC
           className={cn()}
-          contentClassName={cn('2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto', 'pl-2 pr-3')}
+          contentClassName={cn(
+            '2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto',
+            'pl-2 pr-4 mr-[-1rem]'
+          )}
         />
-      </div> */}
+      </div>
     </>
   );
 }

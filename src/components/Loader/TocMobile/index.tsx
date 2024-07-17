@@ -1,12 +1,12 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
+import { CgMenuLeft } from 'react-icons/cg';
 
 import { useLayoutStore } from '@/stores';
 import { cn } from '@/utils';
-import { useEffect, useState } from 'react';
-import { CgMenuLeft } from 'react-icons/cg';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const MobileOnlyTOC = dynamic(() => import('@/components/TOC').then((mod) => mod.MobileOnlyTOC), {
@@ -44,16 +44,16 @@ export const ToggleToc = () => {
   return (
     <div
       className={cn(
-        'size-6 text-muted-foreground mr-3',
-        'block sm:hidden',
+        'text-muted-foreground mr-3',
+        'block lg:hidden',
         'cursor-pointer',
         'flex items-center justify-center'
       )}
     >
       {show ? (
-        <IoCloseSharp aria-label='隐藏目录' onClick={onToggle} />
+        <IoCloseSharp className='md:size-5 size-4 ' aria-label='隐藏目录' onClick={onToggle} />
       ) : (
-        <CgMenuLeft aria-label='显示目录' onClick={onToggle} />
+        <CgMenuLeft className='md:size-5 size-4 ' aria-label='显示目录' onClick={onToggle} />
       )}
     </div>
   );

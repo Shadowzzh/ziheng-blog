@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
 import type React from 'react';
 
+import './globals.css';
+
 import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { inter } from '@/config/font';
-import { ProgressBar } from './ProgressBar';
-
-import './globals.css';
 import { WebVitals } from '@/components/WebVitals';
+import { routerMapping } from '@/config/routerMapping';
 import { LayoutHeaderExtra } from './HeaderExtra';
+import { ProgressBar } from './ProgressBar';
+import { LayoutBreadcrumb } from './Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -34,6 +36,7 @@ export default function RootLayout({
             className={cn('w-screen', 'backdrop-blur-md', 'bg-background/80', 'sticky z-10 top-0')}
           >
             <LayoutHeader className={cn('sm:h-16 h-12')} />
+            <LayoutBreadcrumb routerMapping={routerMapping} />
             <LayoutHeaderExtra />
           </div>
 

@@ -27,6 +27,12 @@ export const elementIsEmpty = (element?: HTMLElement) => {
   );
 };
 
+/** 获取数组最后一个元素 */
+export const last = <T>(arr: T[]) => {
+  if (arr.length === 0) return undefined;
+  return arr[arr.length - 1];
+};
+
 /** 获取元素的 offsetTop */
 export const getOffsetTopElement = (
   element: HTMLElement,

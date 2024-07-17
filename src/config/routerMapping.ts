@@ -3,8 +3,11 @@ import { navigationItems } from './nav';
 
 /** 嵌套路由选项 */
 export interface NestedRouterOption {
+  /** 路由路径 */
   href: string;
+  /** 显示文本 */
   text: string;
+  /** 是否隐藏 */
   hidden?: boolean;
 }
 

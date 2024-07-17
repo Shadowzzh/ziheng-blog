@@ -1,24 +1,8 @@
 import { notFound } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import { Mdx } from '@/components/MDX';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
-import { Skeleton } from '@/components/ui/skeleton';
-import { routerMapping } from '@/config/routerMapping';
-import { BreadcrumbContainer } from '@/components/Loader/Breadcrumb/Container';
 // import { TOCDesktop } from '@/components/TOC'
-
-const LoaderBreadcrumb = dynamic(
-  () => import('@/components/Loader/Breadcrumb').then((mod) => mod.LoaderBreadcrumb),
-  {
-    ssr: false,
-    loading: () => (
-      <BreadcrumbContainer>
-        <Skeleton className={cn('h-5 w-28')} />
-      </BreadcrumbContainer>
-    )
-  }
-);
 
 interface BlogDetailProps {
   params: { slug: string };
@@ -57,7 +41,7 @@ export default function BlogDetail(props: BlogDetailProps) {
 
   return (
     <>
-      <LoaderBreadcrumb routerMapping={routerMapping} />
+
 
       <article
         className={cn(

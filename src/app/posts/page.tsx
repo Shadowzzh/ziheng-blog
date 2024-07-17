@@ -1,26 +1,10 @@
 import type { Metadata } from 'next';
 
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { allPosts } from 'contentlayer/generated';
 import { cn } from '@/utils';
 import { LinkWrap } from '@/components';
 import { dynamicBlurDataUrl } from '@/lib/image/dynamicBlurDataUrl';
-import { routerMapping } from '@/config/routerMapping';
-import { BreadcrumbContainer } from '@/components/Loader/Breadcrumb/Container';
-import { Skeleton } from '@/components/ui/skeleton';
-
-const LoaderBreadcrumb = dynamic(
-  () => import('@/components/Loader/Breadcrumb').then((mod) => mod.LoaderBreadcrumb),
-  {
-    ssr: false,
-    loading: () => (
-      <BreadcrumbContainer>
-        <Skeleton className={cn('h-5 w-28')} />
-      </BreadcrumbContainer>
-    )
-  }
-);
 
 const metadataDecs = '所有文章';
 const metadataTitle = '文章列表';
@@ -55,8 +39,6 @@ export default async function Posts() {
 
   return (
     <>
-      <LoaderBreadcrumb routerMapping={routerMapping} />
-
       <div
         className={cn(
           '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',

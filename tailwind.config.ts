@@ -41,6 +41,9 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans]
       },
+      fontSize: {
+        mini: 'font-size: 0.5rem; line-height: 0.75rem;'
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

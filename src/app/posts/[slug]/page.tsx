@@ -2,7 +2,12 @@ import { notFound } from 'next/navigation';
 import { Mdx } from '@/components/MDX';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
-// import { TOCDesktop } from '@/components/TOC'
+import dynamic from 'next/dynamic';
+
+const LoaderMobileToc = dynamic(
+  () => import('@/components/Loader/TocMobile').then((mod) => mod.LoaderMobileToc),
+  { ssr: false }
+);
 
 interface BlogDetailProps {
   params: { slug: string };
@@ -41,8 +46,7 @@ export default function BlogDetail(props: BlogDetailProps) {
 
   return (
     <>
-
-
+      <LoaderMobileToc />
       <article
         className={cn(
           '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',

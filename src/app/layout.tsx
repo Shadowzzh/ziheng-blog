@@ -33,11 +33,16 @@ export default function RootLayout({
 
           <div
             id='layout-header'
-            className={cn('w-screen', 'backdrop-blur-md', 'bg-background/80', 'sticky z-10 top-0')}
+            className={cn(
+              'w-screen',
+              'backdrop-blur-md',
+              'bg-background/80',
+              'sticky z-10 top-0',
+              'touch-none'
+            )}
           >
             <LayoutHeader className={cn('sm:h-16 h-12')} />
-            <LayoutBreadcrumb routerMapping={routerMapping} />
-            <LayoutHeaderExtra />
+            <LayoutHeaderExtra Breadcrumb={<LayoutBreadcrumb routerMapping={routerMapping} />} />
           </div>
 
           <main className={cn('min-h-screen')}>{children}</main>

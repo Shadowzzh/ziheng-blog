@@ -5,9 +5,6 @@ import { LayoutHeader } from '@/app/Header';
 import { cn } from '@/utils';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { inter } from '@/config/font';
-import { routerMapping } from '@/config/routerMapping';
-
-import { LayoutBreadcrumb } from './Breadcrumb';
 import { ProgressBar } from './ProgressBar';
 
 import './globals.css';
@@ -37,8 +34,7 @@ export default function RootLayout({
             className={cn('w-screen', 'backdrop-blur-md', 'bg-background/80', 'sticky z-10 top-0')}
           >
             <LayoutHeader className={cn('sm:h-16 h-12')} />
-            <LayoutBreadcrumb className={cn('w-screen h-12 ')} routerMapping={routerMapping} />
-            <LayoutHeaderExtra className={cn()} />
+            <LayoutHeaderExtra />
           </div>
 
           <main className={cn('min-h-screen')}>{children}</main>

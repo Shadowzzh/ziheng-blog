@@ -23,7 +23,7 @@ export const NavigationBar = (props: LayoutMenuProps) => {
       )}
     >
       {navigationItems.map((item, index) => (
-        <LinkWrap key={index} href={item.href}>
+        <LinkWrap className='text-muted-foreground hover:text-accent-foreground' key={index} href={item.href}>
           {item.text}
         </LinkWrap>
       ))}

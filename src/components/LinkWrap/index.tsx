@@ -5,9 +5,6 @@ import type { ComponentProps } from 'react';
 import { startTransition } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-// import { TbExternalLink } from '@react-icons/all-files/';
-import { TbExternalLink } from 'react-icons/tb';
-// import { RxExternalLink } from "react-icons/rx";
 
 import { useProgressBarStore } from '@/app/ProgressBar';
 import { cn } from '@/utils';
@@ -28,9 +25,11 @@ export function LinkWrap(props: LinkWrapProps) {
 
   const router = useRouter();
 
+  const isTargetBlank = props.target === '_blank';
+
   const onClickLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // 如果是新标签页打开链接直接返回
-    if (props.target === '_blank') return;
+    if (isTargetBlank) return;
 
     e.preventDefault();
 
@@ -49,11 +48,13 @@ export function LinkWrap(props: LinkWrapProps) {
   };
 
   return (
-    <Link className='inline-flex items-center' href={href} onClick={onClickLink} {...rest}>
+    <Link
+      className={cn('items-center', isTargetBlank && 'inline-flex', props.className)}
+      href={href}
+      onClick={onClickLink}
+      {...rest}
+    >
       {children}
-      {props.target === '_blank' && (
-        <TbExternalLink className={cn('size-4 ml-1', props.linkIconClassName)} />
-      )}
     </Link>
   );
 }

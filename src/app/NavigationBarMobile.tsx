@@ -2,12 +2,12 @@
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import Link from 'next/link';
 import { RiMore2Fill } from 'react-icons/ri';
 
 import { cn } from '@/utils';
 import { navigationItems } from '@/config/nav';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
+import { LinkWrap } from '@/components';
 
 interface NavigationBarMobileProps {
   children?: React.ReactNode;
@@ -76,9 +76,9 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
               <ul className={cn('space-y-6')}>
                 {navigationItems.map((item, index) => (
                   <li key={index}>
-                    <Link href={item.href} onClick={hideMenu}>
+                    <LinkWrap href={item.href} onClick={hideMenu}>
                       {item.text}
-                    </Link>
+                    </LinkWrap>
                   </li>
                 ))}
               </ul>

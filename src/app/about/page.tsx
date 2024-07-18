@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 
-import { cn } from '@/utils';
 import Image from 'next/image';
+import { TbExternalLink } from 'react-icons/tb';
+
+import { cn } from '@/utils';
 import Coding from '@/assets/images/coding.gif';
 import { LinkWrap } from '@/components';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
@@ -59,11 +61,14 @@ export default async function About() {
             sizes='100vw'
             priority
           />
-          <span className={cn('text-xs text-muted-foreground opacity-50 mt-3 mb-2')}>
-            <LinkWrap href='https://tenor.com/view/coding-gif-18657810' target='_blank'>
-              https://tenor.com/view/coding-gif-18657810
-            </LinkWrap>
-          </span>
+          <LinkWrap
+            className={cn('text-xs text-muted-foreground opacity-50 mt-3 mb-2', ' inline-flex')}
+            href='https://tenor.com/view/coding-gif-18657810'
+            target='_blank'
+          >
+            https://tenor.com/view/coding-gif-18657810
+            <TbExternalLink className={cn('size-4 ml-1')} />
+          </LinkWrap>
           <span className={cn('text-lg')}>I love ep (computer programming)</span>
         </div>
 
@@ -73,6 +78,7 @@ export default async function About() {
             <li>👋 &nbsp; 你好，我是张子恒。</li>
             <li>👀 &nbsp; 我是一名前端开发者，目前在政采云外包工作。</li>
             <li>💞️ &nbsp; 我使用的技术：TS、React、Vue、Node、Next</li>
+            <li>📚 &nbsp; 我正在学习：Web3、Next</li>
             <li>📫 &nbsp; 如何联系我？邮箱：shadow1746556951@gmail.com</li>
           </ul>
         </div>

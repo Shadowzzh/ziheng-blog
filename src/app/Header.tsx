@@ -1,16 +1,12 @@
+import type { ComponentProps } from 'react';
+
 import { Logo } from '@/components/Logo';
 import { cn } from '@/utils';
 import { NavigationBar } from '@/app/NavigationBar';
 import { NavigationBarMobile } from '@/app/NavigationBarMobile';
 
-interface HeaderProps {
-  children?: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-}
-
 /** Layout Header */
-export const LayoutHeader = (props: HeaderProps) => {
+export const LayoutHeader = (props: ComponentProps<'header'>) => {
   return (
     <header
       id='layout-header'

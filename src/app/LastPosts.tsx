@@ -18,23 +18,20 @@ const lastPosts = allPosts
 /** 最新文章 **/
 export const LastPosts = (props: LastPostsProps) => {
   return (
-    <div
-      className={cn(
-        'p-4',
-        'shadow-sm rounded-lg bg-card',
-        'border border-border/70',
-        'space-y-3',
-        'cursor-pointer',
-        'mb-4',
-        props.className
-      )}
-    >
+    <div className={cn('space-y-3', props.className)}>
+      <h3 className={cn('pl-3 sm:pb-6 pb-3', 'text-base text-muted-foreground')}>最新文章</h3>
+
       {lastPosts.map((post, index) => {
         return (
           <LinkWrap key={index} href={`${post.slug}`}>
             <div
               key={index}
-              className={cn('p-3', 'rounded-md', 'hover:bg-muted', 'text-card-foreground')}
+              className={cn(
+                'p-3',
+                'cursor-pointer',
+                'hover:bg-muted',
+                'border-l-2 border-transparent hover:border-muted-foreground'
+              )}
             >
               <div className={cn('sm:text-xl text-base font-bold')}>{post.title}</div>
               {post.description && (

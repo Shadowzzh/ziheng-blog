@@ -15,7 +15,15 @@ export function ModeToggle(props: ModeToggleProps) {
   const { setTheme } = useTheme();
 
   return (
-    <div className={cn('relative', 'group', 'md:hover:animate-pulse', props.className)}>
+    <div
+      className={cn(
+        'relative',
+        'group',
+        'md:hover:animate-pulse',
+        'text-muted-foreground',
+        props.className
+      )}
+    >
       <Button
         aria-label='toggle theme'
         className={cn('visible dark:invisible')}
@@ -23,13 +31,7 @@ export function ModeToggle(props: ModeToggleProps) {
         variant={'ghost'}
         onClick={() => setTheme('dark')}
       >
-        <RiSunFoggyLine
-          className={cn(
-            'size-5 ',
-            'transition-all duration-700 ease-in-out',
-            'scale-100 group-hover:scale-110'
-          )}
-        />
+        <RiSunFoggyLine className={cn('size-5 ', 'transition-all duration-700 ease-in-out')} />
       </Button>
       <Button
         aria-label='toggle theme'
@@ -38,13 +40,7 @@ export function ModeToggle(props: ModeToggleProps) {
         variant={'ghost'}
         onClick={() => setTheme('light')}
       >
-        <RiMoonFoggyLine
-          className={cn(
-            'size-5',
-            'transition-all duration-700 ease-in-out',
-            'scale-100 group-hover:scale-110'
-          )}
-        />
+        <RiMoonFoggyLine className={cn('size-5', 'transition-all duration-700 ease-in-out')} />
       </Button>
     </div>
   );

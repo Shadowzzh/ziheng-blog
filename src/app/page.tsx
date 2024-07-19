@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { cn } from '@/utils';
 import { UserBaseInfo } from '@/app/UserBaseInfo';
-import { LastPosts } from '@/app/LastPosts';
 import { WEB_SITE_NAME, WEB_SITE_URL } from '@/config/name';
+import { LastPosts } from './LastPosts';
 
 export const metadata: Metadata = {
   metadataBase: new URL(WEB_SITE_URL),
@@ -30,20 +30,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div
-      className={cn(
-        '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-        'm-auto',
-        'sm:px-0 px-4',
-        'sm:mt-5 mt-4',
-        '*:mt-4'
-      )}
-    >
-      {/* 基本信息 */}
-      <UserBaseInfo />
+    <div className={cn('sm:p-8 p-4 sm:pt-32')}>
+      <div className={cn('max-w-[550px]', 'm-auto', 'divide-dashed divide-y ')}>
+        {/* 基本信息 */}
+        <UserBaseInfo className='sm:pb-14 pb-10' />
 
-      {/* 最新文章 */}
-      <LastPosts />
+        {/* 最新文章 */}
+        <LastPosts className='sm:pt-14 pt-10' />
+      </div>
     </div>
   );
 }

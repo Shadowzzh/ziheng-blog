@@ -1,81 +1,94 @@
-import { FaSquareXTwitter } from 'react-icons/fa6';
+import type { ComponentProps } from 'react';
 import Image from 'next/image';
-import { FaGithub } from 'react-icons/fa';
 import Link from 'next/link';
+import { FaSquareXTwitter } from 'react-icons/fa6';
+import { FaGithub } from 'react-icons/fa';
+import { TbExternalLink } from 'react-icons/tb';
 
 import { cn } from '@/utils';
 import Avatar from '@/assets/images/avatar.png';
-
 import { buttonVariants } from '@/components/ui/button';
+import lottiesGithub from '@/assets/lotties/github.json';
+import lottiesTwitter from '@/assets/lotties/twitter.json';
+import { LottieWrap } from '@/components/LottieWrap';
+import { CopyText } from '@/components/ClientCopyText';
 
 const socialMediaItems = [
   {
     icon: FaGithub,
     name: 'Github',
-    url: 'https://github.com/Shadowzzh'
+    url: 'https://github.com/Shadowzzh',
+    json: lottiesGithub
   },
   {
     icon: FaSquareXTwitter,
     name: 'Twitter',
-    url: 'https://x.com/zziheng_'
+    url: 'https://x.com/zziheng_',
+    json: lottiesTwitter
   }
 ];
 
 /** 用户基本信息 */
-export const UserBaseInfo = () => {
+export const UserBaseInfo = (props: ComponentProps<'div'>) => {
   return (
-    <div
-      className={cn(
-        'p-4 font-title sm:flex-row sm:p-8',
-        'shadow-sm rounded-lg bg-card',
-        'border border-border/70',
-        'text-card-foreground'
-      )}
-    >
-      <div className={cn('flex sm:flex-row flex-col-reverse justify-between  items-center')}>
-        <div className={cn()}>
-          <div className={cn('text-xl sm:text-2xl font-bold text-center sm:text-left')}>张子恒</div>
-          <div
-            className={cn('mt-4 mb-6', 'text-muted-foreground', 'mr-4', 'sm:text-base text-sm ')}
-          >
-            👨‍💻 前端开发 | 💪 健身爱好者 | 📸 摄影 | 🌍 旅行徒步爱好者 <br />
-          </div>
-
-          <div className={cn('space-x-2', 'flex')}>
-            {socialMediaItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  title={item.name}
-                  className={cn(buttonVariants({ variant: 'outline', size: 'icon' }))}
-                  key={index}
-                  href={item.url}
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  <Icon className='size-5' />
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className={cn('flex-shrink-0')}>
-          <Image
+    <div className={cn('sm:text-base text-sm', props.className)}>
+      <Image
+        className={cn(
+          'sm:size-20 size-14',
+          'border-2 border-border',
+          'rounded-md ',
+          'object-cover'
+        )}
+        quality={50}
+        src={Avatar}
+        alt='avatar'
+        width={100}
+        height={100}
+        sizes='100px'
+        priority
+      />
+      <div className={cn('space-y-3 pt-6')}>
+        <p className={'text-lg'}>张子恒</p>
+        <p>我是一名来自杭州的前端开发工程师。</p>
+        <p>目前在杭州从事前端开发工作。</p>
+        <div className={cn('inline-block', 'break-all')}>
+          你可以通过
+          <CopyText
             className={cn(
-              'rounded-full lg:size-24 mini:size-20 size-14',
-              'object-cover',
-              'sm:mb-0 mb-3'
+              buttonVariants({ variant: 'link', size: 'auto' }),
+              'text-xs',
+              'cursor-pointer'
             )}
-            quality={50}
-            src={Avatar}
-            alt='avatar'
-            width={100}
-            height={100}
-            sizes='100px'
-            priority
-          />
+            text='wx:zzh1746556951'
+          >
+            wx:zzh1746556951
+          </CopyText>
+          、
+          <Link
+            href={'mailto:shadow1746556951@gmail.com'}
+            target='_blank'
+            className={cn(buttonVariants({ variant: 'link', size: 'auto' }))}
+          >
+            shadow1746556951@gmail
+            <TbExternalLink className='sm:size-4 size-3 ml-1' />
+          </Link>
+          <br />
+          或以下方式联系我。
         </div>
+      </div>
+
+      <div className={cn('space-x-2', 'mt-5', 'flex')}>
+        {socialMediaItems.map((item, index) => {
+          return (
+            <Link title={item.name} key={index} href={item.url} target='_blank' rel='noreferrer'>
+              <LottieWrap
+                className={cn(buttonVariants({ variant: 'outline', size: 'icon' }), 'p-2')}
+                mode='hover'
+                animationData={item.json}
+              />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

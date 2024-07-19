@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang='en' className={inter.className} suppressHydrationWarning={true}>
       <WebVitals />
 
-      <body className={cn('ext-slate-500 dark:text-slate-400', 'antialiased t bg-background')}>
+      <body className={cn('antialiased bg-background')}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]' />
 
@@ -45,7 +45,7 @@ export default function RootLayout({
             <LayoutHeaderExtra Breadcrumb={<LayoutBreadcrumb routerMapping={routerMapping} />} />
           </div>
 
-          <main className={cn('min-h-screen')}>{children}</main>
+          <main className={cn()}>{children}</main>
         </ThemeProvider>
       </body>
     </html>

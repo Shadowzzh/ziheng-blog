@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react';
+import { Suspense, type ComponentProps } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaSquareXTwitter } from 'react-icons/fa6';
@@ -12,6 +12,8 @@ import lottiesGithub from '@/assets/lotties/github.json';
 import lottiesTwitter from '@/assets/lotties/twitter.json';
 import { LottieWrap } from '@/components/LottieWrap';
 import { CopyText } from '@/components/ClientCopyText';
+import { ClientOnly } from '@/components/ClientOnly';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const socialMediaItems = [
   {
@@ -29,7 +31,7 @@ const socialMediaItems = [
 ];
 
 /** 用户基本信息 */
-export const UserBaseInfo = (props: ComponentProps<'div'>) => {
+export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
   return (
     <div className={cn('sm:text-base text-sm', props.className)}>
       <div
@@ -91,11 +93,13 @@ export const UserBaseInfo = (props: ComponentProps<'div'>) => {
         {socialMediaItems.map((item, index) => {
           return (
             <Link title={item.name} key={index} href={item.url} target='_blank' rel='noreferrer'>
-              <LottieWrap
-                className={cn(buttonVariants({ variant: 'outline', size: 'icon' }), 'p-2')}
-                mode='hover'
-                animationData={item.json}
-              />
+              <div className={cn(buttonVariants({ variant: 'outline', size: 'icon' }), 'p-2')}>
+                <Suspense fallback={<div>1</div>}>
+                  <ClientOnly callback={<Skeleton className='size-5 rounded-sm' />}>
+                    <LottieWrap mode='hover' animationData={item.json} />
+                  </ClientOnly>
+                </Suspense>
+              </div>
             </Link>
           );
         })}

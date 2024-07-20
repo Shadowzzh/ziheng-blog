@@ -34,7 +34,6 @@ export default function Home() {
       <div className={cn('max-w-[550px]', 'm-auto', 'divide-dashed divide-y ')}>
         {/* 基本信息 */}
         <UserBaseInfo className='sm:pb-14 pb-10' />
-
         {/* 最新文章 */}
         <LastPosts className='sm:pt-14 pt-10' />
       </div>

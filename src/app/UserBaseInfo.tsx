@@ -32,22 +32,32 @@ const socialMediaItems = [
 export const UserBaseInfo = (props: ComponentProps<'div'>) => {
   return (
     <div className={cn('sm:text-base text-sm', props.className)}>
-      <Image
+      <div
         className={cn(
-          'sm:size-20 size-14',
-          'border-2 border-border',
-          'rounded-md ',
-          'object-cover'
+          ' outline-muted-foreground/90 outline-2 outline',
+          'dark:p-1 p-[0.2rem]',
+          'sm:size-20 size-16',
+          'sm:rounded-md rounded-sm',
+          `transition-all duration-1000 ease-in-out`
         )}
-        quality={50}
-        src={Avatar}
-        alt='avatar'
-        width={100}
-        height={100}
-        sizes='100px'
-        priority
-      />
-      <div className={cn('space-y-3 pt-6')}>
+      >
+        <Image
+          className={cn(
+            'object-cover',
+            'w-full h-full',
+            'sm:rounded-md rounded-sm',
+            `transition-all duration-1000 ease-in-out`
+          )}
+          quality={50}
+          src={Avatar}
+          alt='avatar'
+          width={100}
+          height={100}
+          sizes='100px'
+          priority
+        />
+      </div>
+      <div className={cn('space-y-3 md:pt-8 pt-6')}>
         <p className={'text-lg'}>张子恒</p>
         <p>我是一名来自杭州的前端开发工程师。</p>
         <p>目前在杭州从事前端开发工作。</p>

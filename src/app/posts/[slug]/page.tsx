@@ -68,7 +68,7 @@ export default function BlogDetail(props: BlogDetailProps) {
         <div className={cn('lg:max-w-5xl m-auto', 'lg:pr-72')}>
           <div className={cn('sm:my-10 my-7')}>
             <h1 className={cn('text-3xl font-bold text-primary break-words')}>{post.title}</h1>
-            <p className={cn('text-base text-muted-foreground mt-3')}>
+            <p className={cn('text-base dark:text-muted-foreground text-accent-foreground mt-3')}>
               {post.date} · {Math.round(post.readingMinutes)} 分钟 · {post.readingWords} 字
             </p>
           </div>
@@ -89,8 +89,13 @@ export default function BlogDetail(props: BlogDetailProps) {
         )}
       >
         <DesktopOnlyTOC
-          className={cn()}
-          contentClassName={cn('xl:h-[calc(70vh)] overflow-y-auto', 'pl-2 pr-4 mr-[-1rem]')}
+          className={cn(
+            'dark:hover:bg-muted/10 hover:bg-muted/40 ',
+            // 'opacity-60 hover:opacity-100',
+            ' p-3 pl-0 rounded-md',
+            'transition-all ease-in-out duration-500'
+          )}
+          contentClassName={cn('h-[calc(70vh)] overflow-y-auto', 'pl-2 pr-4 mr-[-1rem]')}
         />
       </div>
     </>

@@ -38,15 +38,8 @@ export default async function Posts() {
   );
 
   return (
-    <>
-      <div
-        className={cn(
-          '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-          'sm:px-0 px-4',
-          'm-auto',
-          'mt-5 mb-5 space-y-6'
-        )}
-      >
+    <div className={cn('sm:px-8 px-4')}>
+      <div className={cn('lg:max-w-5xl', 'm-auto', 'mt-5 mb-5 space-y-6')}>
         {postList.map((post, index) => {
           return (
             <LinkWrap
@@ -126,6 +119,6 @@ export default async function Posts() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

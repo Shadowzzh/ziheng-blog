@@ -40,13 +40,7 @@ const words = [
 export default async function About() {
   return (
     <>
-      <div
-        className={cn(
-          '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-          'sm:px-0 px-4',
-          'm-auto'
-        )}
-      >
+      <div className={cn('max-w-[550px]', 'sm:px-0 px-4', 'm-auto')}>
         <TypewriterEffect
           words={words}
           className={cn('md:!text-3xl !text-2xl', ' md:my-10 my-5')}
@@ -57,7 +51,7 @@ export default async function About() {
             className={cn('rounded-sm m-auto')}
             src={Coding}
             alt='coding'
-            width={500}
+            width={550}
             sizes='100vw'
             priority
           />
@@ -77,9 +71,8 @@ export default async function About() {
           <ul className={cn('text-sm md:text-base space-y-3')}>
             <li>👋 &nbsp; 你好，我是张子恒。</li>
             <li>👀 &nbsp; 我是一名前端开发者，目前在政采云外包工作。</li>
-            <li>💞️ &nbsp; 我使用的技术：TS、React、Vue、Node、Next</li>
-            <li>📚 &nbsp; 我正在学习：Web3、Next</li>
-            <li>📫 &nbsp; 如何联系我？邮箱：shadow1746556951@gmail.com</li>
+            <li>💞️ &nbsp; 我使用的技术：TS、React、Vue、Node、Next。</li>
+            <li>📚 &nbsp; 我正在学习：Web3、Next。</li>
           </ul>
         </div>
       </div>

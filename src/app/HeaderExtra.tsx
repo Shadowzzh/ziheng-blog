@@ -27,13 +27,7 @@ export const LayoutHeaderExtra: React.FC<{ Breadcrumb: ReactNode }> = (props) =>
             'flex items-center justify-start'
           )}
         >
-          <div
-            className={cn(
-              '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-              'm-auto flex-auto',
-              'flex items-center'
-            )}
-          >
+          <div className={cn('lg:max-w-5xl', 'm-auto flex-auto', 'flex items-center')}>
             {TocMobileToggle && <div className='block lg:hidden'>{TocMobileToggle}</div>}
             {Breadcrumb}
           </div>
@@ -45,7 +39,6 @@ export const LayoutHeaderExtra: React.FC<{ Breadcrumb: ReactNode }> = (props) =>
         <div className={cn('w-screen', 'sm:px-8 pl-4', 'shadow-sm dark:shadow-md')}>
           <div
             className={cn(
-              '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
               'm-auto flex-auto pr-4',
               'max-h-[30vh] py-3',
               'overflow-y-auto overflow-x-hidden'

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { Mdx } from '@/components/MDX';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton';
 
 const LoaderMobileToc = dynamic(
   () => import('@/components/Loader/TocMobile').then((mod) => mod.LoaderMobileToc),
@@ -64,15 +64,8 @@ export default function BlogDetail(props: BlogDetailProps) {
   return (
     <>
       <LoaderMobileToc />
-      <article
-        className={cn(
-          '2xl:max-w-6xl xl:max-w-6xl lg:max-w-4xl md:max-w-3xl sm:max-w-2xl',
-          'sm:px-0 px-4',
-          'm-auto mt-6 mb-6',
-          'relative'
-        )}
-      >
-        <div className={cn('2xl:pr-64  lg:pr-72')}>
+      <article className={cn('sm:px-8 px-4', 'm-auto mt-6 mb-6', 'relative')}>
+        <div className={cn('lg:max-w-5xl m-auto', 'lg:pr-72')}>
           <div className={cn('sm:my-10 my-7')}>
             <h1 className={cn('text-3xl font-bold text-primary break-words')}>{post.title}</h1>
             <p className={cn('text-base text-muted-foreground mt-3')}>
@@ -91,16 +84,13 @@ export default function BlogDetail(props: BlogDetailProps) {
         className={cn(
           'hidden lg:block',
           'fixed top-36',
-          ' xl:right-[max(0px,calc(50%-36rem))] lg:right-[max(0px,calc(50%-28rem))]',
+          ' md:right-[max(0px,calc(50%-32rem))]',
           '2xl:w-64 w-52'
         )}
       >
         <DesktopOnlyTOC
           className={cn()}
-          contentClassName={cn(
-            '2xl:h-[calc(60vh)] xl:h-[30rem] overflow-y-auto',
-            'pl-2 pr-4 mr-[-1rem]'
-          )}
+          contentClassName={cn('xl:h-[calc(70vh)] overflow-y-auto', 'pl-2 pr-4 mr-[-1rem]')}
         />
       </div>
     </>

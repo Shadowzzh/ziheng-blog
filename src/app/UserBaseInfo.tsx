@@ -70,6 +70,7 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
               buttonVariants({ variant: 'link', size: 'auto' }),
               'text-xs',
               'cursor-pointer'
+
             )}
             text='wx:zzh1746556951'
           >
@@ -92,11 +93,11 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
       <div className={cn('space-x-2', 'mt-5', 'flex')}>
         {socialMediaItems.map((item, index) => {
           return (
-            <Link title={item.name} key={index} href={item.url} target='_blank' rel='noreferrer'>
-              <div className={cn(buttonVariants({ variant: 'outline', size: 'icon' }), 'p-2')}>
+            <Link className='flex' title={item.name} key={index} href={item.url} target='_blank' rel='noreferrer'>
+              <div className={cn(buttonVariants({ variant: 'outline', size: 'icon' }))}>
                 <Suspense fallback={<div>1</div>}>
                   <ClientOnly callback={<Skeleton className='size-5 rounded-sm' />}>
-                    <LottieWrap mode='hover' animationData={item.json} />
+                    <LottieWrap className='p-2' mode='hover' animationData={item.json} />
                   </ClientOnly>
                 </Suspense>
               </div>

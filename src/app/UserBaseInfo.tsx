@@ -61,7 +61,6 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
       </div>
       <div className={cn('space-y-3 md:pt-8 pt-6')}>
         <p className={'text-lg'}>张子恒</p>
-        <p>我是一名来自杭州的前端开发工程师。</p>
         <p>目前在杭州从事前端开发工作。</p>
         <div className={cn('inline-block', 'break-all')}>
           你可以通过

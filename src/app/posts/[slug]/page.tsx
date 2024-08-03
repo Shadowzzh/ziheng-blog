@@ -89,12 +89,7 @@ export default function BlogDetail(props: BlogDetailProps) {
         )}
       >
         <DesktopOnlyTOC
-          className={cn(
-            'dark:hover:bg-muted/10 hover:bg-muted/40 ',
-            // 'opacity-60 hover:opacity-100',
-            ' p-3 pl-0 rounded-md',
-            'transition-all ease-in-out duration-500'
-          )}
+          className={cn(' p-3 pl-0 rounded-md', 'transition-all ease-in-out duration-500')}
           contentClassName={cn('h-[calc(70vh)] overflow-y-auto', 'pl-2 pr-4 mr-[-1rem]')}
         />
       </div>

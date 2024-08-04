@@ -36,11 +36,10 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
     <div className={cn('sm:text-base text-sm', props.className)}>
       <div
         className={cn(
-          ' outline-muted-foreground/90 outline-2 outline',
+          'outline-muted-foreground/90 outline-2 outline',
           'dark:p-1 p-[0.2rem]',
           'sm:size-20 size-16',
-          'sm:rounded-md rounded-sm',
-          `transition-all duration-1000 ease-in-out`
+          'sm:rounded-md rounded-sm'
         )}
       >
         <Image
@@ -69,7 +68,6 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
               buttonVariants({ variant: 'link', size: 'auto' }),
               'text-xs',
               'cursor-pointer'
-
             )}
             text='wx:zzh1746556951'
           >
@@ -92,7 +90,14 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
       <div className={cn('space-x-2', 'mt-5', 'flex')}>
         {socialMediaItems.map((item, index) => {
           return (
-            <Link className='flex' title={item.name} key={index} href={item.url} target='_blank' rel='noreferrer'>
+            <Link
+              className='flex'
+              title={item.name}
+              key={index}
+              href={item.url}
+              target='_blank'
+              rel='noreferrer'
+            >
               <div className={cn(buttonVariants({ variant: 'outline', size: 'icon' }))}>
                 <Suspense fallback={<div>1</div>}>
                   <ClientOnly callback={<Skeleton className='size-5 rounded-sm' />}>

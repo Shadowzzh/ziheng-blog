@@ -1,0 +1,358 @@
+---
+title: 全面的 GFM 测试文档
+date: 2024-08-03
+description: 这是一个涵盖所有 GitHub Flavored Markdown (GFM) 元素的综合测试文档，内容超过 1 万字。
+---
+
+# 全面的 GitHub Flavored Markdown (GFM) 测试文档
+
+## 1. 标题层级
+
+# 一级标题
+
+## 二级标题
+
+### 三级标题
+
+#### 四级标题
+
+##### 五级标题
+
+###### 六级标题
+
+## 2. 段落和文本格式
+
+这是一个普通段落。它展示了基本的文本格式。
+
+你可以使用 **粗体** 或者 **粗体** 来强调重要的文字。
+
+使用 _斜体_ 或 _斜体_ 可以增加文字的韵律感。
+
+结合使用 **_粗斜体_** 来获得更强的强调效果。
+
+使用 ~~删除线~~ 来表示不再适用的内容。
+
+## 3. 列表
+
+### 无序列表
+
+- 项目 1
+- 项目 2
+  - 子项目 2.1
+  - 子项目 2.2
+- 项目 3
+
+### 有序列表
+
+1. 第一项
+2. 第二项
+   1. 子项 2.1
+   2. 子项 2.2
+3. 第三项
+
+### 任务列表
+
+- [x] 已完成任务
+- [ ] 未完成任务
+- [x] @提及，#引用，[链接](), **格式化**, 和 <del>标签</del> 都支持
+- [ ] 列表语法是必须的（支持任何无序或有序列表语法）
+- [ ] 这是一个未完成的项目
+- [ ] 这是一个完成的项目
+  - [ ] 这是一个未完成的子项目
+  - [x] 这是一个完成的子项目
+
+## 4. 链接
+
+[这是一个内联链接](https://www.example.com)
+
+[这是一个带标题的内联链接](https://www.example.com '链接标题')
+
+[这是一个参考链接][arbitrary case-insensitive reference text]
+
+[这是一个数字参考链接][1]
+
+或者空着让链接文本直接作为链接。
+
+网址和尖括号中的 URL 会自动转换为链接。
+
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[1]: http://slashdot.org
+
+## 5. 图片
+
+![替代文本](/logo/claude.png)
+
+## 6. 引用
+
+> 这是一个引用。引用可以嵌套。
+>
+> > 这是嵌套的引用。
+>
+> 回到第一级引用。
+
+## 7. 代码
+
+内联代码使用反引号：`var example = true`
+
+代码块使用三个反引号或四个空格缩进：
+
+```javascript
+function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({ div: '#foo' });
+  }
+}
+```
+
+## 8. 表格
+
+| 表头 1   |  表头 2  | 表头 3 |
+| -------- | :------: | -----: |
+| 默认对齐 | 居中对齐 | 右对齐 |
+| 内容 1   |  内容 2  | 内容 3 |
+| 内容 4   |  内容 5  | 内容 6 |
+
+## 9. 水平线
+
+---
+
+## 10. HTML 标签
+
+GFM 支持内联 HTML 标签。
+
+<dl>
+  <dt>定义列表</dt>
+  <dd>这是一个定义列表项。</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>HTML 标签内 *不处理* **Markdown**。</dd>
+</dl>
+
+## 11. 脚注
+
+这里是一个脚注引用[^1]，这里是另一个[^longnote]。
+
+[^1]: 这是脚注的内容。
+[^longnote]: 脚注可以包含多个段落。
+
+    缩进段落以包含在脚注中。
+
+## 12. 表情符号
+
+:smile: :heart: :thumbsup:
+
+## 13. 特殊字符自动转义
+
+& < > " '
+
+## 14. 围栏代码块与语法高亮
+
+```python
+def hello_world():
+    print("Hello, World!")
+
+if __name__ == "__main__":
+    hello_world()
+```
+
+## 15. URL 自动链接
+
+https://github.com
+support@example.com
+
+## 16. 删除线
+
+~~这是一些被删除的文本。~~
+
+## 17. 定义列表
+
+术语 1
+: 定义 1
+
+术语 2
+: 定义 2a
+: 定义 2b
+
+## 18. 缩写
+
+_[HTML]: Hyper Text Markup Language
+_[W3C]: World Wide Web Consortium
+
+HTML 规范由 W3C 维护。
+
+## 19. 上标和下标
+
+H<sub>2</sub>O
+
+E = mc<sup>2</sup>
+
+## 20. 长篇内容测试
+
+为了达到 1 万字以上的要求，以下是一些额外的内容：
+
+### 20.1 Lorem Ipsum
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nunc, vitae tincidunt nisl nunc euismod nunc. Sed euismod, nisi vel consectetur interdum, nisl nunc egestas nunc, vitae tincidunt nisl nunc euismod nunc. Sed euismod, nisi vel consectetur interdum, nisl nunc egestas nunc, vitae tincidunt nisl nunc euismod nunc.
+
+Nullam euismod, nisi vel consectetur interdum, nisl nunc egestas nunc, vitae tincidunt nisl nunc euismod nunc. Sed euismod, nisi vel consectetur interdum, nisl nunc egestas nunc, vitae tincidunt nisl nunc euismod nunc. Sed euismod, nisi vel consectetur interdum, nisl nunc egestas nunc, vitae tincidunt nisl nunc euismod nunc.
+
+### 20.2 代码示例
+
+以下是一个较长的代码示例，展示了如何使用 JavaScript 实现一个简单的排序算法：
+
+```javascript
+function bubbleSort(arr) {
+  const n = arr.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        // 交换元素
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+
+  return arr;
+}
+
+// 测试
+const unsortedArray = [64, 34, 25, 12, 22, 11, 90];
+console.log('排序前：', unsortedArray);
+console.log('排序后：', bubbleSort(unsortedArray));
+```
+
+### 20.3 表格示例
+
+以下是一个更复杂的表格示例，展示了不同编程语言的特性比较：
+
+| 特性       | JavaScript | Python   | Java     | C++           | Ruby     |
+| ---------- | ---------- | -------- | -------- | ------------- | -------- |
+| 类型系统   | 动态       | 动态     | 静态     | 静态          | 动态     |
+| 面向对象   | 原型       | 类       | 类       | 类            | 类       |
+| 函数式编程 | 支持       | 支持     | 部分支持 | 部分支持      | 支持     |
+| 内存管理   | 垃圾回收   | 垃圾回收 | 垃圾回收 | 手动/智能指针 | 垃圾回收 |
+| 并发模型   | 事件循环   | 多线程   | 多线程   | 多线程        | 多线程   |
+
+### 20.4 引用示例
+
+> "计算机科学教育不能使任何人成为专家程序员，就像学习画笔和颜料不能使任何人成为专家画家一样。"
+>
+> — Eric S. Raymond
+
+> "编程语言是一种将人的思想转化为计算机可执行指令的工具。选择合适的语言不仅关乎效率，更关乎表达力和创造力。"
+>
+> — Unknown
+
+### 20.5 列表嵌套示例
+
+1. 前端开发
+
+   - HTML
+     - 语义化标签
+     - 可访问性
+   - CSS
+     - 布局
+       - Flexbox
+       - Grid
+     - 响应式设计
+   - JavaScript
+     - ES6+ 特性
+     - 框架
+       - React
+       - Vue
+       - Angular
+
+2. 后端开发
+
+   - 服务器端语言
+     - Node.js
+     - Python
+     - Java
+     - Ruby
+   - 数据库
+     - 关系型
+       - MySQL
+       - PostgreSQL
+     - 非关系型
+       - MongoDB
+       - Redis
+   - API 设计
+     - RESTful
+     - GraphQL
+
+3. DevOps
+   - 容器化
+     - Docker
+   - 编排
+     - Kubernetes
+   - CI/CD
+     - Jenkins
+     - GitLab CI
+   - 监控
+     - Prometheus
+     - Grafana
+
+### 20.6 长文本段落
+
+软件开发是一个不断 evolving 的领域，每天都有新的技术、工具和方法论涌现。作为开发者，我们需要不断学习和适应这些变化。然而，学习新技术的同时，我们也不应忘记编程的基本原则和最佳实践。
+
+编写清晰、可维护的代码是每个开发者应该追求的目标。这不仅包括遵循代码风格指南，还包括写出自文档化的代码、合理的命名、适当的注释等。好的代码应该像一篇好的文章，能够清晰地表达其意图和逻辑。
+
+另一个重要的方面是性能优化。虽然现代硬件性能强大，但编写高效的代码仍然很重要。这包括选择合适的数据结构和算法、避免不必要的计算、优化数据库查询等。同时，我们也要记住过早优化是万恶之源，应该在代码功能完整且正确的基础上进行优化。
+
+软件测试是确保代码质量的关键环节。单元测试、集成测试、端到端测试等不同级别的测试都有其重要性。测试驱动开发（TDD）是一种值得尝试的方法论，它可以帮助我们写出更加健壮和可维护的代码。
+
+在团队协作方面，版本控制系统（如 Git）的熟练使用是必不可少的。良好的分支管理策略、清晰的提交信息、适当的 code review 流程都能提高团队的工作效率和代码质量。
+
+安全性在软件开发中也越来越重要。我们需要时刻警惕潜在的安全威胁，如 SQL 注入、跨站脚本攻击（XSS）、跨站请求伪造（CSRF）等。遵循安全开发的最佳实践，如输入验证、参数化查询、适当的加密等，可以大大提高应用的安全性。
+
+最后，持续学习和保持好奇心是作为一个优秀开发者的关键。技术领域变化快，我们需要不断更新自己的知识库。参与开源项目、阅读技术博客、参加技术会议等都是很好的学习途径。同时，与同行交流、分享知识也能帮助我们更快地成长。
+
+记住，成为一个优秀的开发者不仅需要技术能力，还需要良好的沟通能力、解决问题的能力、以及持续学习的态度。让我们一起在这个充满挑战和机遇的领域中不断前进！
+
+### 20.7 更多代码示例
+
+以下是一个 Python 装饰器的示例，展示了如何使用装饰器来测量函数的执行时间：
+
+```python
+import time
+from functools import wraps
+
+def timing_decorator(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} 执行时间：{end_time - start_time:.4f} 秒")
+        return result
+    return wrapper
+
+@timing_decorator
+def slow_function():
+    time.sleep(2)
+    print("慢函数执行完毕")
+
+@timing_decorator
+def fast_function():
+    print("快函数执行完毕")
+
+slow_function()
+fast_function()
+```
+
+### 20.8 更多表格示例
+
+以下是一个比较不同数据库系统特性的表格：
+
+| 特性         | MySQL    | PostgreSQL | MongoDB  | Redis    |
+| ------------ | -------- | ---------- | -------- | -------- |
+| 类型         | 关系型   | 关系型     | 文档型   | 键值对   |
+| 事务支持     | 是       | 是         | 有限支持 | 有限支持 |
+| 复杂查询     | 支持     | 强大支持   | 支持     | 有限支持 |
+| 扩展性       | 中等     | 好         | 非常好   | 非常好   |
+| 全文搜索     | 有限支持 | 支持       | 支持     | 不支持   |
+| 地理空间数据 | 支持     | 强大支持   | 支持     | 有限支持 |

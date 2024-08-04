@@ -1,12 +1,13 @@
 import { allPosts } from 'contentlayer/generated';
 import { navigationItems } from './nav';
+import type React from 'react';
 
 /** 嵌套路由选项 */
 export interface NestedRouterOption {
   /** 路由路径 */
   href: string;
   /** 显示文本 */
-  text: string;
+  text: React.ReactNode;
   /** 是否隐藏 */
   hidden?: boolean;
 }

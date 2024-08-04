@@ -20,7 +20,6 @@ export function ModeToggle(props: ModeToggleProps) {
         'relative',
         'group',
         'md:hover:animate-pulse',
-        'text-muted-foreground',
         props.className
       )}
     >

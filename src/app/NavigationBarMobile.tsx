@@ -8,6 +8,8 @@ import { cn } from '@/utils';
 import { navigationItems } from '@/config/nav';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
 import { LinkWrap } from '@/components';
+import { Button } from '@/components/ui/button';
+import { MdOutlineRssFeed } from 'react-icons/md';
 
 interface NavigationBarMobileProps {
   children?: React.ReactNode;
@@ -83,8 +85,19 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
                 ))}
               </ul>
 
-              <div className={cn('mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10')}>
+              <div
+                className={cn(
+                  'flex',
+                  'mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10'
+                )}
+              >
                 <ModeToggle />
+
+                <Button size={'icon'} variant={'ghost'}>
+                  <LinkWrap href='/feed.xml'>
+                    <MdOutlineRssFeed className='size-5' />
+                  </LinkWrap>
+                </Button>
               </div>
             </div>
           </>,

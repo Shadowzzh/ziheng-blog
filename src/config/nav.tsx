@@ -5,6 +5,7 @@ export const navigationItems: NestedRouterOption[] = [
   HOME_NAV,
   { href: '/posts', text: '文章' },
   { href: '/about', text: '关于' }
+
   // { href: '/photo', text: '相册' },
   // { href: '/about', text: '关于' },
 ];

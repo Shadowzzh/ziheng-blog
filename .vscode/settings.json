@@ -1,5 +1,8 @@
 {
   "cSpell.words": [
-    "vfile"
+    "vfile",
+  ],
+  "css.customData": [
+    ".vscode/tailwind.json"
   ]
 }

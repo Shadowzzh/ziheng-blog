@@ -2,12 +2,14 @@
 
 import type { ImageProps } from 'next/image';
 import { dynamicBlurDataUrl } from '@/lib/image/dynamicBlurDataUrl';
-import Image from 'next/image';
 import omit from 'lodash/omit';
+import { ClientImageWrap } from './Client';
 
-interface MdxImageProps extends ImageProps {
+export interface MdxImageProps extends ImageProps {
   /** 是否使用模糊占位符 */
   blurPlaceholder?: boolean;
+  /** 是否使用视差效果 */
+  parallax?: boolean;
 }
 
 /**
@@ -22,7 +24,11 @@ const generatorBlurDataURL = (src?: MdxImageProps['src']) => {
   return undefined;
 };
 
-/**  */
+/**
+ * 服务端渲染的 ImageWrap 组件
+ * @param props - 组件的 props
+ * @returns 渲染的 ImageWrap 组件
+ */
 export const ImageWrap = async (props: MdxImageProps) => {
   const blurOption = await (async () => {
     if (props.blurPlaceholder) {
@@ -37,7 +43,7 @@ export const ImageWrap = async (props: MdxImageProps) => {
 
   const imageProps = omit(props, ['blurPlaceholder']);
 
-  return <Image {...blurOption} {...imageProps} />;
+  return <ClientImageWrap {...blurOption} {...imageProps} />;
 };
 
 /**

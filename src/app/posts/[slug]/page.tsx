@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import dayjs from 'dayjs';
 
 import { Mdx } from '@/components/MDX';
 import { postsMapping } from '@/utils/content';
 import { cn } from '@/utils';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ImageWrap } from '@/components/ImageWrap';
 
 const LoaderMobileToc = dynamic(
   () => import('@/components/Loader/TocMobile').then((mod) => mod.LoaderMobileToc),
@@ -66,16 +68,44 @@ export default function BlogDetail(props: BlogDetailProps) {
       <LoaderMobileToc />
       <article className={cn('sm:px-8 px-4', 'm-auto mt-6 mb-6', 'relative')}>
         <div className={cn('lg:max-w-5xl m-auto', 'lg:pr-72')}>
-          <div className={cn('sm:my-10 my-7')}>
+          <div className={cn('sm:my-7 my-7 ')}>
             <h1 className={cn('text-3xl font-bold text-primary break-words')}>{post.title}</h1>
-            <p className={cn('text-base dark:text-muted-foreground text-accent-foreground mt-3')}>
-              {post.date} · {Math.round(post.readingMinutes)} 分钟 · {post.readingWords} 字
+
+            <p
+              className={cn(
+                'text-base dark:text-muted-foreground text-muted-foreground mt-2',
+                'space-x-4'
+              )}
+            >
+              <span>{dayjs(post.date).format('YYYY 年 MM 月 DD 日')}</span>
+              <span>预计阅读时长 {Math.round(post.readingMinutes)} 分钟</span>
+              <span>字数 {post.readingWords} 字</span>
             </p>
           </div>
 
+          {post.image && (
+            <ImageWrap
+              className={cn(
+                'rounded-md object-cover h-64 mb-7',
+                'transition-all duration-500 ease-in-out'
+              )}
+              src={post.image}
+              alt={post.title}
+              width={736}
+              height={256}
+              sizes='33vw'
+              blurPlaceholder
+            />
+          )}
+
           <Mdx
             code={post.body.code}
-            className='prose-stone prose-sm sm:prose !max-w-none dark:prose-invert'
+            className={cn(
+              'prose-neutral prose-sm md:prose-base  !max-w-none dark:prose-invert',
+              'prose-headings:scroll-m-28',
+              'prose-headings:text-[#18181b]',
+              'prose-headings:relative'
+            )}
           />
         </div>
       </article>

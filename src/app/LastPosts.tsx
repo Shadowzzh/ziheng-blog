@@ -11,9 +11,9 @@ const lastPosts = allPosts
     const dateA = new Date(a.date ?? '2000').getTime();
     const dateB = new Date(b.date ?? '2000').getTime();
 
-    return dateA - dateB;
+    return dateB - dateA;
   })
-  .slice(0, 3);
+  .slice(0, 6);
 
 /** 最新文章 **/
 export const LastPosts = (props: LastPostsProps) => {

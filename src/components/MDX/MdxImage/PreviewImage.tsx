@@ -57,7 +57,9 @@ export const PreviewImage = (props: PreviewImageProps) => {
       </DialogTrigger>
 
       <VisuallyHidden.Root>
-        <DialogTitle>image preview</DialogTitle>
+        <DialogTitle asChild>
+          <span>图片预览</span>
+        </DialogTitle>
       </VisuallyHidden.Root>
 
       <DialogContent

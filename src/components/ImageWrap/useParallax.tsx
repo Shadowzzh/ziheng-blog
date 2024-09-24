@@ -8,7 +8,7 @@ import { useState } from 'react';
 export const useParallax = () => {
   const { scrollY } = useScroll();
 
-  const transformY = useTransform(scrollY, [0, 200], [-50, 50]);
+  const transformY = useTransform(scrollY, [0, 300], [-25, 25]);
   const [y, setY] = useState(0);
 
   useMotionValueEvent(transformY, 'change', (latest) => {

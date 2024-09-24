@@ -16,18 +16,17 @@ export const ClientImageWrap = (props: MdxImageProps) => {
 
   // 如果设置了 parallax，则使用 parallax 效果
   if (props.parallax) {
-    const { height, width } = props;
     const params = omit(props, ['height', 'width', 'parallax', 'className']);
 
     return (
-      <motion.div className={cn('relative', props.className)} style={{ height, width }}>
+      <motion.div className={cn('relative', props.className)}>
         <Image
           style={{
             transform: `translateY(${y}px)`
           }}
           className={cn(
             'object-cover !h-auto',
-            '!top-[-50%]',
+            // '!top-[-50%]',
             'transition-transform duration-75 ease-linear'
           )}
           fill

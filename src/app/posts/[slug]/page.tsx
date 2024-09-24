@@ -86,7 +86,10 @@ export default function BlogDetail(props: BlogDetailProps) {
           {post.image && (
             <ImageWrap
               className={cn(
-                'rounded-md object-cover h-64 mb-7 overflow-hidden',
+                'shadow-md',
+                'object-cover',
+                // 'object-contain',
+                'mb-7 md:h-64 h-48 overflow-hidden rounded-sm md:rounded-md',
                 'transition-all duration-500 ease-in-out'
               )}
               src={post.image}
@@ -95,7 +98,8 @@ export default function BlogDetail(props: BlogDetailProps) {
               height={256}
               sizes='33vw'
               blurPlaceholder
-              parallax
+              quality={100}
+              parallax={post.parallax}
             />
           )}
 

@@ -48,13 +48,11 @@ export const MdxFigure = (props: MdxFigureProps) => {
           'p-0 flex items-center justify-center',
           'rounded-sm',
           'duration-300 ease-in-out transition-all',
-          'sm:hover:!bg-accent !bg-transparent',
-          'hover:opacity-100 opacity-20 ',
+          'dark:hover:text-slate-400 dark:text-slate-500',
           'hover:text-slate-400 text-slate-500',
           'active/container:scale-110 scale-100 duration-300 ease-in-out'
         )}
-        // size={'sm'}
-        variant={'ghost'}
+        variant='link'
         onClick={copyToClipboard}
       >
         {copied ? <TbCopyCheck className='size-4' /> : <TbCopy className='size-4' />}

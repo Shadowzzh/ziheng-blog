@@ -74,7 +74,7 @@ export const PreviewImage = (props: PreviewImageProps) => {
           'p-0 bg-transparent border-none rounded-none'
         )}
       >
-        <Image className='object-contain py-20' src={props.src} fill alt={props.alt} />
+        <Image className='object-contain' src={props.src} fill alt={props.alt} />
 
         {/* 提示信息 */}
         <TooltipProvider>

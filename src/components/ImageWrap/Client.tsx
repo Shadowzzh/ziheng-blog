@@ -3,8 +3,9 @@ import Image from 'next/image';
 import type { MdxImageProps } from '.';
 import { useParallax } from './useParallax';
 import { motion } from 'framer-motion';
-import omit from 'lodash/omit';
+
 import { cn } from '@/utils';
+import { omit } from '@/lib/utils';
 
 /**
  * 客户端渲染的 ImageWrap 组件

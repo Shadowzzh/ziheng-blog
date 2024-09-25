@@ -2,8 +2,8 @@
 
 import type { ImageProps } from 'next/image';
 import { dynamicBlurDataUrl } from '@/lib/image/dynamicBlurDataUrl';
-import omit from 'lodash/omit';
 import { ClientImageWrap } from './Client';
+import { omit } from '@/lib/utils'
 
 export interface MdxImageProps extends ImageProps {
   /** 是否使用模糊占位符 */

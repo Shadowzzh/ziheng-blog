@@ -1,0 +1,200 @@
+---
+title: 使用快捷指令 + vipsthumbnail 修改图片
+date: 2024-09-20
+description: 厌倦了繁琐的图片压缩过程？本文展示如何利用快捷指令和 Vipsthumbnail 工具，轻松实现高效的图片压缩和格式转换。
+image: /blog/shortcuts/main.jpg
+parallax: false
+---
+
+## 解决方案展示
+
+### 最终成果快捷指令压缩裁剪转换图片
+
+首先来看下效果；下面视频中展示的是使用方法：
+
+<div>
+  <video width={500} height={400} controls>
+    <source src='/blog/shortcuts/procedure.mp4' type='video/mp4' />
+  </video>
+</div>
+
+把四张总计 50 M 大小的小猫照片，压缩裁剪成总计 661 KB 的 1080 分辨率大小的图片。
+
+### 使用方法
+
+- 右键点击图片 -> 鼠标移动到**快捷操作** -> 点击**图片大小**
+  <Image
+    src='/blog/shortcuts/use-function.jpg'
+    alt='use function'
+    width={600}
+    height={600}
+    sizes={'70vw'}
+  />
+- 或是，选中图片 -> 点击图片大小
+  <Image
+    src='/blog/shortcuts/use-function-1.jpg'
+    alt='use function'
+    width={600}
+    height={600}
+    sizes={'70vw'}
+  />
+
+## 为什么需要压缩裁剪图片
+
+### 图片分享的常见问题
+
+我想通过微信把相机照片分享给我的好友，但是我的照片太大了，拍的照片大小都是 10M 以上。
+这就会导致以下几个问题：
+
+1. 如果"体积"过大，微信会自动进行压缩，导致图片模糊不清。
+2. 加载时间过长，体验感很差。
+3. 流量消耗过多。
+
+如果可以对图片压缩后分享；如果是尺寸特别大的图片，还可以再把图片的尺寸"缩小"至 4k 以内，这样会大大缩小图片的"体积"，就可以避免上述问题。
+
+### 我使用过的方案
+
+1. [TinyPNG](https://tinify.cn/)
+   > TinyPNG 使用智能有损压缩技术将您的 WebP, PNG and JPEG 图片的文件大小降低。通过选择性的减少图片中的颜色，只需要很少的字节数就能保存数据。对视觉的影响几乎不可见，但是在文件大小上有非常大的差别。
+2. [Iloveimg](https://www.iloveimg.com/)
+   > 通过批量处理，您可以同时转换多张照片。iLoveIMG 支持 PNG、JPG、GIF、WEBP、HEIC、RAW 等多种格式转换，并提供高级功能，每项任务最多可批量转换高达 1GB 的文件。
+3. [Caesium Image Compressor](https://github.com/Lymphatus/caesium-image-compressor)
+   > Caesium 是一款图像压缩软件，助您存储、发送和分享数字图片，支持 JPG、PNG、WebP 和 TIFF 格式。您可以快速减小文件大小（并根据需要调整分辨率），同时保持图像的整体质量。
+
+#### 局限性
+
+1. **TinyPNG**、**Iloveimg** 等在线工具使用不方便。
+   每次使用都要打开浏览器 -> 打开网站 -> 传图片 -> 等待压缩 -> 下载。
+2. **Caesium** 本地软件也有一定使用成本。
+   其实已经能满足我的所有需要，但我还是觉得不够方便。
+
+我需要记住，压缩裁剪图片需要使用什么软件、压缩视频、Twitter 视频下载需要使用什么软件...
+实际上我想；选中视频，右键压缩；选中图片，右键压缩。
+
+## 命令行工具的探索
+
+### ImageMagick
+
+> 官方简介：[ImageMagick](https://imagemagick.org) 是一款免费、开源的软件套件，用于编辑和处理数字图像。它可以用于创建、编辑、合成或转换位图图像，并支持多种文件格式，包括 JPEG、PNG、GIF、TIFF 和 Ultra HDR。
+
+它提供了 **magick** CLI 命令行工具，可以使用 shell 脚本调用。
+下面是使用 magick 最简单的例子：
+
+```bash
+magick picture.jpg -resize 1080 picture-1080.jpg
+```
+
+### Vipsthumbnail
+
+> 官方简介：[libvips](https://www.libvips.org/) 是一个按需驱动、水平线程化的图像处理库。与类似库相比，libvips 运行速度快且内存占用小。
+
+**libvips** 附带了一个便捷的命令行 **vipsthumbnail** CLI 命令行工具，可以使用 shell 脚本调用。
+下面是一个使用 vipsthumbnail 最简单的例子：
+
+```bash
+vipsthumbnail picture.jpg --size 1080 -o picture-1080.jpg
+```
+
+### ImageMagick 速度测试
+
+测试素材 30 张 jpg 格式的图片，总计 550M 左右。
+
+<Image
+  src='/blog/shortcuts/total-count.png'
+  alt='total count'
+  width={200}
+  height={100}
+  sizes='30vw'
+/>
+
+测试代码：
+
+```bash
+# 开始计时
+start_time=$(date +%s)
+
+magick '*.JPG' -resize 1080 thumbnail%03d.jpg
+
+# 结束计时
+end_time=$(date +%s)
+
+# 计算并打印执行时间
+execution_time=$((end_time - start_time))
+echo "Execution time: $execution_time seconds"
+```
+
+执行结果：
+压缩时间：15 秒
+
+<Image
+  src='/blog/shortcuts/imagemagick-time.png'
+  alt='imagemagick time'
+  width={200}
+  height={100}
+  sizes='30vw'
+/>
+
+压缩后的图片总大小：26.6 MB
+
+<Image
+  src='/blog/shortcuts/imagemagick-size.png'
+  alt='imagemagick size'
+  width={200}
+  height={100}
+  sizes='30vw'
+/>
+
+### Vipsthumbnail 速度测试
+
+**测试代码：**
+
+```bash
+# 开始计时
+start_time=$(date +%s)
+
+vipsthumbnail *.JPG -s 1080
+
+# 结束计时
+end_time=$(date +%s)
+
+# 计算并打印执行时间
+execution_time=$((end_time - start_time))
+echo "Execution time: $execution_time seconds"
+```
+
+执行结果：
+压缩时间：5 秒
+
+<Image
+  src='/blog/shortcuts/vipsthumbnail-time.png'
+  alt='vipsthumbnail time'
+  width={200}
+  height={100}
+  sizes='30vw'
+/>
+压缩后的图片总大小：7.3 MB
+<Image
+  src='/blog/shortcuts/vipsthumbnail-size.png'
+  alt='vipsthumbnail size'
+  width={200}
+  height={100}
+  sizes='30vw'
+/>
+
+### ImageMagick 和 Vipsthumbnail 速度和压缩大小对比
+
+|    特性    | vipsthumbnail | ImageMagick |
+| :--------: | :-----------: | :---------: |
+|  压缩时间  |     5 秒      |    15 秒    |
+| 压缩后大小 |    7.3 MB     |   26.6 MB   |
+
+## 快捷指令的实现
+
+{' '}
+<Image
+  src='/blog/shortcuts/shortcuts-code.jpg'
+  alt='use function'
+  width={600}
+  height={600}
+  sizes={'70vw'}
+/>

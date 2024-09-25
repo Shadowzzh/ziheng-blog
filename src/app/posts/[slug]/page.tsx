@@ -66,14 +66,14 @@ export default function BlogDetail(props: BlogDetailProps) {
   return (
     <>
       <LoaderMobileToc />
-      <article className={cn('sm:px-8 px-4', 'm-auto mt-6 mb-6', 'relative')}>
-        <div className={cn('lg:max-w-5xl m-auto', 'lg:pr-72')}>
-          <div className={cn('sm:my-7 my-7 ')}>
-            <h1 className={cn('text-3xl font-bold text-primary break-words')}>{post.title}</h1>
+      <div className={cn('px-4 sm:px-8', 'm-auto mb-6 mt-6', 'relative')}>
+        <div className={cn('m-auto lg:max-w-5xl', 'lg:pr-72')}>
+          <div className={cn('my-7 sm:my-7')}>
+            <h1 className={cn('break-words text-3xl font-bold text-primary')}>{post.title}</h1>
 
             <p
               className={cn(
-                'text-base dark:text-muted-foreground text-muted-foreground mt-2',
+                'mt-2 md:text-base text-sm text-muted-foreground dark:text-muted-foreground',
                 'space-x-4'
               )}
             >
@@ -96,9 +96,10 @@ export default function BlogDetail(props: BlogDetailProps) {
               alt={post.title}
               width={736}
               height={256}
-              sizes='33vw'
+              sizes='100vw'
               blurPlaceholder
               quality={100}
+              priority
               parallax={post.parallax}
             />
           )}
@@ -106,26 +107,31 @@ export default function BlogDetail(props: BlogDetailProps) {
           <Mdx
             code={post.body.code}
             className={cn(
-              'prose-neutral prose-sm md:prose-base  !max-w-none dark:prose-invert',
+              'prose-sm',
+              'prose-neutral !max-w-none dark:prose-invert md:prose-base',
               'prose-headings:scroll-m-28',
-              'prose-headings:text-[#18181b]',
+              'prose-headings:text-[#18181b] prose-headings:text-primary',
               'prose-headings:relative'
             )}
           />
         </div>
-      </article>
+      </div>
 
       <div
         className={cn(
           'hidden lg:block',
           'fixed top-36',
-          ' md:right-[max(0px,calc(50%-32rem))]',
-          '2xl:w-64 w-52'
+          'md:right-[max(0px,calc(50%-32rem))]',
+          'w-64'
         )}
       >
         <DesktopOnlyTOC
-          className={cn(' p-3 pl-0 rounded-md', 'transition-all ease-in-out duration-500')}
-          contentClassName={cn('h-[calc(70vh)] overflow-y-auto', 'pl-2 pr-4 mr-[-1rem]')}
+          className={cn('rounded-md0', 'transition-all duration-500 ease-in-out')}
+          contentClassName={cn(
+            'h-[calc(70vh)] overflow-y-auto'
+            //  'pl-2 pr-4 mr-[-1rem]'
+            // p-3 pl-F
+          )}
         />
       </div>
     </>

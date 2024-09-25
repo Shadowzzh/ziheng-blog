@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import Image from 'next/image';
-import { TbExternalLink } from 'react-icons/tb';
+import { FiExternalLink } from '@react-icons/all-files/fi/FiExternalLink';
 
 import { cn } from '@/utils';
 import Coding from '@/assets/images/coding.gif';
@@ -61,7 +61,7 @@ export default async function About() {
             target='_blank'
           >
             https://tenor.com/view/coding-gif-18657810
-            <TbExternalLink className={cn('size-4 ml-1')} />
+            <FiExternalLink className={cn('size-4 ml-1')} />
           </LinkWrap>
           <span className={cn('text-lg')}>I love ep (computer programming)</span>
         </div>

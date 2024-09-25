@@ -5,6 +5,19 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * 排除一个对象的某些键和值
+ * @param target 目标对象
+ * @param omitKeys 排除的对象的键的数组
+ */
+export function omit<T, K extends keyof T>(target: T, omitKeys: K[]): Omit<T, K> {
+  const ret = { ...target };
+  omitKeys.forEach((key) => {
+    delete ret[key];
+  });
+  return ret;
+}
+
 /** 扁平化创建 Promise */
 export const createPromise = <T>() => {
   let resolve, reject;

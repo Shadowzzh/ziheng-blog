@@ -36,16 +36,17 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
     <div className={cn('sm:text-base text-sm', props.className)}>
       <div
         className={cn(
-          'outline-muted-foreground/90 outline-2 outline',
+          'outline-muted-foreground/40 outline-1 outline',
           'dark:p-1 p-[0.2rem]',
           'sm:size-20 size-16',
-          'sm:rounded-md rounded-sm'
+          'sm:rounded-md rounded-sm',
+          'bg-neutral-100 dark:bg-transparent',
         )}
       >
         <Image
           className={cn(
             'object-cover',
-            'w-full h-full',
+            'w-full h-full ',
             'sm:rounded-md rounded-sm',
             `transition-all duration-1000 ease-in-out`
           )}

@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { TbCopy, TbCopyCheck } from 'react-icons/tb';
+
+import { ClipboardIcon, CheckIcon } from '@radix-ui/react-icons';
 import { cn, copyText } from '@/utils';
 import { Button } from '@/components/ui/button';
 
@@ -55,7 +56,7 @@ export const MdxFigure = (props: MdxFigureProps) => {
         variant='link'
         onClick={copyToClipboard}
       >
-        {copied ? <TbCopyCheck className='size-4' /> : <TbCopy className='size-4' />}
+        {copied ? <CheckIcon className='size-4' /> : <ClipboardIcon className='size-4' />}
       </Button>
 
       <figure {...args} ref={preDom}>

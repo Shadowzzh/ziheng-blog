@@ -27,6 +27,12 @@ export const Post = defineDocumentType(() => ({
     image: {
       type: 'string',
       description: 'Heading image'
+    },
+    /** 是否使用视差效果 */
+    parallax: {
+      type: 'boolean',
+      description: 'parallax',
+      default: true
     }
   },
   computedFields: {

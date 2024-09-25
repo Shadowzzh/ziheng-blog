@@ -1,14 +1,22 @@
 .prose {
   @apply max-w-none;
+  @apply md:!leading-loose;
 }
 
-/* .prose > :first-child {
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
-} */
+.prose video {
+  @apply rounded-md;
+}
+
+.prose ul {
+  @apply md:ps-4;
+}
+
+.prose li {
+  @apply md:my-1;
+}
 
 .prose .anchor {
-  @apply absolute invisible no-underline;
+  @apply invisible absolute no-underline;
 
   margin-left: -1em;
   padding-right: 0.5em;
@@ -22,7 +30,7 @@
 
 .prose .anchor:after {
   @apply text-muted-foreground;
-  @apply sm:opacity-50 opacity-0;
+  @apply opacity-0 sm:opacity-50;
   @apply content-['#'];
 }
 
@@ -30,30 +38,38 @@
   @apply visible;
 }
 
+/*  */
+.prose blockquote {
+  /* border-left-width: 4px; */
+  @apply text-neutral-500 dark:text-neutral-400;
+  @apply font-normal;
+  @apply not-italic;
+}
+
 /* 代码背景色 */
 .prose pre {
   @apply bg-gray-800;
-  @apply sm:rounded-lg rounded-sm;
-  @apply border-gray-700/50 border;
+  @apply rounded-sm sm:rounded-lg;
+  @apply border border-gray-700/50;
   @apply px-0;
 }
 
 .prose code [data-line] {
-  @apply sm:text-sm text-[0.65rem];
-  @apply sm:leading-[1.5rem] leading-[1.1rem];
+  @apply text-[0.65rem] sm:text-sm;
+  @apply leading-[1.1rem] sm:leading-[1.5rem];
 }
 
 /* 代码片段头部 */
 .prose figcaption {
-  @apply text-slate-400  sm:text-sm text-[0.7rem];
-  @apply sm:h-12 h-8 py-0;
+  @apply text-[0.7rem] text-slate-400 sm:text-sm;
+  @apply h-8 py-0 sm:h-12;
   @apply flex items-center;
 }
 
 /* 代码片段标题 */
 [data-rehype-pretty-code-title] {
-  @apply px-4 py-3 font-mono sm:text-sm text-[0.65rem];
-  @apply font-medium border sm:rounded-t-lg rounded-t-sm;
+  @apply px-4 py-3 font-mono text-[0.65rem] sm:text-sm;
+  @apply rounded-t-sm border font-medium sm:rounded-t-lg;
   @apply border-gray-700/50 bg-gray-800;
 }
 [data-rehype-pretty-code-title] + pre {
@@ -64,12 +80,13 @@
 .prose code {
   counter-reset: line;
 }
+
 [data-line]::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
   text-align: left;
-  @apply text-right text-slate-600 pr-3;
+  @apply pr-3 text-right text-slate-600;
 }
 
 /* 代码片段中的 tag */
@@ -78,20 +95,20 @@
 }
 
 [data-chars-id] {
-  @apply p-[0.1rem] border-b-[0.1rem];
-  @apply sm:p-1  sm:border-b-2;
+  @apply border-b-[0.1rem] p-[0.1rem];
+  @apply sm:border-b-2 sm:p-1;
 }
 
 [data-chars-id='v'] {
-  @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
+  @apply border-b-pink-600 bg-rose-800/50 font-bold !text-pink-300;
 }
 
 [data-chars-id='s'] {
-  @apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
+  @apply border-b-yellow-600 bg-yellow-800/50 font-bold !text-yellow-300;
 }
 
 [data-chars-id='i'] {
-  @apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
+  @apply border-b-purple-600 bg-purple-800/50 font-bold !text-purple-200;
 }
 
 [data-chars-id] span {
@@ -100,9 +117,9 @@
 
 /* 代码片段行高亮 */
 [data-line] {
-  @apply sm:px-3 px-1 border-l-2 border-l-transparent;
+  @apply border-l-2 border-l-transparent px-1 sm:px-3;
 }
 
 [data-highlighted-line] {
-  @apply bg-slate-500/40 border-l-blue-400;
+  @apply border-l-blue-400 bg-slate-500/40;
 }

@@ -37,5 +37,5 @@ export const ClientImageWrap = (props: MdxImageProps) => {
     );
   }
 
-  return <Image {...props} />;
+  return <Image {...omit(props, ['parallax'])} />;
 };

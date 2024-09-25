@@ -25,7 +25,7 @@ const TreeItem = (props: {
   onClickTitle: (title: Tree<TreeData>) => void;
 }) => {
   const { tree, onClickTitle, activeId, index } = props;
-  const { data, children, depth } = tree;
+  const { data, children } = tree;
 
   const isActive = activeId === data?.element?.getAttribute('id');
 
@@ -38,20 +38,18 @@ const TreeItem = (props: {
             'text-muted-foreground text-sm',
             'overflow-hidden',
             'cursor-pointer',
-            'opacity-90 hover:opacity-100',
+            'opacity-80 hover:opacity-100',
             'rounded-sm',
-            'px-1',
-            isActive && 'dark:bg-accent/50 bg-primary/10'
+            'px-2 py-[0.4rem]',
+            'hover:bg-neutral-100 dark:hover:bg-accent/30',
+            isActive && '!opacity-100',
+            isActive && 'dark:!bg-accent/50 !bg-primary/10'
           )}
           title={data.element.textContent}
           onClick={() => onClickTitle(tree)}
         >
-          <span className={cn('m-1 mr-2')}>
-            {depth}
-            {index ? `.${index}` : ''}
-          </span>
           <div
-            className={cn('text-ellipsis line-clamp-2', 'flex-1', 'my-1')}
+            className={cn('text-ellipsis line-clamp-2', 'flex-1')}
             title={data.element.textContent}
             onClick={() => onClickTitle(tree)}
           >
@@ -60,7 +58,7 @@ const TreeItem = (props: {
         </div>
       )}
 
-      <div className='ml-3 group'>
+      <div className='ml-[1rem] group'>
         {children.map((child, i) => (
           <TreeItem
             index={index + i}
@@ -88,6 +86,7 @@ export const TOCDesktop = (props: TOCDesktopProps) => {
   useEffect(() => {
     const articleContent = document.getElementById('article-content');
     const header = document.getElementById('layout-header');
+
     if (header) {
       setHeaderHeight(header?.getBoundingClientRect().height ?? 0);
     }

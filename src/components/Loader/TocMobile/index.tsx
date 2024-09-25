@@ -2,8 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { IoCloseSharp } from 'react-icons/io5';
-import { CgMenuLeft } from 'react-icons/cg';
+import { IoCloseSharp } from '@react-icons/all-files/io5/IoCloseSharp';
+import { CgMenuLeft } from '@react-icons/all-files/cg/CgMenuLeft';
 
 import { useLayoutStore } from '@/stores';
 import { cn } from '@/utils';

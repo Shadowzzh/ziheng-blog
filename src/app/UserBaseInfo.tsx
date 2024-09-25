@@ -1,9 +1,9 @@
 import { Suspense, type ComponentProps } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaSquareXTwitter } from 'react-icons/fa6';
-import { FaGithub } from 'react-icons/fa';
-import { TbExternalLink } from 'react-icons/tb';
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
+import { FiExternalLink } from '@react-icons/all-files/fi/FiExternalLink';
 
 import { cn } from '@/utils';
 import Avatar from '@/assets/images/avatar.png';
@@ -23,7 +23,7 @@ const socialMediaItems = [
     json: lottiesGithub
   },
   {
-    icon: FaSquareXTwitter,
+    icon: FaTwitter,
     name: 'Twitter',
     url: 'https://x.com/zziheng_',
     json: lottiesTwitter
@@ -40,7 +40,7 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
           'dark:p-1 p-[0.2rem]',
           'sm:size-20 size-16',
           'sm:rounded-md rounded-sm',
-          'bg-neutral-100 dark:bg-transparent',
+          'bg-neutral-100 dark:bg-transparent'
         )}
       >
         <Image
@@ -81,7 +81,7 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
             className={cn(buttonVariants({ variant: 'link', size: 'auto' }))}
           >
             shadow1746556951@gmail
-            <TbExternalLink className='sm:size-4 size-3 ml-1' />
+            <FiExternalLink className='sm:size-4 size-3 ml-1' />
           </Link>
           <br />
           或以下方式联系我。

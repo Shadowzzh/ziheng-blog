@@ -3,7 +3,7 @@ import { cn } from '@/utils';
 import { LinkWrap } from '@/components';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
 import { Button } from '@/components/ui/button';
-import { MdOutlineRssFeed } from 'react-icons/md';
+import { MdRssFeed } from '@react-icons/all-files/md/MdRssFeed';
 
 interface LayoutMenuProps {
   children?: React.ReactNode;
@@ -38,7 +38,7 @@ export const NavigationBar = (props: LayoutMenuProps) => {
       <div className='ml-4 flex items-center text-muted-foreground'>
         <Button size={'icon'} variant={'ghost'}>
           <LinkWrap href='/feed.xml'>
-            <MdOutlineRssFeed className='size-5' />
+            <MdRssFeed className='size-5' />
           </LinkWrap>
         </Button>
         <ModeToggle />

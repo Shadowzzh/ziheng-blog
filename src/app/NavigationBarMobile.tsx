@@ -1,15 +1,15 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
-import { IoMdClose } from 'react-icons/io';
-import { RiMore2Fill } from 'react-icons/ri';
+import { IoMdClose } from '@react-icons/all-files/io/IoMdClose';
+import { MdRssFeed } from '@react-icons/all-files/md/MdRssFeed';
+import { RiMore2Fill } from '@react-icons/all-files/ri/RiMore2Fill';
 
 import { cn } from '@/utils';
 import { navigationItems } from '@/config/nav';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
 import { LinkWrap } from '@/components';
 import { Button } from '@/components/ui/button';
-import { MdOutlineRssFeed } from 'react-icons/md';
 
 interface NavigationBarMobileProps {
   children?: React.ReactNode;
@@ -95,7 +95,7 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
 
                 <Button size={'icon'} variant={'ghost'}>
                   <LinkWrap href='/feed.xml'>
-                    <MdOutlineRssFeed className='size-5' />
+                    <MdRssFeed className='size-5' />
                   </LinkWrap>
                 </Button>
               </div>

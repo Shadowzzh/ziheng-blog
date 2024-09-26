@@ -28,6 +28,10 @@ export const GET = async () => {
       name: AUTHOR.NAME,
       email: AUTHOR.EMAIL,
       link: AUTHOR.TWITTER
+    },
+    follow_challenge: {
+      feed_id: '57428565962095616',
+      user_id: '41448350114993152'
     }
   };
 

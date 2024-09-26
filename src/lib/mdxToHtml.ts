@@ -4,6 +4,7 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkGfm from 'remark-gfm';
+import { customImageHandler } from './customImageHandler';
 
 /**
  * mdx 转换为 html
@@ -18,9 +19,11 @@ export async function mdxToHtml(source: VFileCompatible): Promise<string> {
     .use(remarkGfm)
     // 它在 Markdown 解析和 HTML 生成之间起到桥梁作用，将 Markdown 的结构转换为对应的 HTML 结构。
     .use(remarkRehype)
+    // 处理自定义的 <Image /> 组件
+    .use(customImageHandler)
     // 将 HAST 转换为 HTML 字符串。
     .use(rehypeStringify)
-    // 处理源码
+
     .process(source);
 
   return String(file);

@@ -23,7 +23,13 @@ const replaceImageTag = (content: string): string => {
     {} as Record<string, string>
   );
 
-  const imgTag = `<img src="${attributes.src || ''}" alt="${attributes.alt || ''}" ${attributes.width ? `width="${attributes.width}"` : ''} ${attributes.height ? `height="${attributes.height}"` : ''} ${attributes.sizes ? `sizes="${attributes.sizes}"` : ''} />`;
+  const imgTag = String.raw`<img
+    src="${attributes.src || ''}"
+    alt="${attributes.alt || ''}"
+    ${attributes.width ? `width="${attributes.width}"` : ''}
+    ${attributes.height ? `height="${attributes.height}"` : ''}
+  />`;
+
   return content.replace(match[0], imgTag);
 };
 

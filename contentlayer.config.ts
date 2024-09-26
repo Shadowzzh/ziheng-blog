@@ -10,7 +10,11 @@ const source = makeSource({
   contentDirPath: './src/content',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkBreaks],
+    remarkPlugins: [
+      // 不要升级 remark-gfm 否则，contentlayer 会报错
+      remarkGfm,
+      remarkBreaks
+    ],
     rehypePlugins: [
       rehypeSlug,
       [

@@ -16,8 +16,7 @@ import {
   DialogTitle
 } from '@/components/ui/dialog';
 import { cn } from '@/utils';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { TooltipPortal } from '@radix-ui/react-tooltip';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 
 interface PreviewImageProps extends ImageProps {
@@ -49,10 +48,10 @@ export const PreviewImage = (props: PreviewImageProps) => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Image
-          className={'rounded-md cursor-pointer'}
           placeholder='blur'
           blurDataURL={blurDataURL}
           {...props}
+          className={cn('rounded-md cursor-pointer', props.className)}
         />
       </DialogTrigger>
 
@@ -74,31 +73,32 @@ export const PreviewImage = (props: PreviewImageProps) => {
           'p-0 bg-transparent border-none rounded-none'
         )}
       >
-        <Image className='object-contain' src={props.src} fill alt={props.alt} />
+        <Image className='object-contain' src={props.src} fill alt={props.alt} sizes='100vw' />
 
         {/* 提示信息 */}
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger
-              asChild
-              className={cn('absolute top-4 right-4', 'text-neutral-300', 'size-6 cursor-pointer')}
-            >
-              <Button variant='link' size='icon'>
-                <IoInformationCircleOutline className='size-4' />
-              </Button>
-            </TooltipTrigger>
+        <Popover>
+          <PopoverTrigger
+            asChild
+            className={cn('absolute top-4 right-4', 'text-neutral-300', 'size-6 cursor-pointer')}
+          >
+            <Button variant='link' size='icon' onClick={(e) => e.stopPropagation()}>
+              <IoInformationCircleOutline className='size-4' />
+            </Button>
+          </PopoverTrigger>
 
-            <TooltipPortal container={contentRef.current}>
-              <TooltipContent collisionPadding={10} sticky='always'>
-                <p>
-                  按下空格键或者点击任意位置
-                  <br />
-                  可以快速关闭弹窗
-                </p>
-              </TooltipContent>
-            </TooltipPortal>
-          </Tooltip>
-        </TooltipProvider>
+          <PopoverContent
+            className='p-3 text-sm bg-background text-foreground'
+            collisionPadding={10}
+            sticky='always'
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p>
+              按下空格键或者点击任意位置
+              <br />
+              可以快速关闭弹窗
+            </p>
+          </PopoverContent>
+        </Popover>
 
         {/* 隐藏信息 */}
         <VisuallyHidden.Root>

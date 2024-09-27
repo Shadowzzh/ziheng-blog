@@ -15,6 +15,13 @@
   @apply md:my-1;
 }
 
+.prose a {
+  /* @apply text-red-400; */
+  @apply underline-offset-2;
+  @apply hover:!decoration-neutral-500 decoration-neutral-300;
+  @apply hover:dark:!decoration-neutral-300 dark:decoration-neutral-600;
+}
+
 .prose .anchor {
   @apply invisible absolute no-underline;
 

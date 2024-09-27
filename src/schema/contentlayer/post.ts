@@ -28,6 +28,11 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       description: 'Heading image'
     },
+    /** 文章封面 - 暗黑模式 */
+    imageDark: {
+      type: 'string',
+      description: 'Heading image dark'
+    },
     /** 是否使用视差效果 */
     parallax: {
       type: 'boolean',

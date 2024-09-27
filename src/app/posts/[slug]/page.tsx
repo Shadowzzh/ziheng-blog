@@ -93,6 +93,7 @@ export default function BlogDetail(props: BlogDetailProps) {
                 'transition-all duration-500 ease-in-out'
               )}
               src={post.image}
+              srcDark={post.imageDark}
               alt={post.title}
               width={736}
               height={256}
@@ -110,7 +111,7 @@ export default function BlogDetail(props: BlogDetailProps) {
               'prose-sm',
               'prose-neutral !max-w-none dark:prose-invert md:prose-base',
               'prose-headings:scroll-m-28',
-              'prose-headings:text-[#18181b] prose-headings:text-primary',
+              'prose-headings:text-[#171717] dark:prose-headings:text-primary',
               'prose-headings:relative'
             )}
           />

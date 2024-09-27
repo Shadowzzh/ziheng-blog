@@ -2,14 +2,13 @@
 
 import type { ImageProps } from 'next/image';
 import { dynamicBlurDataUrl } from '@/lib/image/dynamicBlurDataUrl';
+import type { ClientImageWrapProps } from './Client';
 import { ClientImageWrap } from './Client';
-import { omit } from '@/lib/utils'
+import { omit } from '@/lib/utils';
 
-export interface MdxImageProps extends ImageProps {
+export interface MdxImageProps extends ClientImageWrapProps {
   /** 是否使用模糊占位符 */
   blurPlaceholder?: boolean;
-  /** 是否使用视差效果 */
-  parallax?: boolean;
 }
 
 /**

@@ -12,6 +12,7 @@ import { routerMapping } from '@/config/routerMapping';
 import { LayoutHeaderExtra } from './HeaderExtra';
 import { ProgressBar } from './ProgressBar';
 import { LayoutBreadcrumb } from './Breadcrumb';
+import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -48,6 +49,8 @@ export default function RootLayout({
           <main className={cn()}>{children}</main>
         </ThemeProvider>
       </body>
+
+      <Toaster />
     </html>
   );
 }

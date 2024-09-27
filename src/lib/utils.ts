@@ -62,3 +62,28 @@ export const getOffsetTopElement = (
   }
   return actualTop;
 };
+
+/** 解析 html 属性 */
+export const parseHtmlAttributes = <T extends Record<string, string> = Record<string, string>>(
+  attributeString: string
+): T => {
+  // 去掉空格，去掉引号，去掉换行符;转成数组
+  const formattedAttrs = attributeString
+    .trim()
+    .replace(/['"{}]/g, '')
+    .split('\n');
+
+  const result = formattedAttrs.reduce(
+    (acc, attr) => {
+      const [key, value] = attr.trim().split('=');
+
+      if (key && value) {
+        acc[key] = value;
+      }
+      return acc;
+    },
+    {} as Record<string, string>
+  );
+
+  return result as T;
+};

@@ -1,36 +1,26 @@
-import type { Root } from 'remark-parse/lib';
+import type { HastRoot } from 'remark-rehype/lib';
 import { visit } from 'unist-util-visit';
+import { parseHtmlAttributes } from './utils';
 
 /**
  * 解析自定义的 <Image /> 组件
  * @param content
  * @returns
  */
-const replaceImageTag = (content: string): string => {
+const parseAttributesFromImage = (content: string): Record<string, string> | undefined => {
   const regex = /<Image\s+([^>]+?)\/>/;
   const match = content.match(regex);
 
-  if (!match) return content;
+  if (!match) return undefined;
+  const attributes = parseHtmlAttributes(match[1]);
 
-  const attributes = match[1].split('\n').reduce(
-    (acc, attr) => {
-      const [key, value] = attr.trim().split('=');
-      if (key && value) {
-        acc[key] = value.replace(/['"{}]/g, '');
-      }
-      return acc;
-    },
-    {} as Record<string, string>
-  );
-
-  const imgTag = String.raw`<img
-    src="${attributes.src || ''}"
-    alt="${attributes.alt || ''}"
-    ${attributes.width ? `width="${attributes.width}"` : ''}
-    ${attributes.height ? `height="${attributes.height}"` : ''}
-  />`;
-
-  return content.replace(match[0], imgTag);
+  // 只需要这些属性
+  return {
+    src: attributes.src,
+    alt: attributes.alt,
+    width: attributes.width,
+    height: attributes.height
+  };
 };
 
 /**
@@ -38,11 +28,29 @@ const replaceImageTag = (content: string): string => {
  * @returns
  */
 export const customImageHandler = () => {
-  return (tree: Root) => {
-    return visit(tree, 'text', (node) => {
-      if (typeof node.value === 'string' && node.value.includes('<Image')) {
-        node.value = replaceImageTag(node.value);
-      }
+  return (tree: HastRoot) => {
+    return visit(tree, 'element', (node) => {
+      const firstChild = node.children[0];
+
+      // 如果不是文本节点，直接返回
+      if (!firstChild || firstChild.type !== 'text') return;
+
+      // 如果不是自定义的 <Image /> 组件，直接返回
+      if (typeof firstChild.value !== 'string' || !firstChild.value.includes('<Image')) return;
+
+      const properties = parseAttributesFromImage(firstChild.value);
+
+      // 替换自定义的 <Image /> 组件
+      const newNode = {
+        ...node,
+        type: 'element' as const,
+        tagName: 'img',
+        properties,
+        children: []
+      };
+
+      // 将自定义的 <Image /> 组件替换为 <img /> 标签
+      node.children = [newNode];
     });
   };
 };

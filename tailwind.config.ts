@@ -152,6 +152,11 @@ const config: Config = {
           to: {
             transform: 'translate(calc(-50% - 0.5rem))'
           }
+        },
+        // 扭动，摆动
+        wiggle: {
+          '0%, 100%': { transform: 'rotate(-8deg)' },
+          '50%': { transform: 'rotate(8deg)' }
         }
       },
       transitionTimingFunction: {
@@ -166,6 +171,8 @@ const config: Config = {
         '5000': '5000ms'
       },
       animation: {
+        // 扭动，摆动
+        wiggle: 'wiggle 1s ease-in-out infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         spinLinear: 'spin calc(var(--speed) * 2) infinite linear',

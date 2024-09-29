@@ -109,12 +109,13 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
           className={cn(
             buttonVariants({ variant: 'outline', size: 'icon' }),
             'cursor-pointer',
-            'select-none'
+            'select-none',
+            'group'
           )}
           text='wx:zzh1746556951'
           showToast={true}
         >
-          <RiWechat2Line className='size-4' />
+          <RiWechat2Line className={cn('size-4', 'group-hover:animate-wiggle')} />
         </CopyText>
       </div>
     </div>

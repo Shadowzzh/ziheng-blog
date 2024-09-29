@@ -2,13 +2,13 @@ import { Suspense, type ComponentProps } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RiWechat2Line } from '@react-icons/all-files/ri/RiWechat2Line';
-import { HiOutlineMail } from '@react-icons/all-files/hi/HiOutlineMail';
 
 import { cn } from '@/utils';
 import Avatar from '@/assets/images/avatar.png';
 import { buttonVariants } from '@/components/ui/button';
 import lottiesGithub from '@/assets/lotties/github.json';
 import lottiesTwitter from '@/assets/lotties/twitter.json';
+import lottiesMail from '@/assets/lotties/mail.json';
 import { LottieWrap } from '@/components/LottieWrap';
 import { ClientOnly } from '@/components/ClientOnly';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -24,6 +24,13 @@ const socialMediaItems = [
     name: 'Twitter',
     url: 'https://x.com/zziheng_',
     json: lottiesTwitter
+  },
+  {
+    name: 'Mail',
+    url: 'mailto:shadow1746556951@gmail.com',
+    copyText: 'shadow1746556951@gmail.com',
+    loop: false,
+    json: lottiesMail
   }
 ];
 
@@ -78,29 +85,24 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
               <div className={cn(buttonVariants({ variant: 'outline', size: 'icon' }))}>
                 <Suspense>
                   <ClientOnly callback={<Skeleton className='size-5 rounded-sm' />}>
-                    <LottieWrap className='p-2' mode='hover' animationData={item.json} />
+                    {item.name === 'Mail' ? (
+                      <CopyText text={item.copyText} showToast={true}>
+                        <LottieWrap
+                          className='p-2'
+                          mode='hover'
+                          animationData={item.json}
+                          loop={item.loop}
+                        />
+                      </CopyText>
+                    ) : (
+                      <LottieWrap className='p-2' mode='hover' animationData={item.json} />
+                    )}
                   </ClientOnly>
                 </Suspense>
               </div>
             </Link>
           );
         })}
-
-        {/* 邮箱 */}
-        <Link
-          className={cn(
-            buttonVariants({ variant: 'outline', size: 'icon' }),
-            'cursor-pointer',
-            'select-none'
-          )}
-          href='mailto:shadow1746556951@gmail.com'
-          title='Google Email'
-          target='_blank'
-        >
-          <CopyText text='shadow1746556951@gmail.com' showToast={true}>
-            <HiOutlineMail className='size-4' />
-          </CopyText>
-        </Link>
 
         {/* 微信 */}
         <CopyText

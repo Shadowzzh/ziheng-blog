@@ -105,18 +105,20 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
         })}
 
         {/* 微信 */}
-        <CopyText
-          className={cn(
-            buttonVariants({ variant: 'outline', size: 'icon' }),
-            'cursor-pointer',
-            'select-none',
-            'group'
-          )}
-          text='wx:zzh1746556951'
-          showToast={true}
-        >
-          <RiWechat2Line className={cn('size-4', 'group-hover:animate-wiggle')} />
-        </CopyText>
+        <div title='微信'>
+          <CopyText
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'icon' }),
+              'cursor-pointer',
+              'select-none',
+              'group'
+            )}
+            text='wx:zzh1746556951'
+            showToast={true}
+          >
+            <RiWechat2Line className={cn('size-4', 'group-hover:animate-wiggle')} />
+          </CopyText>
+        </div>
       </div>
     </div>
   );

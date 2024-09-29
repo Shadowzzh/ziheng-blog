@@ -1,7 +1,6 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { IoMdClose } from '@react-icons/all-files/io/IoMdClose';
 import { MdRssFeed } from '@react-icons/all-files/md/MdRssFeed';
 import { RiMore2Fill } from '@react-icons/all-files/ri/RiMore2Fill';
@@ -11,7 +10,14 @@ import { navigationItems } from '@/config/nav';
 import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
 import { LinkWrap } from '@/components';
 import { Button } from '@/components/ui/button';
-import { MobileMenuOverlay } from './NavigationBarMobileAnimation';
+import {
+  MobileMenuContent,
+  MobileMenuLinkList,
+  MobileMenuLinkListItem,
+  MobileMenuList,
+  MobileMenuListItem,
+  MobileMenuOverlay
+} from '@/app/NavigationBarMobileAnimation';
 
 interface NavigationBarMobileProps {
   children?: React.ReactNode;
@@ -27,6 +33,7 @@ interface NavigationBarMobileProps {
  **/
 export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
   const [visible, setVisible] = useState(false);
+  console.log('🚀 ~ NavigationBarMobile ~ visible:', visible);
 
   const showMenu = () => {
     setVisible(true);
@@ -39,12 +46,22 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
   return (
     <>
       {/* menu - mobile */}
-      <div className={cn('md:hidden', 'flex items-center justify-center', props.className)}>
-        <RiMore2Fill
-          className={cn('sm:size-6 size-5 cursor-pointer', 'text-foreground')}
+      {createPortal(
+        <div
+          className={cn(
+            'fixed top-1 right-1',
+            'md:hidden',
+            'flex items-center justify-center',
+            'p-3',
+            visible ? 'z-10' : 'z-[11]',
+            props.className
+          )}
           onClick={showMenu}
-        />
-      </div>
+        >
+          <RiMore2Fill className={cn('sm:size-6 size-5 cursor-pointer', 'text-foreground')} />
+        </div>,
+        document.body
+      )}
 
       {/* mobile - 展开 */}
       {createPortal(
@@ -52,7 +69,7 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
           {/* 覆盖 overlay */}
           <MobileMenuOverlay
             className={cn(
-              'fixed z-50',
+              'fixed z-10',
               'backdrop-blur',
               'w-screen h-screen',
               'inset-0',
@@ -60,115 +77,53 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
               // 解决滚动问题
               'touch-none'
             )}
-            key='menu-overlay'
             visible={visible}
             onClick={hideMenu}
           />
 
-          <AnimatePresence>
-            {visible && (
-              <motion.div
-                className={cn(
-                  'fixed top-4 right-4 z-50',
-                  'text-card-foreground text-base',
-                  'max-w-60 w-full',
-                  'rounded-md shadow-lg p-6 overflow-hidden',
-                  'bg-popover'
-                )}
-                initial={{ opacity: 0, transform: 'scale(0.9)' }}
-                animate={{
-                  opacity: 1,
-                  transform: 'scale(1)',
-                  transition: {
-                    ease: [0.075, 0.82, 0.165, 1],
-                    duration: 0.7
-                  }
-                }}
-                exit={{
-                  opacity: 0,
-                  transform: 'scale(0.9)',
-                  transition: {
-                    ease: [0.075, 0.82, 0.165, 1],
-                    duration: 0.7
-                  }
-                }}
-              >
-                <div
-                  className={cn(
-                    'size-5 text-primary',
-                    'absolute top-5 right-5 z-20',
-                    'cursor-pointer'
-                  )}
-                >
-                  <IoMdClose onClick={hideMenu} />
-                </div>
-
-                <motion.ul
-                  className={cn('space-y-6')}
-                  initial='hidden'
-                  animate='visible'
-                  exit='hidden'
-                  key={'test'}
-                  variants={{
-                    visible: {
-                      transition: {
-                        when: 'beforeChildren',
-                        staggerChildren: 0.1
-                      }
-                    },
-                    hidden: {
-                      transition: {
-                        staggerChildren: 0.05
-                      }
-                    }
-                  }}
-                >
-                  {navigationItems.map((item) => (
-                    <motion.li
-                      key={item.href}
-                      variants={{
-                        visible: {
-                          opacity: 1,
-                          transform: 'translateX(12px)',
-                          transition: {
-                            ease: [0.075, 0.82, 0.165, 1],
-                            duration: 1
-                          }
-                        },
-                        hidden: {
-                          opacity: 0,
-                          transform: 'translateX(-12px)',
-                          transition: {
-                            ease: [0.075, 0.82, 0.165, 1],
-                            duration: 1
-                          }
-                        }
-                      }}
-                    >
-                      <LinkWrap href={item.href} onClick={hideMenu}>
-                        {item.text}
-                      </LinkWrap>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-
-                <div
-                  className={cn(
-                    'flex',
-                    'mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10'
-                  )}
-                >
-                  <ModeToggle />
-
-                  <Button size={'icon'} variant={'ghost'}>
-                    <LinkWrap href='/feed.xml'>
-                      <MdRssFeed className='size-5' />
-                    </LinkWrap>
-                  </Button>
-                </div>
-              </motion.div>
+          <MobileMenuContent
+            className={cn(
+              'fixed top-4 right-4 z-10',
+              'text-card-foreground text-base',
+              'max-w-60 w-full',
+              'rounded-md shadow-lg p-6 overflow-hidden',
+              'bg-popover',
+              'origin-top-right'
             )}
-          </AnimatePresence>
+            visible={visible}
+          >
+            <div
+              className={cn('size-5 text-primary', 'absolute top-5 right-5 z-20', 'cursor-pointer')}
+            >
+              <IoMdClose onClick={hideMenu} />
+            </div>
+
+            <MobileMenuList className={cn('space-y-6')}>
+              {navigationItems.map((item) => (
+                <MobileMenuListItem key={item.href} id={item.href}>
+                  <LinkWrap href={item.href} onClick={hideMenu}>
+                    {item.text}
+                  </LinkWrap>
+                </MobileMenuListItem>
+              ))}
+            </MobileMenuList>
+
+            <MobileMenuLinkList
+              className={cn('flex', 'mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10')}
+            >
+              <MobileMenuLinkListItem>
+                <ModeToggle />
+              </MobileMenuLinkListItem>
+
+              <MobileMenuLinkListItem>
+                <Button size={'icon'} variant={'ghost'}>
+                  <LinkWrap href='/feed.xml'>
+                    <MdRssFeed className='size-5' />
+                  </LinkWrap>
+                </Button>
+              </MobileMenuLinkListItem>
+            </MobileMenuLinkList>
+          </MobileMenuContent>
         </>,
         document.body
       )}

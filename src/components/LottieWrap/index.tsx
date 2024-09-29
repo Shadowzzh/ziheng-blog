@@ -8,13 +8,15 @@ import { cn } from '@/utils';
 
 interface LottieWrapProps extends ComponentProps<typeof Lottie> {
   mode: 'hover' | 'click';
+  loop?: boolean;
 }
 
 export const LottieWrap = (props: LottieWrapProps) => {
-  const { animationData, mode } = props;
+  const { animationData, mode, loop = true } = props;
   const { View, play, stop, setDirection } = useLottie({
     animationData,
-    autoplay: false
+    autoplay: false,
+    loop
   });
 
   const onMouseEnter = () => {

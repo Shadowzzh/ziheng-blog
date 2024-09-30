@@ -1,8 +1,8 @@
 'use client';
 
-import type { NestedRouterOption } from '@/config/routerMapping';
-
 import React from 'react';
+
+import type { NestedRouterOption } from '@/config/routerMapping';
 import { cn } from '@/utils';
 import {
   Breadcrumb,
@@ -14,11 +14,31 @@ import {
 } from '@/components/ui/breadcrumb';
 import { LinkWrap } from '@/components';
 import { useBreadcrumb } from '@/hooks/useBreadcrumb';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 export interface LayoutBreadcrumbProps {
   className?: string;
   routerMapping: Map<string, NestedRouterOption>;
 }
+
+/** 显示面包屑信息 */
+const BreadcrumbInfo = (props: { children?: React.ReactNode; content: React.ReactNode }) => {
+  const { children, content } = props;
+
+  return (
+    <Popover>
+      <PopoverTrigger asChild>{children}</PopoverTrigger>
+      <PopoverContent
+        className='py-2 px-3 text-sm bg-background text-foreground'
+        collisionPadding={10}
+        sticky='always'
+        onClick={(e) => e.stopPropagation()}
+      >
+        {content}
+      </PopoverContent>
+    </Popover>
+  );
+};
 
 export const LayoutBreadcrumb = (props: LayoutBreadcrumbProps) => {
   const { className, routerMapping } = props;
@@ -60,9 +80,11 @@ export const LayoutBreadcrumb = (props: LayoutBreadcrumbProps) => {
 
                 {isLast ? (
                   // 最后一项不可点击
-                  <BreadcrumbItem className={cn(' truncate')}>
-                    <BreadcrumbPage className={cn(' truncate')}>{text}</BreadcrumbPage>
-                  </BreadcrumbItem>
+                  <BreadcrumbInfo content={text}>
+                    <BreadcrumbItem className={cn(' truncate')}>
+                      <BreadcrumbPage className={cn(' truncate')}>{text}</BreadcrumbPage>
+                    </BreadcrumbItem>
+                  </BreadcrumbInfo>
                 ) : (
                   <BreadcrumbItem className={cn('flex-shrink-0')}>
                     {/* 其他项可点击跳转 */}

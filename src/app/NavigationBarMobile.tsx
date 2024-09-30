@@ -1,6 +1,9 @@
 'use client';
+
 import { createPortal } from 'react-dom';
+import type React from 'react';
 import { useState } from 'react';
+
 import { IoMdClose } from '@react-icons/all-files/io/IoMdClose';
 import { MdRssFeed } from '@react-icons/all-files/md/MdRssFeed';
 import { RiMore2Fill } from '@react-icons/all-files/ri/RiMore2Fill';
@@ -18,12 +21,25 @@ import {
   MenuItem,
   Overlay
 } from '@/app/NavigationBarMobileAnimation';
+import { MobileOnly } from '@/components/PlatformOnly';
+import { ClientOnly } from '@/components/ClientOnly';
 
-interface NavigationBarMobileProps {
+export interface NavigationBarMobileProps {
   children?: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
 }
+
+/** 只在移动端显示 */
+export const NavigationBarMobileOnly = (props: NavigationBarMobileProps) => {
+  return (
+    <ClientOnly>
+      <MobileOnly>
+        <NavigationBarMobile {...props} />
+      </MobileOnly>
+    </ClientOnly>
+  );
+};
 
 /**
  * MobileMenus
@@ -48,7 +64,7 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
       {createPortal(
         <div
           className={cn(
-            'fixed top-[0.15rem] right-[0.15rem]',
+            'fixed sm:top-2 sm:right-2 top-[0.15rem] right-[0.15rem]  cursor-pointer',
             'md:hidden',
             'flex items-center justify-center',
             'p-3',
@@ -57,7 +73,7 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
           )}
           onClick={showMenu}
         >
-          <RiMore2Fill className={cn('sm:size-6 size-5 cursor-pointer', 'text-foreground')} />
+          <RiMore2Fill className={cn('sm:size-6 size-5', 'text-foreground')} />
         </div>,
         document.body
       )}

@@ -6,12 +6,10 @@ import { cn } from '@/utils';
 import { NavigationBar } from '@/app/NavigationBar';
 import { Skeleton } from '@/components/ui/skeleton';
 
+/** 手机端的菜单  */
 const LoaderNavigationBarMobile = dynamic(
-  () => import('@/app/NavigationBarMobile').then((mod) => mod.NavigationBarMobile),
-  {
-    ssr: false,
-    loading: () => <Skeleton className='w-3 h-4  rounded-sm' />
-  }
+  () => import('@/app/NavigationBarMobile').then((mod) => mod.NavigationBarMobileOnly),
+  { ssr: false, loading: () => <Skeleton className='w-3 h-4  rounded-sm' /> }
 );
 
 /** Layout Header */
@@ -36,6 +34,7 @@ export const LayoutHeader = (props: ComponentProps<'header'>) => {
         </div>
 
         <NavigationBar />
+        {/* TODO 如何自在移动端的时候采取请求 */}
         <LoaderNavigationBarMobile />
       </div>
     </header>

@@ -21,6 +21,7 @@ const MobileOnlyTOC = dynamic(() => import('@/components/TOC').then((mod) => mod
   )
 });
 
+/** 显示隐藏 TOC */
 export const ToggleToc = () => {
   const [show, setShow] = useState(false);
   const layoutStoreActions = useLayoutStore((state) => state.actions);

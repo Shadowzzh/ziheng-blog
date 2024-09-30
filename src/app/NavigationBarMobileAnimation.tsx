@@ -1,3 +1,5 @@
+'use client';
+
 import { BEZIER } from '@/config/animation';
 import { AnimatePresence, motion } from 'framer-motion';
 

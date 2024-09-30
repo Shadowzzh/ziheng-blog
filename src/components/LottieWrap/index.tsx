@@ -1,18 +1,22 @@
 'use client';
-import type { ComponentProps } from 'react';
+import type { HTMLProps } from 'react';
+import { useState, type ComponentProps } from 'react';
 import type Lottie from 'lottie-react';
 
 import { useLottie } from 'lottie-react';
 
 import { cn } from '@/utils';
 
-interface LottieWrapProps extends ComponentProps<typeof Lottie> {
+interface LottieWrapProps extends ComponentProps<typeof Lottie>, HTMLProps<HTMLDivElement> {
   mode: 'hover' | 'click';
   loop?: boolean;
 }
 
 export const LottieWrap = (props: LottieWrapProps) => {
   const { animationData, mode, loop = true } = props;
+
+  const [state, setState] = useState<'start' | 'end'>('end');
+
   const { View, play, stop, setDirection } = useLottie({
     animationData,
     autoplay: false,
@@ -31,10 +35,19 @@ export const LottieWrap = (props: LottieWrapProps) => {
     stop();
   };
 
-  const onClick = () => {
+  const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    props.onClick?.(e);
     if (mode !== 'click') return;
-    play();
-    setDirection(1);
+
+    if (state === 'start') {
+      setDirection(-1);
+      play();
+      setState('end');
+    } else {
+      setDirection(1);
+      play();
+      setState('start');
+    }
   };
 
   return (

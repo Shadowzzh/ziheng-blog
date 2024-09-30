@@ -2,12 +2,12 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import { IoCloseSharp } from '@react-icons/all-files/io5/IoCloseSharp';
-import { CgMenuLeft } from '@react-icons/all-files/cg/CgMenuLeft';
+import MenuV4 from '@/assets/lotties/menu-v4.json';
 
 import { useLayoutStore } from '@/stores';
 import { cn } from '@/utils';
 import { Skeleton } from '@/components/ui/skeleton';
+import { LottieWrap } from '@/components/LottieWrap';
 
 const MobileOnlyTOC = dynamic(() => import('@/components/TOC').then((mod) => mod.MobileOnlyTOC), {
   ssr: false,
@@ -26,6 +26,7 @@ export const ToggleToc = () => {
   const [show, setShow] = useState(false);
   const layoutStoreActions = useLayoutStore((state) => state.actions);
 
+  /** 显示隐藏 TOC */
   const onToggle = () => {
     if (show) {
       setShow(false);
@@ -45,17 +46,20 @@ export const ToggleToc = () => {
   return (
     <div
       className={cn(
-        'text-muted-foreground mr-3',
+        'text-muted-foreground mr-1',
         'block lg:hidden',
         'cursor-pointer',
         'flex items-center justify-center'
       )}
     >
-      {show ? (
-        <IoCloseSharp className='md:size-5 size-4 ' aria-label='隐藏目录' onClick={onToggle} />
-      ) : (
-        <CgMenuLeft className='md:size-5 size-4 ' aria-label='显示目录' onClick={onToggle} />
-      )}
+      <LottieWrap
+        aria-label='显示 / 隐藏目录'
+        className='md:size-7 size-6'
+        mode='click'
+        loop={false}
+        animationData={MenuV4}
+        onClick={onToggle}
+      />
     </div>
   );
 };

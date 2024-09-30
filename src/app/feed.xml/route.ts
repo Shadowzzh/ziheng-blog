@@ -1,11 +1,14 @@
+import type { FeedOptions } from 'feed';
+import { Feed } from 'feed';
+import { allPosts } from 'contentlayer/generated';
+
 import { AUTHOR, WEB_SITE_URL } from '@/config/name';
 import { mdxToHtml } from '@/lib/mdxToHtml';
-import { allPosts } from 'contentlayer/generated';
-import { Feed } from 'feed';
 
-const feedOptions = {
+const feedOptions: FeedOptions = {
   title: 'Hi,Zane',
-  description: '我对产品、技术和运动充满热情，运用编码技能实现自己的想法。',
+  description:
+    '我对产品、技术和运动充满热情，运用编码技能实现自己的想法。feedId:57428565962095616+userId:41448350114993152',
   id: WEB_SITE_URL,
   link: WEB_SITE_URL,
   language: 'zh-CN',
@@ -23,10 +26,6 @@ const feedOptions = {
     name: AUTHOR.NAME,
     email: AUTHOR.EMAIL,
     link: AUTHOR.TWITTER
-  },
-  follow_challenge: {
-    feed_id: '57428565962095616',
-    user_id: '41448350114993152'
   }
 };
 

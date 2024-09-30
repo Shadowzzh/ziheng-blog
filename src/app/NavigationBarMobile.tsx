@@ -11,12 +11,12 @@ import { ModeToggle } from '@/components/ThemeProvider/ThemeToggle';
 import { LinkWrap } from '@/components';
 import { Button } from '@/components/ui/button';
 import {
-  MobileMenuContent,
-  MobileMenuLinkList,
-  MobileMenuLinkListItem,
-  MobileMenuList,
-  MobileMenuListItem,
-  MobileMenuOverlay
+  MenuContainer,
+  LinkGroup,
+  LinkItem,
+  MenuGroup,
+  MenuItem,
+  Overlay
 } from '@/app/NavigationBarMobileAnimation';
 
 interface NavigationBarMobileProps {
@@ -66,7 +66,7 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
       {createPortal(
         <>
           {/* 覆盖 overlay */}
-          <MobileMenuOverlay
+          <Overlay
             className={cn(
               'fixed z-10',
               'backdrop-blur',
@@ -80,11 +80,11 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
             onClick={hideMenu}
           />
 
-          <MobileMenuContent
+          <MenuContainer
             className={cn(
               'fixed top-4 right-4 z-10',
               'text-card-foreground text-base',
-              'max-w-60 w-full',
+              'w-52',
               'rounded-md shadow-lg p-6 overflow-hidden',
               'bg-popover',
               'origin-top-right'
@@ -97,32 +97,32 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
               <IoMdClose onClick={hideMenu} />
             </div>
 
-            <MobileMenuList className={cn('space-y-6')}>
+            <MenuGroup className={cn('space-y-6')}>
               {navigationItems.map((item) => (
-                <MobileMenuListItem key={item.href} id={item.href}>
+                <MenuItem key={item.href} id={item.href}>
                   <LinkWrap href={item.href} onClick={hideMenu}>
                     {item.text}
                   </LinkWrap>
-                </MobileMenuListItem>
+                </MenuItem>
               ))}
-            </MobileMenuList>
+            </MenuGroup>
 
-            <MobileMenuLinkList
+            <LinkGroup
               className={cn('flex', 'mt-6 pt-6 border-t border-slate-200 dark:border-slate-200/10')}
             >
-              <MobileMenuLinkListItem>
+              <LinkItem>
                 <ModeToggle />
-              </MobileMenuLinkListItem>
+              </LinkItem>
 
-              <MobileMenuLinkListItem>
+              <LinkItem>
                 <Button size={'icon'} variant={'ghost'}>
                   <LinkWrap href='/feed.xml'>
                     <MdRssFeed className='size-5' />
                   </LinkWrap>
                 </Button>
-              </MobileMenuLinkListItem>
-            </MobileMenuLinkList>
-          </MobileMenuContent>
+              </LinkItem>
+            </LinkGroup>
+          </MenuContainer>
         </>,
         document.body
       )}

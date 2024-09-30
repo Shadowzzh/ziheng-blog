@@ -1,4 +1,9 @@
+import { BEZIER } from '@/config/animation';
 import { AnimatePresence, motion } from 'framer-motion';
+
+/**
+ * Motion 状态动画
+ */
 
 interface MobileMenuOverlayProps extends React.HTMLProps<HTMLDivElement> {
   /** 是否显示 */
@@ -6,8 +11,13 @@ interface MobileMenuOverlayProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 /** 移动端菜单动画 */
-export const MobileMenuOverlay = (params: MobileMenuOverlayProps) => {
+export const Overlay = (params: MobileMenuOverlayProps) => {
   const { visible, className, onClick } = params;
+
+  const transitionConfig = {
+    ease: BEZIER.OUT_CIRC,
+    duration: 1
+  };
 
   return (
     <AnimatePresence>
@@ -18,9 +28,9 @@ export const MobileMenuOverlay = (params: MobileMenuOverlayProps) => {
           onClick={onClick}
           animate={{
             opacity: 1,
-            transition: { ease: 'easeInOut', duration: 0.3 }
+            transition: transitionConfig
           }}
-          exit={{ opacity: 0, transition: { ease: 'easeInOut', duration: 0.3 } }}
+          exit={{ opacity: 0, transition: transitionConfig }}
         />
       )}
     </AnimatePresence>
@@ -33,12 +43,11 @@ interface MobileMenuContentProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 /** 移动端菜单内容 */
-export const MobileMenuContent = (params: MobileMenuContentProps) => {
+export const MenuContainer = (params: MobileMenuContentProps) => {
   const { visible, key, className, children } = params;
 
   const closeAnimation = {
     opacity: 0,
-
     transform: 'scale(0.8)'
   };
 
@@ -48,7 +57,7 @@ export const MobileMenuContent = (params: MobileMenuContentProps) => {
   };
 
   const transitionConfig = {
-    ease: [0.075, 0.82, 0.165, 1],
+    ease: BEZIER.OUT_CIRC,
     duration: 0.7
   };
 
@@ -78,7 +87,7 @@ export const MobileMenuContent = (params: MobileMenuContentProps) => {
 interface MobileMenuListProps extends React.HTMLProps<HTMLUListElement> {}
 
 /** 移动端菜单列表 */
-export const MobileMenuList = (params: MobileMenuListProps) => {
+export const MenuGroup = (params: MobileMenuListProps) => {
   const { className, children } = params;
 
   return (
@@ -102,12 +111,12 @@ export const MobileMenuList = (params: MobileMenuListProps) => {
 };
 
 /** 移动端菜单列表项 */
-export const MobileMenuListItem = (params: MobileMenuListProps) => {
+export const MenuItem = (params: MobileMenuListProps) => {
   const { id, className, children } = params;
 
   const transitionConfig = {
-    ease: [0.165, 0.84, 0.44, 1.0],
-    duration: 0.5
+    ease: BEZIER.OUT_CIRC,
+    duration: 0.7
   };
 
   const x = 12;
@@ -118,7 +127,7 @@ export const MobileMenuListItem = (params: MobileMenuListProps) => {
       className={className}
       variants={{
         visible: {
-          transform: 'translateX(0)',
+          transform: 'translateX(0px)',
           opacity: 1,
           transition: transitionConfig
         },
@@ -135,7 +144,7 @@ export const MobileMenuListItem = (params: MobileMenuListProps) => {
 };
 
 /** 移动端菜单链接列表 */
-export const MobileMenuLinkList = (params: MobileMenuListProps) => {
+export const LinkGroup = (params: MobileMenuListProps) => {
   const { id, className, children } = params;
 
   return (
@@ -160,10 +169,15 @@ export const MobileMenuLinkList = (params: MobileMenuListProps) => {
 };
 
 /** 移动端菜单链接列表项 */
-export const MobileMenuLinkListItem = (params: MobileMenuListProps) => {
+export const LinkItem = (params: MobileMenuListProps) => {
   const { id, className, children } = params;
 
   const x = 16;
+
+  const transitionConfig = {
+    ease: BEZIER.OUT_CIRC,
+    duration: 1
+  };
 
   return (
     <motion.div
@@ -171,20 +185,14 @@ export const MobileMenuLinkListItem = (params: MobileMenuListProps) => {
       className={className}
       variants={{
         visible: {
-          transform: 'translateX(0)',
+          transform: 'translateX(0px)',
           opacity: 1,
-          transition: {
-            ease: [0.165, 0.84, 0.44, 1.0],
-            duration: 1
-          }
+          transition: transitionConfig
         },
         exit: {
           transform: `translateX(${x}px)`,
           opacity: 0,
-          transition: {
-            ease: [0.165, 0.84, 0.44, 1.0],
-            duration: 1
-          }
+          transition: transitionConfig
         }
       }}
     >

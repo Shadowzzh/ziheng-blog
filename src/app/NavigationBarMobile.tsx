@@ -33,7 +33,6 @@ interface NavigationBarMobileProps {
  **/
 export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
   const [visible, setVisible] = useState(false);
-  console.log('🚀 ~ NavigationBarMobile ~ visible:', visible);
 
   const showMenu = () => {
     setVisible(true);
@@ -49,7 +48,7 @@ export const NavigationBarMobile = (props: NavigationBarMobileProps) => {
       {createPortal(
         <div
           className={cn(
-            'fixed top-1 right-1',
+            'fixed top-[0.15rem] right-[0.15rem]',
             'md:hidden',
             'flex items-center justify-center',
             'p-3',

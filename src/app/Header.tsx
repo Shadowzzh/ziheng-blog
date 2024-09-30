@@ -1,9 +1,18 @@
 import type { ComponentProps } from 'react';
+import dynamic from 'next/dynamic';
 
 import { Logo } from '@/components/Logo';
 import { cn } from '@/utils';
 import { NavigationBar } from '@/app/NavigationBar';
-import { NavigationBarMobile } from '@/app/NavigationBarMobile';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const LoaderNavigationBarMobile = dynamic(
+  () => import('@/app/NavigationBarMobile').then((mod) => mod.NavigationBarMobile),
+  {
+    ssr: false,
+    loading: () => <Skeleton className='w-3 h-4  rounded-sm' />
+  }
+);
 
 /** Layout Header */
 export const LayoutHeader = (props: ComponentProps<'header'>) => {
@@ -27,7 +36,7 @@ export const LayoutHeader = (props: ComponentProps<'header'>) => {
         </div>
 
         <NavigationBar />
-        <NavigationBarMobile />
+        <LoaderNavigationBarMobile />
       </div>
     </header>
   );

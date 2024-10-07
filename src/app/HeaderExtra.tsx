@@ -11,7 +11,6 @@ export const LayoutHeaderExtra: React.FC<{ Breadcrumb: ReactNode }> = (props) =>
   const { Breadcrumb } = props;
 
   const TocMobileToggle = useLayoutStore((state) => state.TocMobileToggle);
-  const TocMobile = useLayoutStore((state) => state.TocMobile);
 
   const nestedPathList = useBreadcrumb();
 
@@ -35,23 +34,10 @@ export const LayoutHeaderExtra: React.FC<{ Breadcrumb: ReactNode }> = (props) =>
               'overflow-hidden'
             )}
           >
-            {TocMobileToggle && <div className='block lg:hidden'>{TocMobileToggle}</div>}
-            {Breadcrumb}
-          </div>
-        </div>
-      )}
-
-      {/* 目录 */}
-      {TocMobile && (
-        <div className={cn('w-screen', 'sm:px-8 pl-4', 'shadow-sm dark:shadow-md')}>
-          <div
-            className={cn(
-              'm-auto flex-auto pr-4',
-              'max-h-[30vh] py-3',
-              'overflow-y-auto overflow-x-hidden'
+            {TocMobileToggle && (
+              <div className={cn('block lg:hidden', 'p-2 m-[-0.5rem] mr-1')}>{TocMobileToggle}</div>
             )}
-          >
-            {TocMobile}
+            {Breadcrumb}
           </div>
         </div>
       )}

@@ -13,6 +13,7 @@ import { LayoutHeaderExtra } from './HeaderExtra';
 import { ProgressBar } from './ProgressBar';
 import { LayoutBreadcrumb } from './Breadcrumb';
 import { Toaster } from '@/components/ui/sonner';
+import { LayoutHeaderToc } from './HeaderToc';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -36,15 +37,17 @@ export default function RootLayout({
             id='layout-header'
             className={cn(
               'w-screen',
-              'backdrop-blur-md',
+              'backdrop-blur',
               'bg-background/80',
-              'sticky z-10 top-0',
+              'sticky z-[9] top-0',
               'touch-none'
             )}
           >
             <LayoutHeader className={cn('sm:h-16 h-12')} />
             <LayoutHeaderExtra Breadcrumb={<LayoutBreadcrumb routerMapping={routerMapping} />} />
           </div>
+
+          <LayoutHeaderToc />
 
           <main className={cn()}>{children}</main>
         </ThemeProvider>

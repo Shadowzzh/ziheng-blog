@@ -46,7 +46,7 @@ export const ToggleToc = () => {
   return (
     <div
       className={cn(
-        'text-muted-foreground mr-1',
+        'text-muted-foreground',
         'block lg:hidden',
         'cursor-pointer',
         'flex items-center justify-center'

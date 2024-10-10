@@ -65,7 +65,9 @@ export const UserBaseInfo = async (props: ComponentProps<'div'>) => {
       </div>
       <div className={cn('space-y-3 md:pt-8 pt-6')}>
         {/* <p className={'text-lg'}>张子恒</p> */}
-        <p>我对产品、技术、运动等方面充满兴趣，乐于运用代码技能来实现自己的想法。</p>
+        <p>
+          我对产品、技术、运动等方面充满兴趣。我喜欢构建一些工具提高效率和体验，让自己变得更“懒惰”。
+        </p>
         <p>热爱徒步和大自然，喜欢运动健身。</p>
         <p>目前在杭州从事前端开发工作。</p>
         <p>欢迎联系我，一起交流技术、产品、运动健身等方面的话题。</p>

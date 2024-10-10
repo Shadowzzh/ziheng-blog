@@ -83,6 +83,7 @@ const config: Config = {
         '8xl': '90rem'
       },
       width: {
+        '5xl': '64rem',
         '8xl': '90rem'
       },
       boxShadow: {

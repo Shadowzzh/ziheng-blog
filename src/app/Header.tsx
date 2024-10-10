@@ -35,7 +35,9 @@ export const LayoutHeader = (props: ComponentProps<'header'>) => {
 
         <NavigationBar />
         {/* TODO 如何自在移动端的时候采取请求 */}
-        <LoaderNavigationBarMobile />
+        <div className='sm:hidden'>
+          <LoaderNavigationBarMobile />
+        </div>
       </div>
     </header>
   );

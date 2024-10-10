@@ -155,8 +155,8 @@ const config: Config = {
         },
         // 扭动，摆动
         wiggle: {
-          '0%, 100%': { transform: 'rotate(-8deg)' },
-          '50%': { transform: 'rotate(8deg)' }
+          '0%, 100%': { transform: 'rotate(-12deg)' },
+          '50%': { transform: 'rotate(12deg)' }
         }
       },
       transitionTimingFunction: {

@@ -2,9 +2,12 @@
 
 import React from 'react';
 
-import { ClipboardIcon, CheckIcon } from '@radix-ui/react-icons';
 import { cn, copyText } from '@/utils';
 import { Button } from '@/components/ui/button';
+import lottiesCheckmark from '@/assets/lotties/checkmark.json';
+import lottiesCopy from '@/assets/lotties/copy.json';
+import { LottieWrap } from '@/components/LottieWrap';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface MdxFigureProps extends React.HTMLProps<HTMLPreElement> {}
 
@@ -56,9 +59,40 @@ export const MdxFigure = (props: MdxFigureProps) => {
         variant='link'
         onClick={copyToClipboard}
       >
-        {copied ? <CheckIcon className='size-4' /> : <ClipboardIcon className='size-4' />}
+        <AnimatePresence mode='popLayout'>
+          {copied ? (
+            <motion.div
+              key='copied'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: 'easeInOut', duration: 0.4 }}
+            >
+              <LottieWrap
+                className='md:size-5 size-4 animate-fade-in-300'
+                animationData={lottiesCheckmark}
+                speed={2}
+                loop={false}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key='copy'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ ease: 'easeInOut', duration: 0.4 }}
+            >
+              <LottieWrap
+                className='md:size-5 size-4'
+                animationData={lottiesCopy}
+                mode='hover'
+                loop={false}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Button>
-
       <figure {...args} ref={preDom}>
         {children}
       </figure>

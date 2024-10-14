@@ -1,0 +1,135 @@
+---
+title: 检测 PDF 文件的加载状态
+date: 2024-10-14
+description: 使用 Fetch API 和 Blob 对象实现 React PDF 异步加载方案。
+image: /blog/detection-pdf/pdf-show.webp
+parallax: false
+---
+
+如何知道 iframe 中的 PDF 有没有加载完成。
+
+## 正常情况在网页中显示一个 PDF
+
+```jsx
+<object data='***.pdf' type='application/pdf'>
+  <p>您的浏览器不支持嵌入式 PDF</p>
+</object>
+```
+
+但是这样有个问题，你没办法在代码中知道 PDF 是否加载完成。<br />比如，一个 10MB 大小的 PDF 文件可能需要几秒钟才能加载完并显示。
+
+## 使用 Fetch 请求 PDF 后再加载
+
+为了更好地控制加载过程，我们可以使用 `fetch` 来请求 PDF，并将它分成几个步骤：
+
+1. 请求 PDF 文件
+2. 将请求到的文件转换为 Blob 对象
+3. 利用 `createObjectURL` 方法创建临时 URL
+4. 使用临时 URL 来展示 PDF
+
+通过这种方式，你可以在请求的第一步中就知道 PDF 何时开始加载，并在 Blob 创建完成后，确定加载是否结束。这样更灵活地控制了整个过程。
+
+[standbox:usePDFUrl](https://codesandbox.io/p/sandbox/usepdfurl-vtyvhf)
+
+- 代码片段
+
+  ```tsx
+  import { useCallback, useEffect, useRef, useState } from 'react';
+
+  interface PdfRenderProps {
+    // PDF 的地址
+    url: string;
+    // PDF 参数
+    params: Record<string, any>;
+  }
+
+  /** 序列化对象 */
+  const serialization = (obj: Record<string, any>) => {
+    // 创建一个 URLSearchParams 实例
+    const params = new URLSearchParams();
+
+    // 遍历对象,将每个键值对添加到 params
+    for (let key in obj) {
+      params.append(key, obj[key]);
+    }
+
+    // 将 params 转换为字符串
+    const queryString = params.toString();
+
+    return queryString;
+  };
+
+  /**
+   * 渲染 pdf 文件
+   * @param {string} url - pdf 文件地址
+   * @param {object} params - pdf 参数
+   */
+  export const usePdfUrl = (props: PdfRenderProps) => {
+    const { url, params } = props;
+
+    /** 本地 pdf 文件地址 */
+    const [pdfLocalUrl, setPdfLocalUrl] = useState<string | null>(null);
+    /** 是否加载中 */
+    const [loading, setLoading] = useState(false);
+    /** 取消请求 */
+    const abortController = useRef<AbortController | null>(null);
+
+    /** 设置 url 的参数 */
+    const wrapperUrl = pdfLocalUrl ? `${pdfLocalUrl}#${serialization(params)}` : null;
+
+    const fetchPaf = useCallback(async (requestUrl: string) => {
+      // 则取消上次请求
+      if (abortController.current) {
+        abortController.current?.abort();
+      }
+
+      setLoading(true);
+
+      // 创建 AbortController 实例
+      abortController.current = new AbortController();
+      const signal = abortController.current.signal;
+
+      try {
+        const response = await fetch(requestUrl, { signal });
+        abortController.current = null;
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // 转换成 Blob
+        const blob = await response.blob();
+        const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+
+        // 创建 URL
+        const localUrl = URL.createObjectURL(pdfBlob);
+        setPdfLocalUrl(localUrl);
+      } catch (error) {
+        console.error(error);
+      }
+      setLoading(false);
+    }, []);
+
+    useEffect(() => {
+      if (url) {
+        fetchPaf(url);
+      }
+
+      return () => {
+        abortController.current && abortController.current.abort();
+        abortController.current = null;
+      };
+    }, [fetchPaf, url]);
+
+    return {
+      /** 本地 pdf 文件地址 */
+      pdfLocalUrl: wrapperUrl,
+      /** 是否加载中 */
+      loading
+    };
+  };
+  ```
+
+### 总结
+
+这种方法让你能够更精准地控制 PDF 的加载流程。通过 `fetch` 请求，你可以知道文件的加载进度，从而更好地管理用户体验。

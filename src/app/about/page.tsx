@@ -37,29 +37,28 @@ export default async function About() {
   return (
     <>
       <div className={cn('max-w-[550px]', 'sm:px-0 px-4', 'm-auto')}>
-        <TypewriterEffect
-          words={words}
-          className={cn('md:!text-3xl !text-2xl', ' md:my-10 my-5')}
-        />
+        <TypewriterEffect words={words} className={cn('md:!text-3xl !text-xl', ' md:my-10 my-5')} />
       </div>
 
-      <div
-        className={cn(
-          'm-auto',
-          'w-[550px] h-60',
-          'relative',
-          'flex flex-col items-center justify-center'
-        )}
-      >
-        <ImageWrap
-          className={cn('rounded-sm m-auto', 'object-cover')}
-          src='/about/coding.gif'
-          alt='coding'
-          fill
-          sizes='100vw'
-          blurPlaceholder
-          priority
-        />
+      <div className=' px-5'>
+        <div
+          className={cn(
+            'm-auto',
+            'md:w-[550px] w-full md:h-60 h-48',
+            'relative',
+            'flex flex-col items-center justify-center'
+          )}
+        >
+          <ImageWrap
+            className={cn('rounded-sm m-auto', 'object-cover')}
+            src='/about/coding.gif'
+            alt='coding'
+            fill
+            sizes='100vw'
+            blurPlaceholder
+            priority
+          />
+        </div>
       </div>
 
       <div className={cn('max-w-[550px]', 'sm:px-0 px-4', 'm-auto')}>

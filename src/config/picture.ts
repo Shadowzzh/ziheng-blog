@@ -19,8 +19,8 @@ export const metadataConfig: Metadata = {
   }
 };
 
-/** 图片信息 */
-interface Picture {
+/** 图片原数据 */
+export interface PictureMetadata {
   /** 图片路径 */
   src: string;
   /** 图片分类 */
@@ -33,11 +33,21 @@ interface Picture {
   params?: Record<string, string>;
 }
 
+/** 图片信息  */
+export type PictureRich = PictureMetadata & {
+  metadata: SharpMetadata;
+  photoSpan: number;
+  width: number;
+  height: number;
+  widthHeightRatio: number;
+};
+
+/** 相册配置 */
 interface GalleryConfig {
   title: string;
   description: string;
   data: {
-    [key: string]: Picture[];
+    [key: string]: PictureMetadata[];
   };
 }
 
@@ -282,15 +292,15 @@ export const getAllPicture = async () => {
     if (!metadata || !metadata.width || !metadata.height) return undefined;
 
     // 计算图片的宽高比
-    const widthHeightRatio = (() => {
+    const [heightWidthRatio, widthHeightRatio] = (() => {
       if (metadata.width && metadata.height) {
-        return metadata.height / metadata.width;
+        return [metadata.height / metadata.width, metadata.width / metadata.height];
       }
-      return 1;
+      return [1, 1];
     })();
 
     // 计算图片的宽高
-    const galleryHeight = Math.ceil(300 * widthHeightRatio);
+    const galleryHeight = Math.ceil(300 * heightWidthRatio);
     // 计算图片行的跨度
     const photoSpan = Math.ceil(galleryHeight / 10) + 1;
 
@@ -299,6 +309,8 @@ export const getAllPicture = async () => {
       ...picture,
       photoSpan,
       width: 300,
+      widthHeightRatio,
+      heightWidthRatio,
       height: galleryHeight
     };
 
@@ -306,10 +318,5 @@ export const getAllPicture = async () => {
   });
 
   const result = await allPictureWiteMetadata.filter((picture) => picture !== undefined);
-  return result as unknown as (Picture & {
-    metadata: SharpMetadata;
-    photoSpan: number;
-    width: number;
-    height: number;
-  })[];
+  return result as unknown as PictureRich[];
 };

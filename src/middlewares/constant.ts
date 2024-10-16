@@ -4,4 +4,4 @@
 export const AGENT = {
   MOBILE: 'mobile',
   DESKTOP: 'desktop'
-};
+} as const;

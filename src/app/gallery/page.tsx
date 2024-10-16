@@ -1,14 +1,15 @@
 import { ImageWrap } from '@/components/ImageWrap';
-import type { PictureRich } from '@/config/picture';
-import { getAllPicture, metadataConfig } from '@/config/picture';
+import { getAllCoverPicture } from '@/config/picture';
+import type { CoverPicture } from '@/config/picture';
+import { metadataConfig } from '@/config/picture';
 import { AGENT } from '@/middlewares/constant';
 import type { ServerComponentProps } from '@/middlewares/interface';
 import { cn } from '@/utils';
 
 export const metadata = metadataConfig;
 
-const GalleryDesktop = (props: { allPicture: PictureRich[] }) => {
-  const { allPicture } = props;
+const GalleryDesktop = (props: { allCoverPicture: CoverPicture[] }) => {
+  const { allCoverPicture } = props;
 
   return (
     <div
@@ -21,11 +22,11 @@ const GalleryDesktop = (props: { allPicture: PictureRich[] }) => {
       )}
     >
       <div className={cn('grid grid-cols-gallery auto-rows-[10px]')}>
-        {allPicture.map((picture) => (
+        {allCoverPicture.map((picture) => (
           <div
             className={cn('w-[300px] justify-self-center', 'row-auto')}
             style={{ gridRow: `span ${picture.photoSpan}` }}
-            key={picture.src}
+            key={picture.cover}
           >
             <div className={cn('w-full h-auto', 'overflow-hidden', 'rounded-sm')}>
               <ImageWrap
@@ -33,11 +34,11 @@ const GalleryDesktop = (props: { allPicture: PictureRich[] }) => {
                   'w-full',
                   'shadow-md',
                   'hover:scale-105',
-                  'transition-all duration-700 ease-in-out',
+                  'transition-all duration-1000 ease-out-quart',
                   'cursor-pointer'
                 )}
-                src={picture.src}
-                alt={picture.alt}
+                src={picture.cover}
+                alt={picture.title}
                 width={picture.width}
                 height={picture.height}
                 quality={100}
@@ -52,18 +53,18 @@ const GalleryDesktop = (props: { allPicture: PictureRich[] }) => {
   );
 };
 
-const GalleryMobile = (props: { allPicture: PictureRich[] }) => {
-  const { allPicture } = props;
+const GalleryMobile = (props: { allCoverPicture: CoverPicture[] }) => {
+  const { allCoverPicture } = props;
 
   return (
     <div className={cn('user-select-none mt-4')}>
       <div className={cn('w-screen')}>
-        {allPicture.map((picture) => {
+        {allCoverPicture.map((picture) => {
           return (
             <div
               className={cn('w-full  aspect-[16/9] px-3 pb-3')}
               style={{ aspectRatio: picture.widthHeightRatio }}
-              key={picture.src}
+              key={picture.cover}
             >
               <div
                 className={cn(
@@ -76,8 +77,8 @@ const GalleryMobile = (props: { allPicture: PictureRich[] }) => {
               >
                 <ImageWrap
                   className={cn()}
-                  src={picture.src}
-                  alt={picture.alt}
+                  src={picture.cover}
+                  alt={picture.title}
                   fill
                   sizes='300px'
                   blurPlaceholder
@@ -93,18 +94,18 @@ const GalleryMobile = (props: { allPicture: PictureRich[] }) => {
 };
 
 export default async function Gallery(props: ServerComponentProps) {
-  console.log('🚀 ~ Gallery ~ props:', props);
   const { viewport } = props.searchParams;
 
-  const allPicturePromise = await getAllPicture();
-  const allPicture = await Promise.all(allPicturePromise.map(async (post) => post));
+  const allCoverPicturePromise = await getAllCoverPicture();
+  const allCoverPicture = await Promise.all(allCoverPicturePromise.map(async (post) => post));
+  console.log(allCoverPicture);
 
   return (
     <div className={cn('flex justify-center')}>
       {viewport === AGENT.MOBILE ? (
-        <GalleryMobile allPicture={allPicture} />
+        <GalleryMobile allCoverPicture={allCoverPicture} />
       ) : (
-        <GalleryDesktop allPicture={allPicture} />
+        <GalleryDesktop allCoverPicture={allCoverPicture} />
       )}
     </div>
   );

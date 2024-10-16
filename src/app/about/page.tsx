@@ -62,13 +62,20 @@ export default async function About() {
       </div>
 
       <div className={cn('max-w-[550px]', 'sm:px-0 px-4', 'm-auto')}>
-        <div className={cn('')}>
-          <h1 className={cn('text-base md:text-lg mt-5 mb-4')}>你好！很高兴认识你！</h1>
-          <ul className={cn('text-sm md:text-base space-y-3')}>
+        <div className={cn('mt-5')}>
+          {/* <h1 className={cn('text-base md:text-lg mt-5 mb-4')}>你好！很高兴认识你！</h1>
+          <div className={cn('text-sm md:text-base mb-5')}>
+            这个博客出于个人兴趣做的。我喜欢写代码，想试试看能不能做出点属于自己的东西。顺便也能展示一下我所学的技能。
+          </div> */}
+          <h1 className='text-xl font-bold mb-3'>关于网站</h1>
+          <div>
+            出于个人兴趣做的个人网站。我喜欢写代码喜欢创造，想试试看能不能做出点属于自己的东西。顺便也能展示一下我所学的技能。
+          </div>
+          {/* <ul className={cn('text-sm md:text-base space-y-3')}>
             <li>👀 &nbsp; 我是一名前端开发者，目前在杭州从事前端开发工作。</li>
             <li>💞️ &nbsp; 我使用的技术：TS、React、Vue、NodeJS、NextJS。</li>
             <li>📚 &nbsp; 我正在学习：Web3、NextJS。</li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </>

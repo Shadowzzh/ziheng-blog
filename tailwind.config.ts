@@ -31,12 +31,19 @@ const config: Config = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
-      '2xl': '1536px'
+      '2xl': '1536px',
+      'screen-1560': '1560px',
+      'screen-1250': '1250px',
+      'screen-950': '950px',
+      'screen-630': '630px'
     },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      },
+      gridTemplateColumns: {
+        gallery: 'repeat(auto-fit,minmax(300px,1fr))'
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans]

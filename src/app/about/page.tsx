@@ -69,7 +69,7 @@ export default async function About() {
           </div> */}
           <h1 className='text-xl font-bold mb-3'>关于网站</h1>
           <div>
-            出于个人兴趣做的个人网站。我喜欢写代码喜欢创造，想试试看能不能做出点属于自己的东西。顺便也能展示一下我所学的技能。
+            平时我喜欢写代码和搞创意，想试试看能不能做点自己喜欢的东西，同时也展示一下我学到的技能。
           </div>
           {/* <ul className={cn('text-sm md:text-base space-y-3')}>
             <li>👀 &nbsp; 我是一名前端开发者，目前在杭州从事前端开发工作。</li>

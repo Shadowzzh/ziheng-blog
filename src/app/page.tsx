@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className={cn('sm:p-8 p-4 sm:pt-32 pt-10')}>
-      <div className={cn('max-w-[550px]', 'm-auto', 'divide-dashed divide-y ')}>
+      <div className={cn('max-w-[580px]', 'm-auto', 'divide-dashed divide-y ')}>
         {/* 基本信息 */}
         <UserBaseInfo className='pl-3 sm:pb-14 pb-10' />
         {/* 最新文章 */}

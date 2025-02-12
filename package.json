@@ -2,6 +2,9 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^18"
+  },
   "scripts": {
     "dev": "npm run contentlayer:dev & next dev",
     "contentlayer:dev": "contentlayer dev",
@@ -9,7 +12,8 @@
     "build:analyze": "ANALYZE=true next build",
     "contentlayer": "contentlayer build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check": "next lint & tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",

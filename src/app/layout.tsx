@@ -31,6 +31,7 @@ export default function RootLayout({
 
       <body className={cn('antialiased bg-background')}>
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
+          {/* 进度条 */}
           <ProgressBar className='fixed top-0 h-[0.1rem] dark:bg-neutral-500 bg-neutral-700 z-[999]' />
 
           <div

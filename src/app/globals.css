@@ -1,8 +1,9 @@
+@import url('../styles/article.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('../styles/article.css');
 
 @layer base {
   @layer base {

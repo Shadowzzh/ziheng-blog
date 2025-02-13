@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { cn } from '@/utils';
 import { TypewriterEffect } from '@/components/ui/typewriter-effect';
 import { ImageWrap } from '@/components/ImageWrap';
+import Link from 'next/link';
 
 const metadataDecs = '个人简介';
 const metadataTitle = '个人简介';
@@ -62,12 +63,12 @@ export default async function About() {
       </div>
 
       <div className={cn('max-w-[550px]', 'sm:px-0 px-4', 'm-auto')}>
-        <div className={cn('mt-5')}>
+        <div className={cn('mt-6')}>
           {/* <h1 className={cn('text-base md:text-lg mt-5 mb-4')}>你好！很高兴认识你！</h1>
           <div className={cn('text-sm md:text-base mb-5')}>
             这个博客出于个人兴趣做的。我喜欢写代码，想试试看能不能做出点属于自己的东西。顺便也能展示一下我所学的技能。
           </div> */}
-          <h1 className='text-xl font-bold mb-3'>关于网站</h1>
+          <h1 className='text-xl font-bold mb-2'>关于网站</h1>
           <div>
             平时我喜欢写代码和搞创意，想试试看能不能做点自己喜欢的东西，同时也展示一下我学到的技能。
           </div>
@@ -76,6 +77,14 @@ export default async function About() {
             <li>💞️ &nbsp; 我使用的技术：TS、React、Vue、NodeJS、NextJS。</li>
             <li>📚 &nbsp; 我正在学习：Web3、NextJS。</li>
           </ul> */}
+          <h1 className='text-xl font-bold mb-2 mt-6'>在线简历</h1>
+          <Link
+            target='_blank'
+            href='https://rxresu.me/shadow1746556951/front-end-development-engineer-zhangziheng'
+            className='text-blue-500 hover:text-blue-600'
+          >
+            Rxresu 简历
+          </Link>
         </div>
       </div>
     </>

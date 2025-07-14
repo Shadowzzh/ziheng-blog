@@ -7,7 +7,7 @@ export const WEB_SITE_URL = 'https://ziheng-blog.vercel.app';
 /** 作者信息 */
 export const AUTHOR = {
   /** 作者名 */
-  NAME: 'ZANE',
+  NAME: 'ziheng',
   /** 邮箱 */
   EMAIL: 'shadow1746556951@gmail.com',
   /** 推特 */

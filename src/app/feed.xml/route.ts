@@ -6,7 +6,7 @@ import { AUTHOR, WEB_SITE_URL } from '@/config/name';
 import { mdxToHtml } from '@/lib/mdxToHtml';
 
 const feedOptions: FeedOptions = {
-  title: 'Hi,Zane',
+  title: `Hi,${AUTHOR.NAME}`,
   description:
     '我对产品、技术和运动充满热情，运用编码技能实现自己的想法。feedId:57428565962095616+userId:41448350114993152',
   id: WEB_SITE_URL,
@@ -14,7 +14,7 @@ const feedOptions: FeedOptions = {
   language: 'zh-CN',
   image: `${WEB_SITE_URL}/logo.png`,
   favicon: `${WEB_SITE_URL}/favicon.ico`,
-  copyright: `All rights reserved ${new Date().getFullYear()}, Zane`,
+  copyright: `All rights reserved ${new Date().getFullYear()}, ${AUTHOR.NAME}`,
   updated: new Date(),
   generator: 'Feed for https://github.com/jpmonette/feed',
   feedLinks: {

@@ -1,0 +1,75 @@
+---
+title: 利用 View Transition API 实现平滑流畅的主题色过渡切换效果。
+date: 2025-02-13
+description: 借助 View Transition API，可以为界面带来柔和自然的主题色转换，从而显著提升整体视觉体验。
+image: /blog/view-transition/cover.png
+parallax: false
+---
+
+## 最小实现
+
+这段代码是 View Transition API 的最小实现。复制为 html 文件，打开即可看到效果。
+
+流程：
+
+1. startViewTransition 函数执行，并记住当前页面的“快照”
+2. 执行回调函数，当“视图更新”完成后，会触发 ::view-transition-old 和 ::view-transition-new 的动画
+3. 动画结束后，视图更新完成
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    @keyframes opacity-fade-out {
+      to {
+        opacity: 0;
+      }
+    }
+
+    ::view-transition-old(root) {
+      animation: opacity-fade-out 1s ease-out;
+    }
+  </style>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('#toggle').addEventListener('click', () => {
+        document.startViewTransition(() => {
+          if (document.documentElement.style.backgroundColor === 'black') {
+            document.documentElement.style.backgroundColor = 'white';
+          } else {
+            document.documentElement.style.backgroundColor = 'black';
+          }
+        });
+      });
+    });
+  </script>
+
+  <body>
+    <button id="toggle">toggle</button>
+  </body>
+</html>
+```
+
+## 兼容性
+
+<Image
+  src='/blog/view-transition/can-use.png'
+  alt='兼容性'
+  width={644}
+  height={180}
+  sizes={'70vw'}
+/>
+## 示例地址
+
+github: [first-view-transition](https://github.com/Shadowzzh/first-view-transition)[\[预览\]](https://shadowzzh.github.io/first-view-transition/)
+
+## 参考
+
+[MDN View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)

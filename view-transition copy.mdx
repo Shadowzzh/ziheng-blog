@@ -1,0 +1,21 @@
+---
+title: 利用 View Transition API 实现平滑流畅的主题色过渡切换效果。
+date: 2025-02-13
+description: 借助 View Transition API，可以为界面带来柔和自然的主题色转换，从而显著提升整体视觉体验。
+image: /blog/view-transition/cover.png
+parallax: false
+---
+
+## 初识
+
+写 NextJs 的时候，遇到了 SSR 经常碰到的问题，页面切换的时候首先请求服务器，这个过程很慢，导致页面切换的时候会卡顿一会，等待服务器返回数据。
+
+用户的体感就是点了下按钮，然后没了反应，过了 0.5 秒后才跳转新页面。理想情况时点击跳转按钮可以立即跳转到页面，这样体验最好。而不是卡顿住。
+
+如果是 CSR 的话就不会遇到这个问题。页面切换时首先会立即跳转路由，然后请求数据这个过程很快，所以不会感到卡顿。
+
+我就在想页面切换时，能不能先显示一个加载动画然后请求到新页面时，再显示新页面的内容。
+
+然后我搜索到了[next-view-transitions](https://github.com/shuding/next-view-transitions)这个库，发现里面用到了一个「View Transition API」的技术。
+
+在了这个技术的时候
